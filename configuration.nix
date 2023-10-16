@@ -5,6 +5,17 @@
 
 { config, pkgs, ... }:
 
+#let
+#  pkgs = import (builtins.fetchGit {
+#    # Descriptive name to make the store path easier to identify
+#    name = "my-old-revision";
+#    url = "https://github.com/NixOS/nixpkgs/";
+#    ref = "refs/heads/nixpkgs-unstable";
+#    rev = "976fa3369d722e76f37c77493d99829540d43845";
+#  }) { inherit config };
+#
+#  myPkg = pkgs.vscodium;
+#in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -190,6 +201,10 @@
 
     xserver = {
       enable = true;
+
+      excludePackages = with pkgs; [
+        xterm
+			];
 
       videoDrivers = [
         # "intel"

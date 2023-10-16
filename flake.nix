@@ -19,7 +19,24 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, ... }: {
+	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, ... }: 
+  #let
+  #   asd = builtins.currentSystem;
+	#	 
+  #
+  #   pkgs = import (builtins.fetchGit {
+  #       # Descriptive name to make the store path easier to identify
+  #       name = "vscodium-rev";
+  #       url = "https://github.com/NixOS/nixpkgs/";
+  #       ref = "refs/heads/nixpkgs-unstable";
+  #       rev = "976fa3369d722e76f37c77493d99829540d43845";
+  #   }) { 
+  #			inherit asd;
+	#	 };
+  #
+  #  vscodium-revision = pkgs.vscodium;
+  #in
+	{
 		nixosConfigurations = {
 			fred = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
@@ -60,7 +77,8 @@
 								steam
 								discord
 								spotify
-								vscodium
+								#vscodium
+								#vscodium-revision
 								dunst #mako		
 								shotman
                 # waybar
