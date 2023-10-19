@@ -106,6 +106,8 @@
     fred = {
       isNormalUser = true;
       description = "Fred";
+			# useDefaultShell = true;
+			shell = pkgs.fish;
       extraGroups = [ "networkmanager" "wheel" ];
     };
   };
@@ -145,7 +147,10 @@
     pulseaudio.enable = false;
     # pulseaudio.support32Bit= true;
     # pulseaudio.package = pkgs.pulseaudioFull;
-    bluetooth.enable = true;
+		bluetooth = {
+      enable = true; # enables support for bluetooth
+			powerOnBoot = true; # powers up default bluetooth controller on boot
+		};
 
     # Enable OpenGL
     opengl = {
@@ -191,6 +196,11 @@
     
   security.rtkit.enable = true;
   services = {
+    # Enable CUPS to print documents.
+    printing.enable = true;
+		# Enable blueman which provides blueman-applet and blueman-manager.
+    blueman.enable = true;
+
     openssh = {
       enable = true;
 
@@ -198,24 +208,6 @@
       #   ""
       # ];
     };
-
-    xserver = {
-      enable = true;
-
-      excludePackages = with pkgs; [
-        xterm
-			];
-
-      videoDrivers = [
-        # "intel"
-        "nvidia"
-      ];
-    };
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
-    # Enable blueman which provides blueman-applet and blueman-manager.
-    blueman.enable = true;
 
     pipewire = {
       enable = true;
@@ -229,6 +221,18 @@
       # use the example session manager (no others are packaged yet so this is enabled by default,
       # no need to redefine it in your config for now)
       #media-session.enable = true;
+    };
+
+		xserver = {
+      enable = true;
+
+      excludePackages = with pkgs; [
+        xterm
+			];
+
+      videoDrivers = [
+        "nvidia"
+      ];
     };
   };
 
@@ -245,16 +249,19 @@
     };
 
     dconf.enable = true; # At the time, this was for Blueman & virt-manager
-  };
+    
+		fish.enable = true;
+	};
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
     git
+		bluetuith # Terminal based bluetooth manager
     htop
-    lm_sensors
-    conky
+    lm_sensors 
+    # conky
     neovim 
     ripgrep # for "telescope" inside neovim
 		#fzf # for telescope in neovim

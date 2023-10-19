@@ -22,6 +22,10 @@
         gaps_out = 3;
       };
 
+			
+			input = {
+        follow_mouse = 2;
+			};
       #source = [
       #  #./binds.nix
 #	#./windowrules.nix
@@ -60,7 +64,8 @@
   ];
 
   windowrulev2 = [
-    "float,class:(.blueman-manager-wrapped)" # Find class names by terminal: 'hyprctl clients'
+    # "float,class:(.blueman-manager-wrapped)" # Find class names by terminal: 'hyprctl clients'
+		"float,class:(Bluetuith)"
   ];
 
   exec-once = [

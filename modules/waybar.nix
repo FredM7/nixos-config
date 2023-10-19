@@ -56,7 +56,7 @@
       };
       "custom/bluetooth" = {
         "format" = "BT";
-        "on-click" = "sleep 0.1 && blueman-manager"; # sleep is currently a workaround
+        "on-click" = "sleep 0.1 && alacritty --class Bluetuith -e bluetuith"; # sleep is currently a workaround
       };
       "custom/launcher" = {
         "format" = "󰈸";
@@ -84,7 +84,7 @@
 
     window#waybar {
       background-color: transparent;
-      border-bottom: 1px solid #ffffff;
+      /* border-bottom: 1px solid #ffffff; */
       color: #ffffff;
       transition-property: background-color;
       transition-duration: .5s;
