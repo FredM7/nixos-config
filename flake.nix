@@ -17,9 +17,18 @@
 			url = "github:hyprwm/hyprpaper";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		#anyrun = {
+    #  url = "github:Kirottu/anyrun";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+		#};
 	};
 
-	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, ... }: 
+	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, 
+	#anyrun, 
+	... }: 
+	#let 
+	#in
   #let
   #   asd = builtins.currentSystem;
 	#	 
@@ -38,6 +47,12 @@
   #in
 	{
 		nixosConfigurations = {
+		  #HOSTNAME = nixpkgs.lib.nixosSystem {
+      #  # ...
+      #  #system.packages = [ anyrun.packages.x86_64-linux.anyrun ];
+      #  # ...
+      #};
+
 			fred = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
 				modules = [
@@ -53,15 +68,9 @@
 							home.homeDirectory = "/home/fred";
 
 							programs.home-manager.enable = true;
-              programs.fish = {
-                enable = true; # Fish also enabled in configuratiion.nix programs.
-								interactiveShellInit = ''
-                  set fish_greeting
-									screenfetch -E
-								'';
-							};
 
 							imports = [
+								./modules/fishsh.nix
 								./modules/alacritty.nix
 								./modules/waybar.nix
 								./modules/hyprpaper.nix
