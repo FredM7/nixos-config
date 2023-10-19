@@ -5,6 +5,6 @@
       set fish_greeting
       screenfetch -E
     '';
-  #};
+  };
 }
 

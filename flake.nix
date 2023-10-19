@@ -70,7 +70,7 @@
 							programs.home-manager.enable = true;
 
 							imports = [
-								./modules/fishsh.nix
+								./modules/fish.nix
 								./modules/alacritty.nix
 								./modules/waybar.nix
 								./modules/hyprpaper.nix
