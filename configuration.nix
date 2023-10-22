@@ -274,7 +274,12 @@
     hyprpicker # color picker tool
     hyprpaper # backgrounds
     wlogout # logout screen
+		# NODE
 		nodejs
+		# RUST
+		cargo
+		rustc
+		# 
   ];
 
   

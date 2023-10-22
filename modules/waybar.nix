@@ -11,11 +11,8 @@
       "position" = "top";
       "modules-left" = [
         "custom/launcher"
-	"custom/hyprpicker"
-	"cpu"
-	"memory"
-	"disk"
-	"hyprland/workspaces"
+	      "custom/hyprpicker"
+				"hyprland/workspaces"
         "wlr/taskbar"
       ];
       "modules-center" = [
@@ -23,11 +20,13 @@
       ];
       "modules-right" = [
         "network"
-	"pulseaudio"
-	"custom/pipewire"
-	"custom/bluetooth"
-	"clock"
-	"custom/wlogout"
+				"cpu"
+				"memory"
+				"custom/bluetooth"
+				"pulseaudio"
+				"custom/pipewire"
+				"clock"
+				"custom/wlogout"
       ];
       "clock" = {
         "interval" = 1;
@@ -50,7 +49,7 @@
         "interval" = "once";
         "format-icons" = {
           "mute" = "";
-            "default" = ["" "" "" ""];
+          "default" = ["" "" "" ""];
         };
         "exec" = "pw-volume status";
       };
@@ -127,11 +126,15 @@
     }
 
     #custom-launcher, #custom-hyprpicker, #custom-wlogout {
-      padding: 10px;
+      /* padding: 10px;
+			height: 40px; 
+			width: 40px; */
+			min-width: 32px;
+			min-height: 32px;
       color: white;
       border: 1px solid white;
       border-radius: 100px;
-      min-width: 40px;
+      min-width: 32px;
     }
 
     #taskbar {

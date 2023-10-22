@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.anyrun = {
     enable = true;
 		config = {

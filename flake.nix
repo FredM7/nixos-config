@@ -18,17 +18,15 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		#anyrun = {
-    #  url = "github:Kirottu/anyrun";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-		#};
+		anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, 
-	#anyrun, 
-	... }: 
-	#let 
-	#in
+	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, anyrun, ... }: 
+	let 
+	in
   #let
   #   asd = builtins.currentSystem;
 	#	 
@@ -47,11 +45,11 @@
   #in
 	{
 		nixosConfigurations = {
-		  #HOSTNAME = nixpkgs.lib.nixosSystem {
-      #  # ...
-      #  #system.packages = [ anyrun.packages.x86_64-linux.anyrun ];
-      #  # ...
-      #};
+		  HOSTNAME = nixpkgs.lib.nixosSystem {
+        # ...
+        system.packages = [ anyrun.packages."x86_64-linux".anyrun-with-all-plugins ];
+        # ...
+      };
 
 			fred = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
@@ -70,6 +68,7 @@
 							programs.home-manager.enable = true;
 
 							imports = [
+								#./modules/anyrun.nix
 								./modules/fish.nix
 								./modules/alacritty.nix
 								./modules/waybar.nix
@@ -104,6 +103,7 @@
 								qemu # virtualization
 								virt-manager # virtualization
 								github-desktop
+								#sqlite
 							];
 
 							home.stateVersion = "23.11";
