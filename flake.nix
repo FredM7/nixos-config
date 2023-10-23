@@ -20,6 +20,7 @@
 
 		anyrun = {
       url = "github:Kirottu/anyrun";
+      # url = "github:Kirottu/anyrun/homeManagerModules.default";
       inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
@@ -45,17 +46,21 @@
   #in
 	{
 		nixosConfigurations = {
-		  HOSTNAME = nixpkgs.lib.nixosSystem {
-        # ...
-        system.packages = [ anyrun.packages."x86_64-linux".anyrun-with-all-plugins ];
-        # ...
-      };
+		  #HOSTNAME = nixpkgs.lib.nixosSystem {
+      #  # ...
+      #  system.packages = [ anyrun.packages.x86_64-linux.anyrun ];
+      #  # ...
+      #};
 
 			fred = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
+				#system.packages = [
+        #  anyrun.packages.x86_64-linux.anyrun
+				#];
 				modules = [
 					./configuration.nix
 					./modules/greetd.nix
+					#./modules/anyrun.nix
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;
@@ -68,7 +73,7 @@
 							programs.home-manager.enable = true;
 
 							imports = [
-								#./modules/anyrun.nix
+								./modules/anyrun.nix
 								./modules/fish.nix
 								./modules/alacritty.nix
 								./modules/waybar.nix
@@ -104,6 +109,7 @@
 								virt-manager # virtualization
 								github-desktop
 								#sqlite
+								anyrun.packages.x86_64-linux.anyrun-with-all-plugins
 							];
 
 							home.stateVersion = "23.11";

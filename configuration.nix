@@ -279,6 +279,7 @@
 		# RUST
 		cargo
 		rustc
+		gcc
 		# 
   ];
 
