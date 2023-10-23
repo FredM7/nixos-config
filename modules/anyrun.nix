@@ -1,9 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, anyrun, ... }: {
+  imports = [
+    anyrun.homeManagerModules.default
+  ];
+
   programs.anyrun = {
     enable = true;
     config = {
-      width = { fraction = 0.3; };
-			position = "top";
+      #width = { fraction = 0.3; };
+			#position = "top";
+			plugins = [];
 		};
 		extraCss = ''
       /*  */

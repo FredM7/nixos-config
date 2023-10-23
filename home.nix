@@ -1,11 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, anyrun, ... }: {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
 
 	programs.home-manager.enable = true;
 
 	imports = [
-		#./modules/anyrun.nix
+		./modules/anyrun.nix
 		./modules/fish.nix
 		./modules/alacritty.nix
 		./modules/waybar.nix
@@ -41,7 +41,7 @@
 		virt-manager # virtualization
 		github-desktop
 #sqlite
-		anyrun.packages.x86_64-linux.anyrun-with-all-plugins
+		#anyrun.packages.x86_64-linux.anyrun-with-all-plugins
 	];
 
 	home.stateVersion = "23.11";

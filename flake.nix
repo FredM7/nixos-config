@@ -25,7 +25,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, anyrun, ... }: 
+	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, anyrun, ... }@inputs: 
 	let 
 	in
   #let
@@ -71,7 +71,11 @@
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 
-						home-manager.users.fred = import (./home.nix);
+						home-manager.users.fred = import ./home.nix;
+
+						home-manager.extraSpecialArgs = {
+              inherit anyrun;
+						};
 					}
 				];
 			};
