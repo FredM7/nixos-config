@@ -52,6 +52,7 @@
 
   # Executes also while button is held down.
   binde = [
+    ", XF86AudioMute, exec, amixer sset 'Master' toggle"
     ", XF86AudioRaiseVolume, exec, amixer sset 'Master' 5%+"
     ", XF86AudioLowerVolume, exec, amixer sset 'Master' 5%-"
     ", Print, exec, shotman -c region"
@@ -66,6 +67,7 @@
   windowrulev2 = [
     # "float,class:(.blueman-manager-wrapped)" # Find class names by terminal: 'hyprctl clients'
 		"float,class:(Bluetuith)"
+		"float,class:(org.kde.krusader)"
   ];
 
   exec-once = [

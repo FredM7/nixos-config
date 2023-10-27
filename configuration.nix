@@ -23,10 +23,14 @@
     ];
 
   nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    #package = pkgs.nixFlakes;
+    #extraOptions = ''
+    #  experimental-features = nix-command flakes
+    #'';
+    #package = pkgs.nix;
+		settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+		};
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest; #_4_19; # _latest;
@@ -259,13 +263,18 @@
     wget
     git
 		bluetuith # Terminal based bluetooth manager
-    htop
+    btop
     lm_sensors 
     # conky
     neovim 
     ripgrep # for "telescope" inside neovim
 		#fzf # for telescope in neovim
     gnome.nautilus # file explorer
+		# krusader
+		# whitesur-icon-theme
+		# libsForQt5.dolphin
+		#libsForQt5.qt5ct
+		ranger
     alacritty # terminal
     screenfetch
     wl-clipboard # clipboard
@@ -274,6 +283,7 @@
     hyprpicker # color picker tool
     hyprpaper # backgrounds
     wlogout # logout screen
+		pavucontrol
 		# NODE
 		nodejs
 		# RUST

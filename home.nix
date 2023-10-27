@@ -12,6 +12,7 @@
 		./modules/hyprpaper.nix
 		./modules/hyprland.nix
 		./modules/wlogout.nix
+		./modules/rofi.nix
 	];
 
 	dconf.settings = {
@@ -29,18 +30,19 @@
 		steam
 		discord
 		spotify
-#vscodium
-#vscodium-revision
+    #vscodium
+    #vscodium-revision
 		dunst #mako		
 		shotman
-# waybar
+    # waybar
 		blender
 		freecad
 		obsidian
 		qemu # virtualization
 		virt-manager # virtualization
 		github-desktop
-#sqlite
+		gimp
+    #sqlite
 		#anyrun.packages.x86_64-linux.anyrun-with-all-plugins
 	];
 

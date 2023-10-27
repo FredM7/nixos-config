@@ -10,31 +10,45 @@
       "layer" = "top";
       "position" = "top";
       "modules-left" = [
+				"custom/wlogout"
         "custom/launcher"
 	      "custom/hyprpicker"
 				"hyprland/workspaces"
         "wlr/taskbar"
       ];
       "modules-center" = [
-        "tray"
+				"clock"
       ];
       "modules-right" = [
-        "network"
+        #"network"
 				"cpu"
 				"memory"
 				"custom/bluetooth"
 				"pulseaudio"
-				"custom/pipewire"
-				"clock"
-				"custom/wlogout"
+				#"custom/pipewire"
+        "tray"
       ];
       "clock" = {
         "interval" = 1;
-        "format" = "{:%Y-%m-%d %H:%M:%S}";
+				# eg: 2023 Nov 13 - Tue 08:31:22
+				"format" = "{:%Y %b %d - %a %H:%M:%S}";
+        #"format" = "{:%Y-%m-%d %H:%M:%S}";
         "tooltip" = "true";
         "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         "format-alt" = " {:%d/%m}";
       };
+			"cpu" = {
+				"interval" = 1;
+				"format" = "CPU:{usage}%";
+				"tooltip" = false;
+				#"format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% ",
+  	    #"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+			};
+			"memory" = {
+				"interval" = 1;
+        "format" = "MEM:{percentage}%";
+        "tooltip" = "false";
+			};
       "wlr/taskbar" = {
         #"icon-theme" = "Numix-Circle";
         "icon-size" = 12;
@@ -42,16 +56,17 @@
         "on-click-right" = "minimize";
         #"format" = "{icon}";
       };
-      "custom/pipewire" = {
-        "format" = "{icon}";
-        "return-type" = "json";
-        "signal" = 8;
-        "interval" = "once";
+      "pulseaudio" = {
+        "format" = "VOL:{volume}%";
+				"format-muted" = "MUT:{volume}%";
+				"scroll-step" = 5;
+				"tooltip" = false;
+				"on-click" = "pavucontrol";
         "format-icons" = {
           "mute" = "";
           "default" = ["" "" "" ""];
         };
-        "exec" = "pw-volume status";
+        #"exec" = "pw-volume status";
       };
       "custom/bluetooth" = {
         "format" = "BT";
@@ -89,11 +104,23 @@
       transition-duration: .5s;
     }
 
+		.modules-left {
+
+		}
+
+		.modules-center {
+			
+		}
+
+		.modules-right {
+      
+		}
+
     #clock {
       padding: 10px;
       color: white;
-      border: 1px solid white;
-      border-radius: 100px;
+      /* border: 1px solid white;
+      border-radius: 100px; */
     }
 
     #workspaces button {
@@ -115,15 +142,29 @@
       background-color: #eb4d4b;
     }
 
+		#cpu, #memory {
+		  padding-left: 15px;
+		}
+
     #pulseaudio {
-      background-color: #f1c40f;
-      color: #000000;
+		  padding-left: 15px;
+      /*background-color: #f1c40f;
+      color: #000000;*/
+			color: white;
     }
 
     #pulseaudio.muted {
-      background-color: #90b1b1;
-      color: #2a5c45;
+      /*background-color: #90b1b1;
+      color: #2a5c45;*/
     }
+
+		#tray {
+		  padding-left: 15px;
+		}
+
+		#custom-bluetooth {
+		  padding-left: 15px;
+		}
 
     #custom-launcher, #custom-hyprpicker, #custom-wlogout {
       /* padding: 10px;
