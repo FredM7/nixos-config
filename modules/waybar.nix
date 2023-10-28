@@ -23,9 +23,11 @@
         #"network"
 				"cpu"
 				"memory"
-				"custom/bluetooth"
+				"temperature#cpu"
+				"custom/gpu"
 				"pulseaudio"
 				#"custom/pipewire"
+				"custom/bluetooth"
         "tray"
       ];
       "clock" = {
@@ -49,6 +51,18 @@
         "format" = "MEM:{percentage}%";
         "tooltip" = "false";
 			};
+    	"temperature#cpu" = {
+        "thermal-zone" = 0;
+        "hwmon-path" = "/sys/class/hwmon/hwmon1/temp1_input";
+        "format" = "CPUT:{temperatureC}°C";
+        "tooltip" = false;
+    	};
+    	"custom/gpu" = {
+        "interval" = 1;
+        "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader";
+        "format" = "GPUT:{}°C";
+        "tooltip" = false;
+    	};
       "wlr/taskbar" = {
         #"icon-theme" = "Numix-Circle";
         "icon-size" = 12;
@@ -69,7 +83,7 @@
         #"exec" = "pw-volume status";
       };
       "custom/bluetooth" = {
-        "format" = "BT";
+        "format" = " ";
         "on-click" = "sleep 0.1 && alacritty --class Bluetuith -e bluetuith"; # sleep is currently a workaround
       };
       "custom/launcher" = {
@@ -142,7 +156,7 @@
       background-color: #eb4d4b;
     }
 
-		#cpu, #memory {
+		#cpu, #memory, #temperature.cpu, #custom-gpu {
 		  padding-left: 15px;
 		}
 

@@ -42,6 +42,10 @@
 		virt-manager # virtualization
 		github-desktop
 		gimp
+		speedcrunch
+		#libratbag # dbus daemon for piper
+		#piper # mouse config, depends on libratbag
+		#dbus
     #sqlite
 		#anyrun.packages.x86_64-linux.anyrun-with-all-plugins
 	];

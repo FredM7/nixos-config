@@ -106,14 +106,19 @@
   #};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
-    fred = {
-      isNormalUser = true;
-      description = "Fred";
-			# useDefaultShell = true;
-			shell = pkgs.fish;
-      extraGroups = [ "networkmanager" "wheel" ];
-    };
+  users = {
+	  groups = {
+      games = { };
+		};
+	  users = {
+      fred = {
+        isNormalUser = true;
+        description = "Fred";
+			  # useDefaultShell = true;
+			  shell = pkgs.fish;
+        extraGroups = [ "networkmanager" "wheel" "games" ];
+      };
+		};
   };
 
   security = {
@@ -121,15 +126,15 @@
 
     sudo = {
       enable = true;
-      extraRules = [{
-       commands = [
-         { 
-      	    command = "${pkgs.systemd}/bin/reboot";
-      	    options = [ "NOPASSWD" ];
-      	  }
-      	];
-      	groups = [ "wheel" ];
-      }];
+      #extraRules = [{
+      # commands = [
+      #   { 
+      #	    command = "${pkgs.systemd}/bin/reboot";
+      #	    options = [ "NOPASSWD" ];
+      #	  }
+      #	];
+      #	groups = [ "wheel" ];
+      #}];
       #configFile = ''
       #  %wheel ALL=(ALL) ALL
       #'';
@@ -203,7 +208,7 @@
     # Enable CUPS to print documents.
     printing.enable = true;
 		# Enable blueman which provides blueman-applet and blueman-manager.
-    blueman.enable = true;
+    # blueman.enable = true;
 
     openssh = {
       enable = true;
@@ -226,6 +231,10 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+
+		ratbagd = {
+      enable = true;
+		};
 
 		xserver = {
       enable = true;
@@ -284,6 +293,7 @@
     hyprpaper # backgrounds
     wlogout # logout screen
 		pavucontrol
+		piper
 		# NODE
 		nodejs
 		# RUST

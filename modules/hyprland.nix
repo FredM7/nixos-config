@@ -67,8 +67,10 @@
   windowrulev2 = [
     # "float,class:(.blueman-manager-wrapped)" # Find class names by terminal: 'hyprctl clients'
 		"float,class:(Bluetuith)"
-		"float,class:(org.kde.krusader)"
-  ];
+		#"float,class:(org.kde.krusader)"
+    "float,size 627 287,class:(org.speedcrunch.)"
+		"float,class:(pavucontrol)"
+	];
 
   exec-once = [
     "waybar"
