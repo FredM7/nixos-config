@@ -23,15 +23,31 @@
       # url = "github:Kirottu/anyrun/homeManagerModules.default";
       inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		#solaar = {
+		#	url = "https://github.com/Svenum/Solaar-Flake/tree/release-1.1.10"; # For latest stable version
+		#	# url = "https://github.com/pwr-Solaar/Solaar/releases/tag/1.1.10"; # For latest stable version
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 	};
 
-	outputs = { self, nixpkgs, home-manager, hyprland, waybar, hyprpaper, anyrun, ... }@inputs: 
-	let 
+	outputs = { 
+	  self,
+		nixpkgs,
+		home-manager,
+		hyprland,
+		waybar,
+		hyprpaper,
+		anyrun, 
+	  #solaar, 
+	  ...
+	} @ inputs: 
+	let
+	  #
 	in
   #let
   #   asd = builtins.currentSystem;
 	#	 
-  #
   #   pkgs = import (builtins.fetchGit {
   #       # Descriptive name to make the store path easier to identify
   #       name = "vscodium-rev";
@@ -45,27 +61,16 @@
   #  vscodium-revision = pkgs.vscodium;
   #in
 	{
-    #imports = [
-    #  anyrun.homeManagerModules.default
-		#];
-
-		nixosConfigurations = {
-		  #HOSTNAME = nixpkgs.lib.nixosSystem {
-      #  # ...
-      #  system.packages = [ anyrun.packages.x86_64-linux.anyrun ];
-      #  # ...
-      #};
-
+    nixosConfigurations = {
 			fred = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
-				#system.packages = [
-        #  anyrun.packages.x86_64-linux.anyrun
-				#];
+				
 				modules = [
 					./configuration.nix
 					./modules/greetd.nix
-					#anyrun.homeManagerModules.default
-					#./modules/anyrun.nix
+					#({pkgs, ...}: {
+          #  environment.systemPackages = [solaar.packages.${pkgs.system}.solaar];
+          #})
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;

@@ -127,7 +127,7 @@
 		}
 
 		.modules-right {
-      
+      padding-right: 8px;
 		}
 
     #clock {
@@ -173,7 +173,8 @@
     }
 
 		#tray {
-		  padding-left: 15px;
+		  padding-left: 12px;
+			/*padding-right: 8px;*/
 		}
 
 		#custom-bluetooth {

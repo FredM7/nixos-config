@@ -1,4 +1,4 @@
-{ pkgs, anyrun, ... }: {
+{ pkgs, anyrun, solaar, ... }: {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
 
@@ -43,11 +43,14 @@
 		github-desktop
 		gimp
 		speedcrunch
+		#solaar
 		#libratbag # dbus daemon for piper
 		#piper # mouse config, depends on libratbag
 		#dbus
+		davinci-resolve
     #sqlite
 		#anyrun.packages.x86_64-linux.anyrun-with-all-plugins
+		localsend
 	];
 
 	home.stateVersion = "23.11";
