@@ -78,6 +78,7 @@ in {
   #     ref = "refs/heads/nixpkgs-unstable";
   #     rev = "976fa3369d722e76f37c77493d99829540d43845";
   #   }) {})
+	  inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
 		dunst #mako		
 		shotman
     # waybar

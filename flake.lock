@@ -198,6 +198,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-vscodium": {
+      "locked": {
+        "lastModified": 1692477756,
+        "narHash": "sha256-zezuNTk1F2Sa3ChTF+wbTn8ujyptQ+E+N6SA2d47zOQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "976fa3369d722e76f37c77493d99829540d43845",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "976fa3369d722e76f37c77493d99829540d43845",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1697456312,
@@ -253,6 +269,7 @@
         "hyprland": "hyprland",
         "hyprpaper": "hyprpaper",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-vscodium": "nixpkgs-vscodium",
         "waybar": "waybar"
       }
     },

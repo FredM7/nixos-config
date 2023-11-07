@@ -24,6 +24,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		nixpkgs-vscodium.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
+
 		#solaar = {
 		#	url = "https://github.com/Svenum/Solaar-Flake/tree/release-1.1.10"; # For latest stable version
 		#	# url = "https://github.com/pwr-Solaar/Solaar/releases/tag/1.1.10"; # For latest stable version
@@ -56,21 +58,21 @@
   #
   #   vscodium-rev = pkgs.vscodium;
   # in
-	let
-	system = "x86_64-linux";
-
-  pkgs = import (builtins.fetchGit {
-    # Descriptive name to make the store path easier to identify
-    name = "my-old-revision";
-    url = "https://github.com/NixOS/nixpkgs/";
-    ref = "refs/heads/nixpkgs-unstable";
-    rev = "976fa3369d722e76f37c77493d99829540d43845";
-  }) { 
-    inherit system;
-	};
-
-  myPkg = pkgs.vscodium;
-in
+# 	let
+# 	system = "x86_64-linux";
+#
+#   pkgs = import (builtins.fetchGit {
+#     # Descriptive name to make the store path easier to identify
+#     name = "my-old-revision";
+#     url = "https://github.com/NixOS/nixpkgs/";
+#     ref = "refs/heads/nixpkgs-unstable";
+#     rev = "976fa3369d722e76f37c77493d99829540d43845";
+#   }) { 
+#     inherit system;
+# 	};
+#
+#   myPkg = pkgs.vscodium;
+# in
 
 	{
     nixosConfigurations = {
