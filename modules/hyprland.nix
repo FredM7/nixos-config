@@ -77,6 +77,8 @@
 		    #"float,class:(org.kde.krusader)"
         "float,size 627 287,class:(org.speedcrunch.)"
 		    "float,class:(pavucontrol)"
+		    "float,class:(.piper-wrapped)"
+		    "float,class:(solaar)"
 	    ];
 
       exec-once = [

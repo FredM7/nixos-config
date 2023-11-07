@@ -5,17 +5,17 @@
 
 { config, pkgs, ... }:
 
-#let
-#  pkgs = import (builtins.fetchGit {
-#    # Descriptive name to make the store path easier to identify
-#    name = "my-old-revision";
-#    url = "https://github.com/NixOS/nixpkgs/";
-#    ref = "refs/heads/nixpkgs-unstable";
-#    rev = "976fa3369d722e76f37c77493d99829540d43845";
-#  }) { inherit config };
+# let
+#   pkgs = import (builtins.fetchGit {
+#     # Descriptive name to make the store path easier to identify
+#     name = "my-old-revision";
+#     url = "https://github.com/NixOS/nixpkgs/";
+#     ref = "refs/heads/nixpkgs-unstable";
+#     rev = "976fa3369d722e76f37c77493d99829540d43845";
+#   }) { };
 #
-#  myPkg = pkgs.vscodium;
-#in
+#   myPkg = pkgs.vscodium;
+# in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -116,7 +116,7 @@
         description = "Fred";
 			  # useDefaultShell = true;
 			  shell = pkgs.fish;
-        extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" ];
+        extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" "docker" ];
       };
 		};
   };
@@ -143,6 +143,7 @@
 
   virtualisation = {
     libvirtd.enable = true;
+		docker.enable = true;
   };
 
   #nixpkgs.config.packageOverrides = pkgs: {
@@ -340,9 +341,14 @@ LABEL="solaar_end"
 		cargo
 		rustc
 		gcc
+		rust-analyzer
+		#
+		gnumake
 		solaar
+		unzip
 		nwg-look
-		# 
+		#
+    # myPkg
   ];
 
   

@@ -42,24 +42,36 @@
 	  #solaar, 
 	  ...
 	} @ inputs: 
-	let
-	  #
-	in
-  #let
-  #   asd = builtins.currentSystem;
-	#	 
+	# let
+	#   #
+	# in
+  # let
   #   pkgs = import (builtins.fetchGit {
   #       # Descriptive name to make the store path easier to identify
   #       name = "vscodium-rev";
   #       url = "https://github.com/NixOS/nixpkgs/";
   #       ref = "refs/heads/nixpkgs-unstable";
   #       rev = "976fa3369d722e76f37c77493d99829540d43845";
-  #   }) { 
-  #			inherit asd;
-	#	 };
+  #   }) {};
   #
-  #  vscodium-revision = pkgs.vscodium;
-  #in
+  #   vscodium-rev = pkgs.vscodium;
+  # in
+	let
+	system = "x86_64-linux";
+
+  pkgs = import (builtins.fetchGit {
+    # Descriptive name to make the store path easier to identify
+    name = "my-old-revision";
+    url = "https://github.com/NixOS/nixpkgs/";
+    ref = "refs/heads/nixpkgs-unstable";
+    rev = "976fa3369d722e76f37c77493d99829540d43845";
+  }) { 
+    inherit system;
+	};
+
+  myPkg = pkgs.vscodium;
+in
+
 	{
     nixosConfigurations = {
 			fred = nixpkgs.lib.nixosSystem {
@@ -69,8 +81,10 @@
 					./configuration.nix
 					./modules/greetd.nix
 					#({pkgs, ...}: {
-          #  environment.systemPackages = [solaar.packages.${pkgs.system}.solaar];
-          #})
+          #  # environment.systemPackages = [solaar.packages.${pkgs.system}.solaar];
+          #  environment.systemPackage = [ myPkg ];
+					#})
+          # myPkg
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;
@@ -80,6 +94,7 @@
 
 						home-manager.extraSpecialArgs = {
               inherit anyrun;
+							# inherit myPkg;
 						};
 					}
 				];

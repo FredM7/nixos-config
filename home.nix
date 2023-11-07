@@ -1,4 +1,21 @@
-{ pkgs, anyrun, solaar, ... }: {
+{ pkgs, nixpkgs, anyrun, solaar, system, 
+# my-old-revision,
+#myPkg, 
+... }: let
+	# system = "x86_64-linux";
+	#
+ #  pkgs = import (builtins.fetchGit {
+ #    # Descriptive name to make the store path easier to identify
+ #    name = "my-old-revision";
+ #    url = "https://github.com/NixOS/nixpkgs/";
+ #    ref = "refs/heads/nixpkgs-unstable";
+ #    rev = "976fa3369d722e76f37c77493d99829540d43845";
+ #  }) { 
+ #    # inherit system;
+	# };
+	#
+ #  myPkg = pkgs.vscodium;
+in {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
 
@@ -22,21 +39,51 @@
 		};
 	};
 
+	# nixpkgs.config = {
+	# 	packageOverrides = pkgs: {
+ #        vscodium = import (builtins.fetchGit {
+ #          # Descriptive name to make the store path easier to identify
+ #          name = "vscodium-rev";
+ #          url = "https://github.com/NixOS/nixpkgs/";
+ #          ref = "refs/heads/nixpkgs-unstable";
+ #          rev = "976fa3369d722e76f37c77493d99829540d43845";
+ #        }) {};
+	# 		# pkgs.vscodium;
+	# 	};
+	# };
+
+	# nixpkgs.overlay = {
+ #        vscodium = import (builtins.fetchGit {
+ #          # Descriptive name to make the store path easier to identify
+ #          name = "vscodium-rev";
+ #          url = "https://github.com/NixOS/nixpkgs/";
+ #          ref = "refs/heads/nixpkgs-unstable";
+ #          rev = "976fa3369d722e76f37c77493d99829540d43845";
+ #        }) { inherit system; };
+	# };
+
 	home.packages = with pkgs; [
-		firefox
+		# firefox
 		vivaldi
 		vivaldi-ffmpeg-codecs
 		thunderbird
 		steam
 		discord
 		spotify
-    #vscodium
+    # vscodium
     #vscodium-revision
+		# (import (builtins.fetchGit {
+  #     name = "vscodium";
+  #     url = "https://github.com/NixOS/nixpkgs/";
+  #     ref = "refs/heads/nixpkgs-unstable";
+  #     rev = "976fa3369d722e76f37c77493d99829540d43845";
+  #   }) {})
 		dunst #mako		
 		shotman
     # waybar
 		blender
 		freecad
+		prusa-slicer
 		obsidian
 		qemu # virtualization
 		virt-manager # virtualization
@@ -51,6 +98,11 @@
     #sqlite
 		#anyrun.packages.x86_64-linux.anyrun-with-all-plugins
 		localsend
+		# rust-analyzer
+		# mongodb
+		mongodb-compass
+    # myPkg
+		# my-old-revision
 	];
 
 	home.stateVersion = "23.11";
