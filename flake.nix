@@ -33,52 +33,22 @@
     #};
 	};
 
-	outputs = { 
+	outputs = {
 	  self,
 		nixpkgs,
 		home-manager,
 		hyprland,
 		waybar,
 		hyprpaper,
-		anyrun, 
-	  #solaar, 
+		anyrun,
+	  #solaar,
 	  ...
-	} @ inputs: 
-	# let
-	#   #
-	# in
-  # let
-  #   pkgs = import (builtins.fetchGit {
-  #       # Descriptive name to make the store path easier to identify
-  #       name = "vscodium-rev";
-  #       url = "https://github.com/NixOS/nixpkgs/";
-  #       ref = "refs/heads/nixpkgs-unstable";
-  #       rev = "976fa3369d722e76f37c77493d99829540d43845";
-  #   }) {};
-  #
-  #   vscodium-rev = pkgs.vscodium;
-  # in
-# 	let
-# 	system = "x86_64-linux";
-#
-#   pkgs = import (builtins.fetchGit {
-#     # Descriptive name to make the store path easier to identify
-#     name = "my-old-revision";
-#     url = "https://github.com/NixOS/nixpkgs/";
-#     ref = "refs/heads/nixpkgs-unstable";
-#     rev = "976fa3369d722e76f37c77493d99829540d43845";
-#   }) { 
-#     inherit system;
-# 	};
-#
-#   myPkg = pkgs.vscodium;
-# in
-
+	} @ inputs:
 	{
     nixosConfigurations = {
 			fred = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
-				
+
 				modules = [
 					./configuration.nix
 					./modules/greetd.nix
@@ -95,7 +65,7 @@
 						home-manager.users.fred = import ./home.nix;
 
 						home-manager.extraSpecialArgs = {
-              inherit anyrun;
+              inherit anyrun inputs;
 							# inherit myPkg;
 						};
 					}
