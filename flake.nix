@@ -95,7 +95,7 @@
 						home-manager.users.fred = import ./home.nix;
 
 						home-manager.extraSpecialArgs = {
-              inherit anyrun;
+              inherit anyrun inputs;
 							# inherit myPkg;
 						};
 					}

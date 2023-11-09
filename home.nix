@@ -1,8 +1,8 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, 
+{ pkgs, nixpkgs, anyrun, solaar, system, inputs,
 # my-old-revision,
 #myPkg, 
 ... }: let
-	# system = "x86_64-linux";
+	# systemi = "x86_64-linux";
 	#
  #  pkgs = import (builtins.fetchGit {
  #    # Descriptive name to make the store path easier to identify
@@ -22,6 +22,7 @@ in {
 	programs.home-manager.enable = true;
 
 	imports = [
+	  ./modules/nvim.nix
 		./modules/anyrun.nix
 		./modules/fish.nix
 		./modules/alacritty.nix
