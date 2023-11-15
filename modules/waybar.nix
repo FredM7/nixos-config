@@ -20,12 +20,12 @@
 				"clock"
       ];
       "modules-right" = [
-        #"network"
 				"cpu"
 				"memory"
 				"temperature#cpu"
 				"custom/gpu"
 				"pulseaudio"
+        "network"
 				#"custom/pipewire"
 				"custom/bluetooth"
         "tray"
@@ -82,6 +82,20 @@
         };
         #"exec" = "pw-volume status";
       };
+			# https://www.mankier.com/5/waybar-network
+			"network" = {
+			  "format" = "{ifname}";
+			  "format-wifi" = "WIFI:{signalStrength}%";
+			  "format-ethernet" = "CABLE";
+			  # "format-disconnected" = ""; //An empty format will hide the module.
+			  "format-disconnected" = "NO NET";
+			  "tooltip-format" = "{ifname}\nIP:{ipaddr}";
+			  "tooltip-format-wifi" = "{essid} ({signalStrength}%)\nD:{bandwidthDownBytes} U:{bandwidthUpBytes}\nIP:{ipaddr}";
+			  "tooltip-format-ethernet" = "{ifname}\nD:{bandwidthDownBytes} U:{bandwidthUpBytes}\nIP:{ipaddr}";
+			  "tooltip-format-disconnected" = "Disconnected";
+				"interval" = 1;
+			  "max-length" = 50;
+			};
       "custom/bluetooth" = {
         "format" = " ";
         "on-click" = "sleep 0.1 && alacritty --class Bluetuith -e bluetuith"; # sleep is currently a workaround
@@ -166,6 +180,10 @@
       color: #000000;*/
 			color: white;
     }
+
+		#network {
+			padding-left: 15px;
+		}
 
     #pulseaudio.muted {
       /*background-color: #90b1b1;

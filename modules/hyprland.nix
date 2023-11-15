@@ -53,8 +53,10 @@
         "$mod, C, killactive,"
         "$mod, T, togglefloating,"
         "$mod, S, swapnext,"
+				"$mod, F, fullscreen, 0"
+				"$mod, M, fullscreen, 1"
         "$mod, B, bringactivetotop," # only works on floating windows
-        "$mod, X, exit" # exits compositor
+        "$mod, P, exit" # exits compositor
       ];
 
       # Executes also while button is held down.
@@ -85,6 +87,7 @@
         "waybar"
         "hyprpaper"
 				#"hyprctl setcursor [THEME] [SIZE]"
+				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
     };
   };

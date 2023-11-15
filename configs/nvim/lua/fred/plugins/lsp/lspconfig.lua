@@ -104,14 +104,8 @@ return {
     lspconfig["rust_analyzer"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			-- PATH = "/run/current-system/sw/bin/rust-analyzer",
-			-- cmd = { "/etc/profiles/per-user/fred/bin/rust-analyzer" },
+			-- currently this cmd is specfic to my NixOS. "which rust-analyzer" to find yours
 			cmd = { "/run/current-system/sw/bin/rust-analyzer" },
 		})
-
-		-- lspconfig.rust_analyzer.setup({
-  --     cmd = "/run/current-system/sw/bin/rust-analyzer",
-		-- })
-
 	end
 }

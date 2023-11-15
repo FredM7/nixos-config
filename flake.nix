@@ -26,11 +26,10 @@
 
 		nixpkgs-vscodium.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
 
-		#solaar = {
-		#	url = "https://github.com/Svenum/Solaar-Flake/tree/release-1.1.10"; # For latest stable version
-		#	# url = "https://github.com/pwr-Solaar/Solaar/releases/tag/1.1.10"; # For latest stable version
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+		# solaar = {
+		#   url = "github:Svenum/Solaar-Flake/release-1.1.10"; # For latest stable version
+  #     inputs.nixpkgs.follows = "nixpkgs";
+  #   };
 	};
 
 	outputs = { 
@@ -41,7 +40,7 @@
 		waybar,
 		hyprpaper,
 		anyrun, 
-	  #solaar, 
+	  # solaar, 
 	  ...
 	} @ inputs: 
 	# let
@@ -95,7 +94,7 @@
 						home-manager.users.fred = import ./home.nix;
 
 						home-manager.extraSpecialArgs = {
-              inherit anyrun inputs;
+              inherit anyrun inputs; # solaar
 							# inherit myPkg;
 						};
 					}

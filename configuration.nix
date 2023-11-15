@@ -227,7 +227,10 @@
       pulse.enable = true;
       # If you want to use JACK applications, uncomment this
       jack.enable = true;
-  
+      
+			wireplumber = {
+        enable = true;
+		  };
       # use the example session manager (no others are packaged yet so this is enabled by default,
       # no need to redefine it in your config for now)
       #media-session.enable = true;
@@ -334,7 +337,6 @@ LABEL="solaar_end"
     hyprpaper # backgrounds
     wlogout # logout screen
 		pavucontrol
-		piper
 		# NODE
 		nodejs
 		# RUST
@@ -344,11 +346,11 @@ LABEL="solaar_end"
 		rust-analyzer
 		#
 		gnumake
-		solaar
 		unzip
 		nwg-look
-		#
-    # myPkg
+		xdg-desktop-portal-hyprland
+		# TODO these needs to move to home.nix
+		solaar
   ];
 
   
