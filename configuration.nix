@@ -310,6 +310,16 @@ LABEL="solaar_end"
 		#virt-manager.enable = true;
 	};
 
+	xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      # xdg-desktop-portal-wlr
+      # xdg-desktop-portal-kde
+      # xdg-desktop-portal-gtk
+			xdg-desktop-portal-hyprland
+    ];
+	};
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -344,11 +354,15 @@ LABEL="solaar_end"
 		rustc
 		gcc
 		rust-analyzer
+		# PYTHON
+		python3
 		#
 		gnumake
 		unzip
 		nwg-look
-		xdg-desktop-portal-hyprland
+		xdg-utils
+		# xwaylandvideobridge
+		# xdg-desktop-portal-hyprland
 		# TODO these needs to move to home.nix
 		solaar
   ];

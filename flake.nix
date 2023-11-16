@@ -18,6 +18,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		# xdg-desktop-portal-hyprland = {
+    #   url = "github:hyprwm/xdg-desktop-portal-hyprland";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
+
 		anyrun = {
       url = "github:Kirottu/anyrun";
       # url = "github:Kirottu/anyrun/homeManagerModules.default";
@@ -39,6 +44,7 @@
 		hyprland,
 		waybar,
 		hyprpaper,
+		# xdg-desktop-portal-hyprland,
 		anyrun, 
 	  # solaar, 
 	  ...

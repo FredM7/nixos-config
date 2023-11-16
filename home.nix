@@ -1,4 +1,6 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, inputs, ... }: let
+{ pkgs, nixpkgs, anyrun, solaar, system, 
+# xdg-desktop-portal-hyprland, 
+inputs, ... }: let
   #
 in {
 	home.username = "fred";
@@ -7,6 +9,7 @@ in {
 	programs.home-manager.enable = true;
 
 	imports = [
+	  # ./modules/xdg-desktop-portal-hyprland.nix
 	  ./modules/nvim.nix
 		./modules/anyrun.nix
 		./modules/fish.nix
@@ -44,6 +47,7 @@ in {
 		github-desktop
 		gimp
 		speedcrunch
+		obs-studio
 		#solaar
 		#libratbag # dbus daemon for piper
 		#piper # mouse config, depends on libratbag
@@ -54,6 +58,7 @@ in {
 		mongodb-compass
 		# inputs.solaar
 		piper
+    # inputs.xdg-desktop-portal-hyprland
 	];
 
 	home.stateVersion = "23.11";
