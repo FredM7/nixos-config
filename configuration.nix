@@ -2,41 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-
 { config, pkgs, ... }:
-
-# let
-#   pkgs = import (builtins.fetchGit {
-#     # Descriptive name to make the store path easier to identify
-#     name = "my-old-revision";
-#     url = "https://github.com/NixOS/nixpkgs/";
-#     ref = "refs/heads/nixpkgs-unstable";
-#     rev = "976fa3369d722e76f37c77493d99829540d43845";
-#   }) { };
-#
-#   myPkg = pkgs.vscodium;
-# in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ 
+	  # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix = {
-    #package = pkgs.nixFlakes;
-    #extraOptions = ''
-    #  experimental-features = nix-command flakes
-    #'';
-    #package = pkgs.nix;
 		settings = {
       experimental-features = [ "nix-command" "flakes" ];
 		};
   };
 
+	# Before changing the system.stateVersion, read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "23.05"; # Did you read the comment?
+
   boot.kernelPackages = pkgs.linuxPackages_latest; #_4_19; # _latest;
 
   # Bootloader.
-  
   boot = { 
     loader = {
       grub = {
@@ -52,8 +37,13 @@
 
   environment = {
     sessionVariables = rec {
-      WLR_NO_HARDWARE_CURSORS = "1"; # Should fix cursor disappearing sometimes??
-      NIXOS_OZONE_WL = "1"; # Force wayland on electron apps.
+      # Should fix cursor disappearing sometimes?? For some reason the moment I 
+			# added this, my system stopped crashing (at time of writing).
+      WLR_NO_HARDWARE_CURSORS = "1";
+      # Force wayland on electron apps.
+			NIXOS_OZONE_WL = "1";
+			# This is for VSCode/Codium rust-analyzer to work.
+			RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
   };
 
@@ -74,10 +64,9 @@
   i18n.defaultLocale = "en_ZA.UTF-8";
 
   fonts.packages = with pkgs; [
-    # font-awesome
+    # font-awesome # it broke my fonts!!?
     (nerdfonts.override {
       fonts = [ 
-        # "FiraCode"
 			  "EnvyCodeR"
       ];
     })
@@ -85,25 +74,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  ## Configure keymap in X11
-  #services.xserver = {
-  #  # Enable the X11 windowing system.
-  #  enable = true;
-
-  #  # Enable the GNOME Desktop Environment.
-  #  displayManager.gdm.enable = true;
-
-  # # Enable automatic login for the user.
-    #displayManager.autoLogin.enable = true;
-    #displayManager.autoLogin.user = "fred";
-
-    # Load nvidia driver for Xorg and Wayland
-    #videoDrivers = [
-    #  # "intel"
-    #  "nvidia"
-    #];
-  #};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -114,7 +84,6 @@
       fred = {
         isNormalUser = true;
         description = "Fred";
-			  # useDefaultShell = true;
 			  shell = pkgs.fish;
         extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" "docker" ];
       };
@@ -126,18 +95,6 @@
 
     sudo = {
       enable = true;
-      #extraRules = [{
-      # commands = [
-      #   { 
-      #	    command = "${pkgs.systemd}/bin/reboot";
-      #	    options = [ "NOPASSWD" ];
-      #	  }
-      #	];
-      #	groups = [ "wheel" ];
-      #}];
-      #configFile = ''
-      #  %wheel ALL=(ALL) ALL
-      #'';
     };
   };
 
@@ -145,10 +102,6 @@
     libvirtd.enable = true;
 		docker.enable = true;
   };
-
-  #nixpkgs.config.packageOverrides = pkgs: {
-  #  vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  #};
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -198,8 +151,7 @@
       # Do not disable this unless your GPU is unsupported or if you have a good reason to.
       open = false;
 
-      # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+      # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
       nvidiaSettings = true;
     };
   };
@@ -210,8 +162,8 @@
     printing.enable = true;
 		# Enable blueman which provides blueman-applet and blueman-manager.
     # blueman.enable = true;
-
-    openssh = {
+    
+		openssh = {
       enable = true;
 
       # authorizedKeys.keys = [
@@ -228,21 +180,24 @@
       # If you want to use JACK applications, uncomment this
       jack.enable = true;
       
+			# For screen sharing?
 			wireplumber = {
         enable = true;
 		  };
+
       # use the example session manager (no others are packaged yet so this is enabled by default,
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
 
+		# For Piper to work.
 		ratbagd = {
       enable = true;
 		};
 
 		udev = {
       extraRules = ''
-# This rule was added by Solaar.
+# This rule was added for Solaar.
 #
 # Allows non-root users to have raw access to Logitech devices.
 # Allowing users to write to the device is potentially dangerous
@@ -277,7 +232,6 @@ LABEL="solaar_end"
 			'';
 		};
 
-
 		xserver = {
       enable = true;
 
@@ -288,11 +242,13 @@ LABEL="solaar_end"
       videoDrivers = [
         "nvidia"
       ];
+
+			# Enable touchpad support (enabled default in most desktopManager).
+      # libinput.enable = true;
     };
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  
 
   programs = {
     _1password.enable = true;
@@ -354,6 +310,7 @@ LABEL="solaar_end"
 		rustc
 		gcc
 		rust-analyzer
+		rustfmt
 		# PYTHON
 		python3
 		#
@@ -366,27 +323,12 @@ LABEL="solaar_end"
 		# TODO these needs to move to home.nix
 		solaar
   ];
-
   
-
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
-
+  
 }

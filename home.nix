@@ -10,6 +10,7 @@ in {
 
 	imports = [
 	  # ./modules/xdg-desktop-portal-hyprland.nix
+		./modules/codium.nix
 	  ./modules/nvim.nix
 		./modules/anyrun.nix
 		./modules/fish.nix
@@ -35,7 +36,8 @@ in {
 		steam
 		discord
 		spotify
-    inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
+    # inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
+		# rust.packages.stable.rustPlatform.rustcSrc
 		dunst #mako		
 		shotman
 		blender
