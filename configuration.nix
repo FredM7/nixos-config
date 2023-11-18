@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 {
   imports = [ 
 	  # Include the results of the hardware scan.
@@ -91,11 +91,15 @@
   };
 
   security = {
+	  rtkit.enable = true;
+
     polkit.enable = true;
 
     sudo = {
       enable = true;
     };
+
+		pam.services.greetd.enableGnomeKeyring = true;
   };
 
   virtualisation = {
@@ -156,7 +160,6 @@
     };
   };
     
-  security.rtkit.enable = true;
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -243,9 +246,19 @@ LABEL="solaar_end"
         "nvidia"
       ];
 
+			displayManager.autoLogin = {
+        enable = true;
+				# inherit "fred";
+				user = "fred";
+			};
+
 			# Enable touchpad support (enabled default in most desktopManager).
       # libinput.enable = true;
     };
+
+		gnome = {
+			gnome-keyring.enable = true;
+		};
   };
 
   
@@ -318,6 +331,9 @@ LABEL="solaar_end"
 		unzip
 		nwg-look
 		xdg-utils
+		# keychain
+		# gnome.gnome-keyring
+		libsecret
 		# xwaylandvideobridge
 		# xdg-desktop-portal-hyprland
 		# TODO these needs to move to home.nix

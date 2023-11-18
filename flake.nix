@@ -50,7 +50,7 @@
 	  ...
 	} @ inputs: 
 	# let
-	#   #
+	#   commonInherits
 	# in
   # let
   #   pkgs = import (builtins.fetchGit {

@@ -19,7 +19,7 @@
       
       initial_session = {
         command = "Hyprland";
-	user = "fred";
+	      user = "fred";
       };
     };
   };
