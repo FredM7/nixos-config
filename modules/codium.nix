@@ -4,13 +4,18 @@
 		# There, we define something special, RUST_SRC_PATH.
     enable = true;
 		# package = inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium;
-		# package = (import inputs.nixpkgs-vscode {
-  #     system = pkgs.system;
-  #     config.allowUnfree = true;
-  #   }).vscode.overrideAttrs (o: {});
 		extensions = with pkgs.vscode-extensions; [
-      # rust-analyzer
-			github.copilot
+      # If the extensions is not taking effect, try to
+      # remove ~/.vscode/extensions/extensions.json, or even 
+      # the whole directory ~/.vscode/extensions.
+      bbenoist.nix
+      rust-lang.rust-analyzer
+      github.copilot
+      github.copilot-chat
+      golang.go
+      dart-code.dart-code
+      dart-code.flutter
+      bradlc.vscode-tailwindcss
 		];
   };
 
