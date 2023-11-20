@@ -66,6 +66,7 @@ in {
 		#libratbag # dbus daemon for piper
 		#piper # mouse config, depends on libratbag
 		davinci-resolve
+		audacity
 		localsend
 		# rust-analyzer
 		# mongodb
