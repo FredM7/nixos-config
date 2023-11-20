@@ -19,7 +19,7 @@
 		};
 
 		# xdg-desktop-portal-hyprland = {
-    #   url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      	# 	url = "github:hyprwm/xdg-desktop-portal-hyprland";
 		# 	inputs.nixpkgs.follows = "nixpkgs";
 		# };
 
@@ -28,8 +28,6 @@
       		# url = "github:Kirottu/anyrun/homeManagerModules.default";
       		inputs.nixpkgs.follows = "nixpkgs";
 		};
-
-		# nixpkgs.config.allowUnfree = true;
 
 		nixpkgs-vscodium.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
 
@@ -78,7 +76,7 @@
 						home-manager.users.fred = import ./src/home.nix;
 
 						home-manager.extraSpecialArgs = {
-							inherit anyrun inputs nixpkgs-obsidian; # solaar
+							inherit anyrun inputs nixpkgs-obsidian; # xdg-desktop-portal-hyprland; # solaar
 						};
 					}
 				];

@@ -1,12 +1,24 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian,
-# xdg-desktop-portal-hyprland, 
-inputs, ... }: let
+{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
+#   xdg-desktop-portal-hyprland,
+  inputs, ... }: let
   #
-in {
+  in {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
 
 	programs.home-manager.enable = true;
+
+	gtk = {
+		enable = true;
+		# cursorTheme = "Adwaita";
+	};
+
+	home.pointerCursor = {
+		name = "Bibata-Modern-Classic";
+		package = pkgs.bibata-cursors;
+		size = 12;
+		gtk.enable = true;
+	};
 
 	imports = [
 	  	# ./modules/xdg-desktop-portal-hyprland.nix
@@ -56,6 +68,10 @@ in {
 			system = pkgs.system;
 			config.allowUnfree = true;
 		}).obsidian
+		# (import xdg-desktop-portal-hyprland {
+		# 	system = pkgs.system;
+		# 	config.allowUnfree = true;
+		# }).
 		qemu # virtualization
 		virt-manager # virtualization
 		github-desktop
