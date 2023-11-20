@@ -8,6 +8,7 @@
       # If the extensions is not taking effect, try to
       # remove ~/.vscode/extensions/extensions.json, or even 
       # the whole directory ~/.vscode/extensions.
+      vscode-icons-team.vscode-icons
       bbenoist.nix
       rust-lang.rust-analyzer
       github.copilot
