@@ -46,6 +46,7 @@
 		hyprland,
 		waybar,
 		hyprpaper,
+		nixpkgs-vscodium,
 		nixpkgs-obsidian,
 		# xdg-desktop-portal-hyprland,
 		anyrun, 
@@ -76,7 +77,7 @@
 						home-manager.users.fred = import ./src/home.nix;
 
 						home-manager.extraSpecialArgs = {
-							inherit anyrun inputs nixpkgs-obsidian; # xdg-desktop-portal-hyprland; # solaar
+							inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium; # xdg-desktop-portal-hyprland; # solaar
 						};
 					}
 				];

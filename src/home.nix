@@ -12,12 +12,18 @@
 		enable = true;
 		# cursorTheme = "Adwaita";
 	};
+	
+	# qt = {
+	# 	enable = true;
+	# };
 
 	home.pointerCursor = {
-		name = "Bibata-Modern-Classic";
+		name = "Bibata-Modern-Amber";
 		package = pkgs.bibata-cursors;
-		size = 12;
+		size = 10;
 		gtk.enable = true;
+		# qt.enable = true;
+		# x11.enable = true;
 	};
 
 	imports = [
@@ -56,8 +62,10 @@
     	# inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
 		# rust.packages.stable.rustPlatform.rustcSrc
 		# inputs.nixpkgs-obsidian.legacyPackages.x86_64-linux.obsidian
-		dunst #mako		
-		shotman
+		dunst #mako
+		grim # screenshot
+		slurp # screenshot area selection
+		swappy # screenshot editor
 		blender
 		freecad
 		prusa-slicer

@@ -64,7 +64,7 @@
         ", XF86AudioMute, exec, amixer sset 'Master' toggle"
         ", XF86AudioRaiseVolume, exec, amixer sset 'Master' 5%+"
         ", XF86AudioLowerVolume, exec, amixer sset 'Master' 5%-"
-        ", Print, exec, shotman -c region"
+        ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
       ];
 
       bindm = [

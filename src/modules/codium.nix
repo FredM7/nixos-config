@@ -1,9 +1,15 @@
 { pkgs, inputs, ... }:{
+  # codium = inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium;
+
   programs.vscode = {
 		# Look in config configuration.nix, environment.sessionVariables.
 		# There, we define something special, RUST_SRC_PATH.
     enable = true;
 		# package = inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium;
+    # package = (import nixpkgs-obsidian {
+		# 	system = pkgs.system;
+		# 	config.allowUnfree = true;
+		# }).obsidian;
 		extensions = with pkgs.vscode-extensions; [
       # If the extensions is not taking effect, try to
       # remove ~/.vscode/extensions/extensions.json, or even 
