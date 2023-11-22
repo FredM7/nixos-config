@@ -27,7 +27,9 @@
 	# 	# x11.enable = true;
 	# };
 	home.pointerCursor = {
-		name = "Spark-Black";
+		# find the name of the cursor theme by looking in:
+		# /etc/profiles/per-user/<your_username>/share/icons
+		name = "oreo_spark_lime_cursors";
 		package = oreo-cursor;
 		size = 10;
 		# gtk.enable = true;
