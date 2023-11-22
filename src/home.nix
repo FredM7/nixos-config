@@ -1,7 +1,8 @@
 { pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
 #   xdg-desktop-portal-hyprland,
   inputs, ... }: let
-  #
+	# oreo-cursor = import ./derivations/oreo-cursor.nix { inherit pkgs; };
+	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
   in {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
@@ -17,11 +18,19 @@
 	# 	enable = true;
 	# };
 
+	# home.pointerCursor = {
+	# 	name = "Bibata-Modern-Amber";
+	# 	package = pkgs.bibata-cursors;
+	# 	size = 10;
+	# 	gtk.enable = true;
+	# 	# qt.enable = true;
+	# 	# x11.enable = true;
+	# };
 	home.pointerCursor = {
-		name = "Bibata-Modern-Amber";
-		package = pkgs.bibata-cursors;
+		name = "Spark-Black";
+		package = oreo-cursor;
 		size = 10;
-		gtk.enable = true;
+		# gtk.enable = true;
 		# qt.enable = true;
 		# x11.enable = true;
 	};
