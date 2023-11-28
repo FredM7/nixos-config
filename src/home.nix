@@ -1,7 +1,6 @@
 { pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
-#   xdg-desktop-portal-hyprland,
+  # xdg-desktop-portal-hyprland, 
   inputs, ... }: let
-	# oreo-cursor = import ./derivations/oreo-cursor.nix { inherit pkgs; };
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
   in {
 	home.username = "fred";
@@ -13,6 +12,14 @@
 		enable = true;
 		# cursorTheme = "Adwaita";
 	};
+
+	# imports = [
+	# 	xdg-desktop-portal-hyprland.homeManagerModules.default
+	# ];
+	
+	# xdg-desktop-portal-hyprland.homeManagerModules = {
+	# 	enable = true;	
+	# };
 	
 	# qt = {
 	# 	enable = true;
@@ -69,6 +76,7 @@
 		thunderbird
 		steam
 		discord
+		webcord
 		spotify
     	# inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
 		# rust.packages.stable.rustPlatform.rustcSrc
@@ -91,8 +99,10 @@
 		# 	system = pkgs.system;
 		# 	config.allowUnfree = true;
 		# }).
+		# xdg-desktop-portal-hyprland
 		qemu # virtualization
 		virt-manager # virtualization
+		# virtualbox
 		github-desktop
 		gimp
 		speedcrunch
@@ -100,7 +110,8 @@
 		#solaar
 		#libratbag # dbus daemon for piper
 		#piper # mouse config, depends on libratbag
-		davinci-resolve
+		# davinci-resolve
+    	libsForQt5.kdenlive
 		audacity
 		localsend
 		# rust-analyzer
@@ -108,6 +119,11 @@
 		mongodb-compass
 		# inputs.solaar
 		piper
+		vlc
+		gparted # partition manager
+		partition-manager
+		mediawriter # for flashing SD cards
+		rpi-imager # for flashing PI Images
     	# inputs.xdg-desktop-portal-hyprland
 	];
 

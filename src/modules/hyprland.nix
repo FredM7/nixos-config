@@ -1,11 +1,19 @@
-{ pkgs, ... }: {
+{ pkgs, hyprland, ... }: {
   wayland.windowManager.hyprland = {
+  # imports = [
+  #   hyprland.homeManagerModules.default
+  # ];
+
+  # programs.hyprland = {
     enable = true;
+
     enableNvidiaPatches = true;
+    xwayland.enable = true;
+
     settings = {
 		  # https://wiki.hyprland.org/Configuring/Variables/
 
-      monitor= [
+      monitor = [
         "DVI-I-1,1920x1080@144,0x0,1"
         "HDMI-A-1,1920x1080@144,1920x0,1"
       ];
@@ -81,6 +89,7 @@
 		    "float,class:(pavucontrol)"
 		    "float,class:(.piper-wrapped)"
 		    "float,class:(solaar)"
+        "float,class:(VirtualBox)"
 	    ];
 
       exec-once = [

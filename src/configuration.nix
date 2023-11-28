@@ -88,6 +88,10 @@
         extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" "docker" ];
       };
 		};
+
+    extraGroups = {
+      vboxusers.members = [ "fred" ];
+    };
   };
 
   security = {
@@ -105,6 +109,17 @@
   virtualisation = {
     libvirtd.enable = true;
 		docker.enable = true;
+
+    virtualbox = {
+      host = {
+        enable = true;
+        enableExtensionPack = true;
+      };
+      # guest = {
+      #   enable = true;
+      #   x11 = true;
+      # };
+    };
   };
 
   # Enable sound with pipewire.
@@ -124,12 +139,13 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      #extraPackages = with pkgs; [
+      extraPackages = with pkgs; [
       #  intel-media-driver # LIBVA_DRIVER_NAME=iHD
       #  vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       #  vaapiVdpau
       #  libvdpau-va-gl
-      #];
+        intel-compute-runtime
+      ];
     };
 
     nvidia = {
@@ -329,7 +345,8 @@ LABEL="solaar_end"
 		#
 		gnumake
 		unzip
-		nwg-look
+		# nwg-look
+    # glibc
 		xdg-utils
 		# keychain
 		# gnome.gnome-keyring

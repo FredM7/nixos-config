@@ -24,6 +24,7 @@
 				"memory"
 				"temperature#cpu"
 				"custom/gpu"
+        "disk"
 				"pulseaudio"
         "network"
 				#"custom/pipewire"
@@ -69,6 +70,12 @@
         "on-click" = "activate";
         "on-click-right" = "minimize";
         #"format" = "{icon}";
+      };
+      "disk" = {
+  	    "interval" = 30;
+        "format" = "DISK:{specific_used:0.2f}GB/{specific_total:0.2f}GB";
+        "tooltip" = false;
+        "unit" = "GB";
       };
       "pulseaudio" = {
         "format" = "VOL:{volume}%";
@@ -173,6 +180,11 @@
 		#cpu, #memory, #temperature.cpu, #custom-gpu {
 		  padding-left: 15px;
 		}
+
+    #disk {
+      padding-left: 15px;
+			color: white;
+    }
 
     #pulseaudio {
 		  padding-left: 15px;

@@ -55,6 +55,9 @@
 	} @ inputs: let
     #
 	in {
+		# homeConfigurations."fred" = home-manager.lib.homeManagerConfiguration {
+		
+		# };
     	nixosConfigurations = {
 			fred = nixpkgs.lib.nixosSystem rec {
 				system = "x86_64-linux";
@@ -69,6 +72,7 @@
 				modules = [
 					./src/configuration.nix
 					./src/modules/greetd.nix
+					# hyprland.homeManagerModules.default
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;
@@ -77,7 +81,7 @@
 						home-manager.users.fred = import ./src/home.nix;
 
 						home-manager.extraSpecialArgs = {
-							inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium; # xdg-desktop-portal-hyprland; # solaar
+							inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium; # xdg-desktop-portal-hyprland; # hyprland; # solaar
 						};
 					}
 				];
