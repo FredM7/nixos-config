@@ -72,6 +72,7 @@
 				modules = [
 					./src/configuration.nix
 					./src/modules/greetd.nix
+					./src/modules/logid.nix
 					# hyprland.homeManagerModules.default
 					home-manager.nixosModules.home-manager
 					{

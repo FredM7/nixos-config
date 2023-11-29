@@ -57,6 +57,7 @@
 		./modules/hyprland.nix
 		./modules/wlogout.nix
 		./modules/rofi.nix
+		# ./modules/logid.nix
 	];
 
 	dconf.settings = {
@@ -125,6 +126,7 @@
 		mediawriter # for flashing SD cards
 		rpi-imager # for flashing PI Images
     	# inputs.xdg-desktop-portal-hyprland
+		logiops
 	];
 
 	home.stateVersion = "23.11";
