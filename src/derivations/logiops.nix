@@ -1,25 +1,26 @@
-{ stdenv, fetchFromGitHub, pkg-config, cmake, libevdev, libudev, glib, libconfig }:
-
+{ pkgs, stdenv, fetchFromGitHub, pkg-config, cmake, git, 
+  libevdev, libudev-zero, glib, libconfig, pcre, pcre2, 
+  libuuid, libselinux, libsepol
+}:
 stdenv.mkDerivation rec {
-  pname = "logiops";
-#   version = "0.17.1";
+  name = "logiops";
+  version = "0.3.4";
 
   src = fetchFromGitHub {
     owner  = "PixlOne";
     repo   = "logiops";
-    rev    = "94f6dbab5390c1c7375836dd9314c0c2488e48a3";
-    sha256 = "sha256-TQ8DV....";
+    rev    = "v0.3.3";
+    sha256 = "sha256-tKVRPT96VYLLuGEv4cgHE37SsgCF/bahWXKjuwczZm8="; # pkgs.lib.fakeSha256;
   };
 
   buildInputs = [
-    cmake libevdev libudev glib libconfig
+    cmake libevdev glib pkg-config libconfig libudev-zero pcre pcre2 libuuid libselinux libsepol git
   ];
 
-  # cmake -DCMAKE_INSTALL_PREFIX=$out ..
   buildPhase = ''
-    mkdir build
-    cd build
-    cmake -DCMAKE_BUILD_TYPE=$out ..
+    mkdir -p $out
+    cd $out
+    cmake -DCMAKE_BUILD_TYPE=Release ..
     make
   '';
 

@@ -2,6 +2,8 @@
   # xdg-desktop-portal-hyprland, 
   inputs, ... }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
+	# my-libratbag = pkgs.callPackage ./derivations/libratbag.nix {};
+	# logiops = pkgs.callPackage ./derivations/logiops.nix {};
   in {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
@@ -109,8 +111,9 @@
 		speedcrunch
 		obs-studio
 		#solaar
-		#libratbag # dbus daemon for piper
+		# my-libratbag # dbus daemon for piper
 		#piper # mouse config, depends on libratbag
+		logiops
 		# davinci-resolve
     	libsForQt5.kdenlive
 		audacity
@@ -126,7 +129,7 @@
 		mediawriter # for flashing SD cards
 		rpi-imager # for flashing PI Images
     	# inputs.xdg-desktop-portal-hyprland
-		logiops
+		# logiops
 	];
 
 	home.stateVersion = "23.11";

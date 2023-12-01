@@ -72,8 +72,35 @@
     })
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    # Allow unfree packages
+    config.allowUnfree = true;
+
+    overlays = [
+      (final: prev: {
+        libratbag = prev.libratbag.overrideAttrs (o: {
+          src = prev.fetchFromGitHub {
+              owner = "libratbag";
+              repo = "libratbag";
+              rev = "22ddb717aa1095e23f0e5a128b607c9805bc6110";
+              sha256 = "sha256-y7QOyfTzMNCz4Lv2YW5OR7teoNW1lSXJ1ixVZk8yMDg=";
+          };
+        });
+        # piper = prev.piper.overrideAttrs (o: {
+        #   src = prev.fetchFromGitHub {
+        #       owner = "libratbag";
+        #       repo = "piper";
+        #       rev = "3c3e3fc2408745adf978508f89ed6e848250c439";
+        #       sha256 = "sha256-FA03+UwmV0j9OSfkeuhvNTmi5M30bqQp0IDlwxsmNEw=";
+        #   };
+
+        #   mesonFlags = [
+        #     "-Dtests=false"
+        #   ];
+        # });
+      })
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -351,6 +378,8 @@ LABEL="solaar_end"
 		# keychain
 		# gnome.gnome-keyring
 		libsecret
+    #
+    usbutils
 		# xwaylandvideobridge
 		# xdg-desktop-portal-hyprland
 		# TODO these needs to move to home.nix

@@ -6,7 +6,7 @@
   programs.waybar.enable = true;
   programs.waybar.settings = [ 
     {
-      #"height" = 16;
+      "height" = 40;
       "layer" = "top";
       "position" = "top";
       "modules-left" = [
@@ -63,6 +63,9 @@
         "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader";
         "format" = "GPUT:{}°C";
         "tooltip" = false;
+    	};
+    	"hyprland/workspaces" = {
+        "format" = "";
     	};
       "wlr/taskbar" = {
         #"icon-theme" = "Numix-Circle";
@@ -126,9 +129,10 @@
 
   programs.waybar.style = ''
     * {
-      /* `otf-font-awesome` is required to be installed for icons */
-      font-family: FontAwesome; /* , Roboto, Helvetica, Arial, sans-serif; */
-      font-size: 13px;
+      min-height: 0px;
+      padding: 0;
+      margin: 0;
+      font-size: 5px;
     }
 
     window#waybar {
@@ -152,20 +156,39 @@
 		}
 
     #clock {
-      padding: 10px;
+      /*  padding: 10px; */
       color: white;
       /* border: 1px solid white;
       border-radius: 100px; */
+      font-size: 13px;
+    }
+
+    #workspaces {
+      /*padding-top: 10px;
+        padding-bottom: 10px; */
+      min-height: 0px;
     }
 
     #workspaces button {
-      padding: 0 5px;
       background-color: transparent;
       color: #ffffff;
+      background-color: orange;
+      border-radius: 100px;
+      min-height: 5px;
+      padding: 0;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
 
     #workspaces button:hover {
       background: rgba(0, 0, 0, 0.2);
+    }
+
+    #workspaces button.active {
+      background-color: red;
+      border-radius: 100px;
+      min-height: 0px;
+      min-width: 50px;
     }
 
     #workspaces button.focused {
@@ -179,11 +202,13 @@
 
 		#cpu, #memory, #temperature.cpu, #custom-gpu {
 		  padding-left: 15px;
+      font-size: 13px;
 		}
 
     #disk {
       padding-left: 15px;
 			color: white;
+      font-size: 13px;
     }
 
     #pulseaudio {
@@ -191,10 +216,12 @@
       /*background-color: #f1c40f;
       color: #000000;*/
 			color: white;
+      font-size: 13px;
     }
 
 		#network {
 			padding-left: 15px;
+      font-size: 13px;
 		}
 
     #pulseaudio.muted {
@@ -209,18 +236,17 @@
 
 		#custom-bluetooth {
 		  padding-left: 15px;
+      font-size: 13px;
 		}
 
     #custom-launcher, #custom-hyprpicker, #custom-wlogout {
-      /* padding: 10px;
-			height: 40px; 
-			width: 40px; */
-			min-width: 32px;
-			min-height: 32px;
+			min-width: 22px;
+			/* min-height: 22px; */
       color: white;
       border: 1px solid white;
       border-radius: 100px;
       min-width: 32px;
+      font-size: 13px;
     }
 
     #taskbar {

@@ -3,8 +3,8 @@
 , json-glib, libunistring }:
 
 stdenv.mkDerivation rec {
-  pname = "libratbag";
-  version = "0.17";
+  name = "libratbag";
+  # version = "0.17";
 
   src = fetchFromGitHub {
     owner  = "libratbag";
@@ -26,11 +26,8 @@ stdenv.mkDerivation rec {
     "-Dsystemd-unit-dir=./lib/systemd/system/"
   ];
 
-  meta = with lib; {
-    description = "Configuration library for gaming mice";
-    homepage    = "https://github.com/libratbag/libratbag";
-    license     = licenses.mit;
-    maintainers = with maintainers; [ mvnetbiz ];
-    platforms   = platforms.linux;
-  };
+  buildPhase = ''
+    meson $out
+    ninja -C $out
+  '';
 }

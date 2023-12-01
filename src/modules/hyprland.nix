@@ -95,6 +95,7 @@
       exec-once = [
         "waybar"
         "hyprpaper"
+        # "logid"
 				#"hyprctl setcursor [THEME] [SIZE]"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
