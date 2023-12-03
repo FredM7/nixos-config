@@ -15,6 +15,7 @@
       # remove ~/.vscode/extensions/extensions.json, or even 
       # the whole directory ~/.vscode/extensions.
       vscode-icons-team.vscode-icons
+      eamodio.gitlens
       bbenoist.nix
       rust-lang.rust-analyzer
       github.copilot
