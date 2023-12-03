@@ -66,6 +66,7 @@
     	};
     	"hyprland/workspaces" = {
         "format" = "";
+        "all-outputs" = true;
     	};
       "wlr/taskbar" = {
         #"icon-theme" = "Numix-Circle";

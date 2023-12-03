@@ -2,7 +2,7 @@
   # xdg-desktop-portal-hyprland, 
   inputs, ... }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
-	# my-libratbag = pkgs.callPackage ./derivations/libratbag.nix {};
+	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops = pkgs.callPackage ./derivations/logiops.nix {};
   in {
 	home.username = "fred";
@@ -72,6 +72,8 @@
 	# services.gnome-keyring = {
  #    enable = true;
 	# };
+
+	# home.packages = [ piper ];
 	
 	home.packages = with pkgs; [
 		vivaldi
@@ -81,6 +83,10 @@
 		discord
 		webcord
 		spotify
+		# (import my-piper { 
+		# 	# system = pkgs.system; 
+		# }).piper
+		# my-piper
     	# inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
 		# rust.packages.stable.rustPlatform.rustcSrc
 		# inputs.nixpkgs-obsidian.legacyPackages.x86_64-linux.obsidian

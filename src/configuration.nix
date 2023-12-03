@@ -77,7 +77,7 @@
     config.allowUnfree = true;
 
     overlays = [
-      (final: prev: {
+       (final: prev: {
         libratbag = prev.libratbag.overrideAttrs (o: {
           src = prev.fetchFromGitHub {
               owner = "libratbag";
@@ -86,17 +86,40 @@
               sha256 = "sha256-y7QOyfTzMNCz4Lv2YW5OR7teoNW1lSXJ1ixVZk8yMDg=";
           };
         });
-        # piper = prev.piper.overrideAttrs (o: {
+        piper = prev.piper.overrideAttrs (o: {
+          src = prev.fetchFromGitHub {
+              owner = "libratbag";
+              repo = "piper";
+              rev = "c15910bf59d95279469c00c2a84d26dce2bfacbf";
+              sha256 = "sha256-dwwLxoIjyGATvc+26rYwYevm4KJxIcbMdvuBCMGr77Y=";
+          };
+          
+          mesonFlags = [
+            "-Druntime-dependency-checks=false"
+            # "-Dtests=false"
+          ];
+        });
+        # solaar = prev.solaar.overrideAttrs (o: {
         #   src = prev.fetchFromGitHub {
-        #       owner = "libratbag";
-        #       repo = "piper";
-        #       rev = "3c3e3fc2408745adf978508f89ed6e848250c439";
-        #       sha256 = "sha256-FA03+UwmV0j9OSfkeuhvNTmi5M30bqQp0IDlwxsmNEw=";
+        #       owner = "pwr-Solaar";
+        #       repo = "Solaar";
+        #       rev = "fa7606e2424a2a6290f894882a12aa940854cb35";
+        #       sha256 = "sha256-jZyTVysmcRIVEwQFsbshK6gNAbcnaxXcSTiTuQbBM88=";
         #   };
+        # });
+        # logiops = prev.logiops.overrideAttrs (o: {
+        #   src = prev.fetchFromGitHub {
+        #       owner = "PixlOne";
+        #       repo = "logiops";
+        #       rev = "94f6dbab5390c1c7375836dd9314c0c2488e48a3";
+        #       sha256 = "sha256-tKVRPT96VYLLuGEv4cgHE37SsgCF/bahWXKjuwczZm8=";
+        #   };
+        #   version = "0.3.3";
 
-        #   mesonFlags = [
-        #     "-Dtests=false"
-        #   ];
+        #   PKG_CONFIG_SYSTEMD_SYSTEMDSYSTEMUNITDIR = "${placeholder "out"}/lib/systemd/system";
+          
+        #   nativeBuildInputs = [ pkgs.cmake pkgs.pkg-config ];
+        #   buildInputs = [ pkgs.udev pkgs.libevdev pkgs.libconfig ];
         # });
       })
     ];
@@ -241,43 +264,6 @@
       enable = true;
 		};
 
-		udev = {
-      extraRules = ''
-# This rule was added for Solaar.
-#
-# Allows non-root users to have raw access to Logitech devices.
-# Allowing users to write to the device is potentially dangerous
-# because they could perform firmware updates.
-KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
-
-ACTION != "add", GOTO="solaar_end"
-SUBSYSTEM != "hidraw", GOTO="solaar_end"
-
-# USB-connected Logitech receivers and devices
-ATTRS{idVendor}=="046d", GOTO="solaar_apply"
-
-# Lenovo nano receiver
-ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6042", GOTO="solaar_apply"
-
-# Bluetooth-connected Logitech devices
-KERNELS == "0005:046D:*", GOTO="solaar_apply"
-
-GOTO="solaar_end"
-
-LABEL="solaar_apply"
-
-# Allow any seated user to access the receiver.
-# uaccess: modern ACL-enabled udev
-TAG+="uaccess"
-
-# Grant members of the "plugdev" group access to receiver (useful for SSH users)
-#MODE="0660", GROUP="plugdev"
-
-LABEL="solaar_end"
-# vim: ft=udevrules
-			'';
-		};
-
 		xserver = {
       enable = true;
 
@@ -304,8 +290,6 @@ LABEL="solaar_end"
 		};
   };
 
-  
-
   programs = {
     _1password.enable = true;
     _1password-gui = {
@@ -319,16 +303,15 @@ LABEL="solaar_end"
     
 		fish.enable = true;
 
+    solaar.enable = true;
+
 		#virt-manager.enable = true;
 	};
 
 	xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      # xdg-desktop-portal-wlr
-      # xdg-desktop-portal-kde
-      # xdg-desktop-portal-gtk
-			xdg-desktop-portal-hyprland
+			xdg-desktop-portal-hyprland # For screensharing
     ];
 	};
 
@@ -372,18 +355,12 @@ LABEL="solaar_end"
 		#
 		gnumake
 		unzip
-		# nwg-look
-    # glibc
 		xdg-utils
 		# keychain
 		# gnome.gnome-keyring
 		libsecret
     #
     usbutils
-		# xwaylandvideobridge
-		# xdg-desktop-portal-hyprland
-		# TODO these needs to move to home.nix
-		solaar
   ];
   
   # Open ports in the firewall.
