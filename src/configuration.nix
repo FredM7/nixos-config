@@ -135,7 +135,7 @@
         isNormalUser = true;
         description = "Fred";
 			  shell = pkgs.fish;
-        extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" "docker" ];
+        extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" "docker" "audio" "disk" ];
       };
 		};
 
@@ -173,11 +173,14 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  sound = {
+    enable = true;
+    mediaKeys.enable = true;
+  };
   
   hardware = {
     pulseaudio.enable = false;
-    # pulseaudio.support32Bit= true;
+    pulseaudio.support32Bit= true;
     # pulseaudio.package = pkgs.pulseaudioFull;
 		bluetooth = {
       enable = true; # enables support for bluetooth
@@ -243,11 +246,13 @@
     pipewire = {
       enable = true;
       
-      alsa.enable = true;
-      alsa.support32Bit = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
       pulse.enable = true;
       # If you want to use JACK applications, uncomment this
-      jack.enable = true;
+      # jack.enable = true;
       
 			# For screen sharing?
 			wireplumber = {
@@ -263,6 +268,19 @@
 		ratbagd = {
       enable = true;
 		};
+
+    udev = {
+      packages = with pkgs; [
+        logitech-udev-rules
+      ];
+
+      # extraRules = ''
+      #   # Allows non-root users to have raw access to Logitech devices.
+      #   # Allowing users to write to the device is potentially dangerous
+      #   # because they could perform firmware updates.
+      #   KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
+      # '';
+    };
 
 		xserver = {
       enable = true;
@@ -341,7 +359,10 @@
     hyprpicker # color picker tool
     hyprpaper # backgrounds
     wlogout # logout screen
+    pulseaudio # exposes pactl
 		pavucontrol
+    pamixer
+    wev # wayland event viewer
 		# NODE
 		nodejs
 		# RUST

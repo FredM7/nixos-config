@@ -70,8 +70,11 @@
       # Executes also while button is held down.
       binde = [
         ", XF86AudioMute, exec, amixer sset 'Master' toggle"
-        ", XF86AudioRaiseVolume, exec, amixer sset 'Master' 5%+"
-        ", XF86AudioLowerVolume, exec, amixer sset 'Master' 5%-"
+        # ", XF86AudioRaiseVolume, exec, amixer sset 'Master' 5%+"
+        # ", XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +5%"
+        ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+        # ", XF86AudioLowerVolume, exec, amixer sset 'Master' 5%-"
+        ", XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -5%"
         ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
       ];
 
@@ -97,6 +100,7 @@
         "hyprpaper"
         # "logid"
 				#"hyprctl setcursor [THEME] [SIZE]"
+        "solaar --window=hide"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
     };

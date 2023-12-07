@@ -6,7 +6,7 @@
   programs.waybar.enable = true;
   programs.waybar.settings = [ 
     {
-      "height" = 40;
+      "height" = 32;
       "layer" = "top";
       "position" = "top";
       "modules-left" = [
@@ -26,6 +26,7 @@
 				"custom/gpu"
         "disk"
 				"pulseaudio"
+        # "wireplumber"
         "network"
 				#"custom/pipewire"
 				"custom/bluetooth"
@@ -93,6 +94,13 @@
         };
         #"exec" = "pw-volume status";
       };
+      "wireplumber" = {
+        "format" = "VOL2:{volume}%";
+				"format-muted" = "MUT:{volume}%";
+				"scroll-step" = 5;
+				"tooltip" = false;
+				"on-click" = "pavucontrol";
+      };
 			# https://www.mankier.com/5/waybar-network
 			"network" = {
 			  "format" = "{ifname}";
@@ -133,12 +141,10 @@
       min-height: 0px;
       padding: 0;
       margin: 0;
-      font-size: 5px;
     }
 
     window#waybar {
       background-color: transparent;
-      /* border-bottom: 1px solid #ffffff; */
       color: #ffffff;
       transition-property: background-color;
       transition-duration: .5s;
@@ -156,18 +162,24 @@
       padding-right: 8px;
 		}
 
-    #clock {
-      /*  padding: 10px; */
+    #custom-wlogout, #custom-launcher, #custom-hyprpicker {
+			min-width: 22px;
+			/* min-height: 22px; */
       color: white;
-      /* border: 1px solid white;
-      border-radius: 100px; */
-      font-size: 13px;
+      border: 1px solid white;
+      border-radius: 100px;
+      min-width: 32px;
+      font-size: 18px;
+      padding: 0;
+      margin: 0;
+      min-height: 0px;
     }
 
     #workspaces {
       /*padding-top: 10px;
         padding-bottom: 10px; */
       min-height: 0px;
+      font-size: 0px;
     }
 
     #workspaces button {
@@ -175,10 +187,11 @@
       color: #ffffff;
       background-color: orange;
       border-radius: 100px;
-      min-height: 5px;
+      min-height: 0px;
       padding: 0;
-      margin-top: 15px;
-      margin-bottom: 15px;
+      margin-top: 13px;
+      margin-bottom: 13px;
+      font-size: 0px;
     }
 
     #workspaces button:hover {
@@ -201,6 +214,14 @@
       background-color: #eb4d4b;
     }
 
+    #clock {
+      /*  padding: 10px; */
+      color: white;
+      /* border: 1px solid white;
+      border-radius: 100px; */
+      font-size: 13px;
+    }
+
 		#cpu, #memory, #temperature.cpu, #custom-gpu {
 		  padding-left: 15px;
       font-size: 13px;
@@ -212,7 +233,7 @@
       font-size: 13px;
     }
 
-    #pulseaudio {
+    #pulseaudio, #wireplumber {
 		  padding-left: 15px;
       /*background-color: #f1c40f;
       color: #000000;*/
@@ -225,7 +246,7 @@
       font-size: 13px;
 		}
 
-    #pulseaudio.muted {
+    #pulseaudio.muted, #wireplumber.muted {
       /*background-color: #90b1b1;
       color: #2a5c45;*/
     }
@@ -239,16 +260,6 @@
 		  padding-left: 15px;
       font-size: 13px;
 		}
-
-    #custom-launcher, #custom-hyprpicker, #custom-wlogout {
-			min-width: 22px;
-			/* min-height: 22px; */
-      color: white;
-      border: 1px solid white;
-      border-radius: 100px;
-      min-width: 32px;
-      font-size: 13px;
-    }
 
     #taskbar {
       border-radius: 0px 8px 8px 0;
