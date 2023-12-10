@@ -99,28 +99,6 @@
             # "-Dtests=false"
           ];
         });
-        # solaar = prev.solaar.overrideAttrs (o: {
-        #   src = prev.fetchFromGitHub {
-        #       owner = "pwr-Solaar";
-        #       repo = "Solaar";
-        #       rev = "fa7606e2424a2a6290f894882a12aa940854cb35";
-        #       sha256 = "sha256-jZyTVysmcRIVEwQFsbshK6gNAbcnaxXcSTiTuQbBM88=";
-        #   };
-        # });
-        # logiops = prev.logiops.overrideAttrs (o: {
-        #   src = prev.fetchFromGitHub {
-        #       owner = "PixlOne";
-        #       repo = "logiops";
-        #       rev = "94f6dbab5390c1c7375836dd9314c0c2488e48a3";
-        #       sha256 = "sha256-tKVRPT96VYLLuGEv4cgHE37SsgCF/bahWXKjuwczZm8=";
-        #   };
-        #   version = "0.3.3";
-
-        #   PKG_CONFIG_SYSTEMD_SYSTEMDSYSTEMUNITDIR = "${placeholder "out"}/lib/systemd/system";
-          
-        #   nativeBuildInputs = [ pkgs.cmake pkgs.pkg-config ];
-        #   buildInputs = [ pkgs.udev pkgs.libevdev pkgs.libconfig ];
-        # });
       })
     ];
   };

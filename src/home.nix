@@ -12,29 +12,27 @@
 
 	gtk = {
 		enable = true;
-		# cursorTheme = "Adwaita";
+
+		cursorTheme = {
+			package = oreo-cursor;
+			name = "oreo_spark_lime_cursors";
+		};
+
+		theme = {
+			name = "WhiteSur-gtk-theme";
+			package = pkgs.whitesur-gtk-theme;
+		};
+
+		iconTheme = {
+			name = "WhiteSur-icon-theme";
+			package = pkgs.whitesur-icon-theme;
+		};
 	};
 
-	# imports = [
-	# 	xdg-desktop-portal-hyprland.homeManagerModules.default
-	# ];
-	
-	# xdg-desktop-portal-hyprland.homeManagerModules = {
-	# 	enable = true;	
-	# };
-	
 	# qt = {
 	# 	enable = true;
 	# };
 
-	# home.pointerCursor = {
-	# 	name = "Bibata-Modern-Amber";
-	# 	package = pkgs.bibata-cursors;
-	# 	size = 10;
-	# 	gtk.enable = true;
-	# 	# qt.enable = true;
-	# 	# x11.enable = true;
-	# };
 	home.pointerCursor = {
 		# find the name of the cursor theme by looking in:
 		# /etc/profiles/per-user/<your_username>/share/icons

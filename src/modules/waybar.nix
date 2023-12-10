@@ -15,6 +15,7 @@
 	      "custom/hyprpicker"
 				"hyprland/workspaces"
         "wlr/taskbar"
+        "hyprland/window"
       ];
       "modules-center" = [
 				"clock"
@@ -68,6 +69,14 @@
     	"hyprland/workspaces" = {
         "format" = "";
         "all-outputs" = true;
+    	};
+    	"hyprland/window" = {
+        "format" = "{}";
+        "separate-outputs" = true;
+        # "rewrite" = {
+        #     "(.*) — Vivaldi" = "🌎 $1";
+        #     "(.*) - fish" = "> [$1]";
+        # };
     	};
       "wlr/taskbar" = {
         #"icon-theme" = "Numix-Circle";
