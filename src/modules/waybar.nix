@@ -68,7 +68,7 @@
     	};
     	"hyprland/workspaces" = {
         "format" = "";
-        "all-outputs" = true;
+        # "all-outputs" = true;
     	};
     	"hyprland/window" = {
         "format" = "{}";

@@ -4,6 +4,7 @@
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops = pkgs.callPackage ./derivations/logiops.nix {};
+	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
 	home.username = "fred";
 	home.homeDirectory = "/home/fred";
@@ -67,7 +68,7 @@
 		};
 	};
 
-	# services.gnome-keyring = {
+	# servicesdawawdawadwadadadaawadw.gnome-keyring = {
  #    enable = true;
 	# };
 
@@ -132,6 +133,8 @@
 		partition-manager
 		mediawriter # for flashing SD cards
 		rpi-imager # for flashing PI Images
+		# docker-desktop
+		distrobox
     	# inputs.xdg-desktop-portal-hyprland
 		# logiops
 	];
