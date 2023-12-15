@@ -85,28 +85,35 @@
       ];
 
       windowrulev2 = [
-        # "float,class:(.blueman-manager-wrapped)" # Find class names by terminal: 'hyprctl clients'
 		    "float,class:(Bluetuith)"
-		    #"float,class:(org.kde.krusader)"
         "float,size 627 287,class:(org.speedcrunch.)"
-		    "float,class:(pavucontrol)"
-		    "float,class:(solaar)"
-        "float,class:(VirtualBox)"
-        # Workspace 1
+        ### Workspace 1
         "float,class:(discord)"
         "monitor DVI-I-1, class:(discord)"
         "workspace 1, class:(discord)"
-        # Workspace 2
+        #
+		    "float,class:(pavucontrol)"
+        "monitor DVI-I-1, class:(pavucontrol)"
+        "workspace 1, class:(pavucontrol)"
+        #
+        "float,class:(VirtualBox)"
+        "monitor DVI-I-1, class:(VirtualBox)"
+        "workspace 1, class:(VirtualBox)"
+        ### Workspace 2
         "monitor HDMI-A-1, class:(vivaldi)"
         "workspace 2, class:(vivaldi)"
-        # Workspace 3
+        ### Workspace 3
         "float,class:(code-url-handler)"
         "monitor DVI-I-1, class:(code-url-handler)"
         "workspace 3, class:(code-url-handler)"
-        # Workspace 4
+        ### Workspace 4
 		    "float,class:(.piper-wrapped)"
         "monitor HDMI-A-1, class:(.piper-wrapped)"
         "workspace 4, class:(.piper-wrapped)"
+        #
+		    "float,class:(solaar)"
+        "monitor HDMI-A-1, class:(solaar)"
+        "workspace 4, class:(solaar)"
 	    ];
 
       # wsbind = [
