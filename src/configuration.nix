@@ -308,6 +308,7 @@
     enable = true;
     extraPortals = with pkgs; [
 			xdg-desktop-portal-hyprland # For screensharing
+      xdg-desktop-portal-gtk # For File Chooser
     ];
 	};
 
@@ -339,6 +340,7 @@
     wlogout # logout screen
     pulseaudio # exposes pactl
 		pavucontrol
+    qpwgraph # graph manager dedicated to pipewire
     pamixer
     wev # wayland event viewer
 		# NODE

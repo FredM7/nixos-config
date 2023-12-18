@@ -1,0 +1,165 @@
+* {
+    min-height: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-left {}
+
+.modules-center {
+    /*margin-top: 8px;
+    border: 1px solid white;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    min-width: 200px;
+    background-color: red;*/
+}
+
+.modules-right {
+    padding-right: 8px;
+}
+
+#custom-wlogout,
+#custom-launcher,
+#custom-hyprpicker {
+    color: white;
+    border: 1px solid white;
+    border-radius: 100px;
+    min-width: 32px;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    min-height: 0px;
+}
+
+#workspaces {
+    min-height: 10px;
+    font-size: 0px;
+    background-color: #303030;
+    padding: 8px;
+    padding-left: 0px;
+    border-radius: 100px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #ffffff;
+    background-color: #101010;
+    border-radius: 100px;
+    min-width: 16px;
+    /* min-height: 5px; */
+    padding: 0;
+    margin-left: 8px;
+    /*margin-bottom: 13px;*/
+    font-size: 0px;
+    border: none;
+}
+
+#workspaces button:hover {
+    background: #008800;
+    box-shadow: inherit;
+    
+}
+
+#workspaces button.active {
+    background-color: orange;
+    border: 0px solid transparent;
+}
+
+#workspaces button.focused {
+    /* background-color: #64727D; */
+    /* box-shadow: inset 0 -3px #ffffff; */
+}
+
+#workspaces button.urgent {
+    background-color: red;
+}
+
+#clock {
+    /*  padding: 10px; */
+    color: white;
+    /* border: 1px solid white;
+    border-radius: 100px; */
+    font-size: 13px;
+}
+
+#custom-temperature-icon {
+    padding-left: 15px;
+    font-size: 13px;
+    min-width: 32px;
+}
+
+#cpu,
+#memory,
+#temperature.cpu,
+#custom-gpu {
+    padding-left: 15px;
+    font-size: 13px;
+}
+
+#disk {
+    padding-left: 15px;
+    color: white;
+    font-size: 13px;
+}
+
+#pulseaudio,
+#wireplumber {
+    /*background-color: #f1c40f;
+    color: #000000;*/
+    /*font-size: 20px;*/
+    padding-left: 15px;
+    color: white;
+    min-width: 24px;
+}
+
+#network {
+    padding-left: 15px;
+    font-size: 20px;
+    min-width: 24px;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted {
+    /*background-color: #90b1b1;
+    color: #2a5c45;*/
+}
+
+#tray {
+    padding-left: 4px;
+    /*font-size: 8px;
+          padding-right: 8px;*/
+}
+
+#custom-bluetooth {
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+#taskbar {
+    border-radius: 0px 8px 8px 0;
+    padding: 0 3px;
+    margin: 0 0px;
+    color: #ffffff;
+    background-color: rgba(120, 118, 117, 0.3);
+}
+
+#taskbar button {
+    border-radius: 3px 3px 3px 3px;
+    padding: 0 0 0 3px;
+    margin: 3px 1;
+    color: #ffffff;
+    background-color: rgba(120, 118, 117, 0.1);
+}
+
+#taskbar button.active {
+    background-color: rgba(120, 118, 117, 0.8);
+}

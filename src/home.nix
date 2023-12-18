@@ -1,6 +1,4 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
-  # xdg-desktop-portal-hyprland, 
-  inputs, ... }: let
+{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, inputs, ... }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops = pkgs.callPackage ./derivations/logiops.nix {};
@@ -53,7 +51,7 @@
 		./modules/anyrun.nix
 		./modules/fish.nix
 		./modules/alacritty.nix
-		./modules/waybar.nix
+		./modules/waybar/waybar.nix
 		./modules/hyprpaper.nix
 		./modules/hyprland.nix
 		./modules/wlogout.nix
@@ -68,7 +66,7 @@
 		};
 	};
 
-	# servicesdawawdawadwadadadaawadw.gnome-keyring = {
+	# services.gnome-keyring = {
  #    enable = true;
 	# };
 
@@ -82,13 +80,6 @@
 		discord
 		webcord
 		spotify
-		# (import my-piper { 
-		# 	# system = pkgs.system; 
-		# }).piper
-		# my-piper
-    	# inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium
-		# rust.packages.stable.rustPlatform.rustcSrc
-		# inputs.nixpkgs-obsidian.legacyPackages.x86_64-linux.obsidian
 		dunst #mako
 		grim # screenshot
 		slurp # screenshot area selection
@@ -96,18 +87,10 @@
 		blender
 		freecad
 		prusa-slicer
-		# obsidian
-		# nixpkgs-obsidian.legacyPackages.${pkgs.system}.obsidian
-		# nixpkgs-obsidian
 		(import nixpkgs-obsidian {
 			system = pkgs.system;
 			config.allowUnfree = true;
 		}).obsidian
-		# (import xdg-desktop-portal-hyprland {
-		# 	system = pkgs.system;
-		# 	config.allowUnfree = true;
-		# }).
-		# xdg-desktop-portal-hyprland
 		qemu # virtualization
 		virt-manager # virtualization
 		# virtualbox
@@ -115,18 +98,12 @@
 		gimp
 		speedcrunch
 		obs-studio
-		#solaar
-		# my-libratbag # dbus daemon for piper
-		#piper # mouse config, depends on libratbag
 		logiops
 		# davinci-resolve
     	libsForQt5.kdenlive
 		audacity
 		localsend
-		# rust-analyzer
-		# mongodb
 		mongodb-compass
-		# inputs.solaar
 		piper
 		vlc
 		gparted # partition manager
@@ -135,7 +112,9 @@
 		rpi-imager # for flashing PI Images
 		# docker-desktop
 		distrobox
-    	# inputs.xdg-desktop-portal-hyprland
+		# heroic-unwrapped
+		heroic
+		gogdl
 		# logiops
 	];
 

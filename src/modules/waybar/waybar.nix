@@ -27,8 +27,9 @@ in
       "modules-right" = [
 				"cpu"
 				"memory"
-				"temperature#cpu"
-				"custom/gpu"
+				# "temperature#cpu"
+				# "custom/gpu"
+        "group/temperatures"
         "disk"
 				"pulseaudio"
         # "wireplumber"
@@ -42,6 +43,17 @@ in
       #     "hyprland/workspaces"
       #   ];
       # };
+      "group/temperatures" = {
+        "orientation" = "horizontal";
+        "drawer" = {
+          "transition-duration" = 500;
+        };
+        "modules" = [
+          "custom/temperature-icon"
+          "temperature#cpu"
+          "custom/gpu"
+        ];
+      };
       "clock" = {
         "interval" = 1;
 				# eg: 2023 Nov 13 - Tue 08:31:22
@@ -63,16 +75,21 @@ in
         "format" = "<span size='16pt'>󰍛</span>  <span size='10pt' rise='3pt'>{percentage}%</span>";
         "tooltip" = "false";
 			};
+      "custom/temperature-icon" = {
+        "format" = "<span size='13.5pt'>󰏈</span>";
+        "tooltip" = true;
+			  "tooltip-format" = "Temperatures";
+      };
     	"temperature#cpu" = {
         "thermal-zone" = 0;
-        "hwmon-path" = "/sys/class/hwmon/hwmon1/temp1_input";
-        "format" = "CPUT:{temperatureC}°C";
+        "hwmon-path" = "/sys/class/hwmon/hwmon0/temp1_input";
+        "format" = "<span size='10pt' rise='2pt'>C: {temperatureC}°C</span>";
         "tooltip" = false;
     	};
     	"custom/gpu" = {
         "interval" = 1;
         "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader";
-        "format" = "<span size='13.5pt'>󰏈</span>   <span size='10pt' rise='2pt'>{}°C</span>";
+        "format" = "<span size='10pt' rise='2pt'>G: {}°C</span>";
         "tooltip" = false;
     	};
       "disk" = {
@@ -83,7 +100,14 @@ in
       };
     	"hyprland/workspaces" = {
         "format" = "";
+        # "on-click" = "activate";
         # "all-outputs" = true;
+        # "persistent-workspaces" = {
+        #   "1" = ["DVI-I-1"];
+        #   "2" = ["DVI-I-1"];
+        #   "3" = ["HDMI-A-1"];
+        #   "4" = ["HDMI-A-1"];
+        # };
     	};
     	"hyprland/window" = {
         "format" = "{}";
@@ -175,152 +199,5 @@ in
     }
   ];
 
-  programs.waybar.style = ''
-    * {
-      min-height: 0px;
-      padding: 0;
-      margin: 0;
-    }
-
-    window#waybar {
-      background-color: transparent;
-      color: #ffffff;
-      transition-property: background-color;
-      transition-duration: .5s;
-    }
-
-		.modules-left {
-
-		}
-
-		.modules-center {
-      /*margin-top: 8px;
-      border: 1px solid white;
-      border-radius: 5px;
-      justify-content: center;
-      text-align: center;
-      min-width: 200px;
-      background-color: red;*/
-		}
-
-		.modules-right {
-      padding-right: 8px;
-		}
-
-    #custom-wlogout, #custom-launcher, #custom-hyprpicker {
-      color: white;
-      border: 1px solid white;
-      border-radius: 100px;
-      min-width: 32px;
-      font-size: 18px;
-      padding: 0;
-      margin: 0;
-      min-height: 0px;
-    }
-
-    #workspaces {
-      min-height: 0px;
-      font-size: 0px;
-    }
-
-    #workspaces button {
-      background-color: transparent;
-      color: #ffffff;
-      background-color: orange;
-      border-radius: 100px;
-      min-width: 5px;
-      min-height: 5px;
-      padding: 0;
-      /*margin-top: 13px;
-      margin-bottom: 13px;*/
-      font-size: 0px;
-    }
-
-    #workspaces button:hover {
-      background: rgba(0, 0, 0, 0.2);
-    }
-
-    #workspaces button.active {
-      background-color: red;
-      border-radius: 100px;
-      min-width: 10px;
-    }
-
-    #workspaces button.focused {
-      background-color: #64727D;
-      box-shadow: inset 0 -3px #ffffff;
-    }
-
-    #workspaces button.urgent {
-      background-color: #eb4d4b;
-    }
-
-    #clock {
-      /*  padding: 10px; */
-      color: white;
-      /* border: 1px solid white;
-      border-radius: 100px; */
-      font-size: 13px;
-    }
-
-		#cpu, #memory, #temperature.cpu, #custom-gpu {
-		  padding-left: 15px;
-      font-size: 13px;
-		}
-
-    #disk {
-      padding-left: 15px;
-			color: white;
-      font-size: 13px;
-    }
-
-    #pulseaudio, #wireplumber {
-      /*background-color: #f1c40f;
-      color: #000000;*/
-      /*font-size: 20px;*/
-		  padding-left: 15px;
-			color: white;
-      min-width: 24px;
-    }
-
-		#network {
-			padding-left: 15px;
-      font-size: 20px;
-      min-width: 24px;
-		}
-
-    #pulseaudio.muted, #wireplumber.muted {
-      /*background-color: #90b1b1;
-      color: #2a5c45;*/
-    }
-
-		#tray {
-		  padding-left: 4px;
-      /*font-size: 8px;
-			padding-right: 8px;*/
-		}
-
-		#custom-bluetooth {
-		  padding-left: 15px;
-      font-size: 18px;
-		}
-
-    #taskbar {
-      border-radius: 0px 8px 8px 0;
-      padding: 0 3px;
-      margin: 0 0px;
-      color: #ffffff;
-      background-color: rgba(120,118,117,0.3);
-    }
-    #taskbar button {
-      border-radius: 3px 3px 3px 3px;
-      padding: 0 0 0 3px;
-      margin: 3px 1;
-      color: #ffffff;
-      background-color: rgba(120,118,117,0.1);
-    }
-    #taskbar button.active {
-      background-color: rgba(120,118,117,0.8);
-    }
-  '';
+  programs.waybar.style = builtins.readFile ./style.css;
 }
