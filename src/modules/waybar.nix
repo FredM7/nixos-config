@@ -1,24 +1,28 @@
 {
   pkgs,
   ...
-} :
+} : let
+  waybarHeight = 32;
+in
 {
   programs.waybar.enable = true;
-  programs.waybar.settings = [ 
+
+  programs.waybar.settings = [
+    # Top bar
     {
-      "height" = 32;
+      "name" = "top-bar";
+      "height" = waybarHeight;
       "layer" = "top";
       "position" = "top";
       "modules-left" = [
 				"custom/wlogout"
         "custom/launcher"
 	      "custom/hyprpicker"
-				"hyprland/workspaces"
-        "wlr/taskbar"
         "hyprland/window"
       ];
       "modules-center" = [
-				"clock"
+        # "group/datetimeworkspaces"
+        "clock"
       ];
       "modules-right" = [
 				"cpu"
@@ -30,9 +34,14 @@
         # "wireplumber"
         "network"
 				#"custom/pipewire"
-				"custom/bluetooth"
-        "tray"
       ];
+      # "group/datetimeworkspaces" = {
+      #   "orientation" = "vertical";
+      #   "modules" = [
+      #     "clock"
+      #     "hyprland/workspaces"
+      #   ];
+      # };
       "clock" = {
         "interval" = 1;
 				# eg: 2023 Nov 13 - Tue 08:31:22
@@ -44,14 +53,14 @@
       };
 			"cpu" = {
 				"interval" = 1;
-				"format" = "CPU:{usage}%";
+				"format" = "<span size='16pt'>󰻠</span>  <span size='10pt' rise='3pt'>{usage}%</span>";
 				"tooltip" = false;
 				#"format": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% ",
   	    #"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
 			};
 			"memory" = {
 				"interval" = 1;
-        "format" = "MEM:{percentage}%";
+        "format" = "<span size='16pt'>󰍛</span>  <span size='10pt' rise='3pt'>{percentage}%</span>";
         "tooltip" = "false";
 			};
     	"temperature#cpu" = {
@@ -63,9 +72,15 @@
     	"custom/gpu" = {
         "interval" = 1;
         "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader";
-        "format" = "GPUT:{}°C";
+        "format" = "<span size='13.5pt'>󰏈</span>   <span size='10pt' rise='2pt'>{}°C</span>";
         "tooltip" = false;
     	};
+      "disk" = {
+  	    "interval" = 30;
+        "format" = "<span size='16pt'>󰋊</span>  <span size='10pt' rise='3pt'>{specific_used:0.2f} / {specific_total:0.2f} GB</span>";
+        "tooltip" = false;
+        "unit" = "GB";
+      };
     	"hyprland/workspaces" = {
         "format" = "";
         # "all-outputs" = true;
@@ -85,21 +100,15 @@
         "on-click-right" = "minimize";
         #"format" = "{icon}";
       };
-      "disk" = {
-  	    "interval" = 30;
-        "format" = "DISK:{specific_used:0.2f}GB/{specific_total:0.2f}GB";
-        "tooltip" = false;
-        "unit" = "GB";
-      };
       "pulseaudio" = {
-        "format" = "VOL:{volume}%";
-				"format-muted" = "MUT:{volume}%";
+        "format" = "<span size='16pt'>{icon}</span>  <span size='10pt' rise='3pt'>{volume}%</span>";
+				"format-muted" = "󰖁";
 				"scroll-step" = 5;
 				"tooltip" = false;
 				"on-click" = "pavucontrol";
         "format-icons" = {
           "mute" = "";
-          "default" = ["" "" "" ""];
+          "default" = ["" "" "󰕾" ""];
         };
         #"exec" = "pw-volume status";
       };
@@ -113,8 +122,8 @@
 			# https://www.mankier.com/5/waybar-network
 			"network" = {
 			  "format" = "{ifname}";
-			  "format-wifi" = "WIFI:{signalStrength}%";
-			  "format-ethernet" = "CABLE";
+			  "format-wifi" = " {signalStrength}%";
+			  "format-ethernet" = "󰈀";
 			  # "format-disconnected" = ""; //An empty format will hide the module.
 			  "format-disconnected" = "NO NET";
 			  "tooltip-format" = "{ifname}\nIP:{ipaddr}";
@@ -124,10 +133,6 @@
 				"interval" = 1;
 			  "max-length" = 50;
 			};
-      "custom/bluetooth" = {
-        "format" = " ";
-        "on-click" = "sleep 0.1 && alacritty --class Bluetuith -e bluetuith"; # sleep is currently a workaround
-      };
       "custom/launcher" = {
         "format" = "󰈸";
         "on-click" = "sleep 0.1 && rofi -show drun"; # sleep is currently a workaround
@@ -141,6 +146,31 @@
       "custom/wlogout" = {
         "format" = "⏻";
         "on-click" = "sleep 0.1 && wlogout"; # sleep is currently a workaround
+      };
+    }
+    # Bottom bar
+    {
+      "name" = "bottom-bar";
+      "height" = waybarHeight;
+      "layer" = "top";
+      "position" = "bottom";
+      "modules-left" = [
+        "wlr/taskbar"
+      ];
+      "modules-center" = [
+        "hyprland/workspaces"
+      ];
+      "modules-right" = [
+				"custom/bluetooth"
+        "tray"
+      ];
+      "tray" = {
+        "icon-size" = 24;
+        "spacing" = 8;
+      };
+      "custom/bluetooth" = {
+        "format" = " ";
+        "on-click" = "sleep 0.1 && alacritty --class Bluetuith -e bluetuith"; # sleep is currently a workaround
       };
     }
   ];
@@ -164,7 +194,13 @@
 		}
 
 		.modules-center {
-			
+      /*margin-top: 8px;
+      border: 1px solid white;
+      border-radius: 5px;
+      justify-content: center;
+      text-align: center;
+      min-width: 200px;
+      background-color: red;*/
 		}
 
 		.modules-right {
@@ -172,8 +208,6 @@
 		}
 
     #custom-wlogout, #custom-launcher, #custom-hyprpicker {
-			min-width: 22px;
-			/* min-height: 22px; */
       color: white;
       border: 1px solid white;
       border-radius: 100px;
@@ -185,8 +219,6 @@
     }
 
     #workspaces {
-      /*padding-top: 10px;
-        padding-bottom: 10px; */
       min-height: 0px;
       font-size: 0px;
     }
@@ -196,10 +228,11 @@
       color: #ffffff;
       background-color: orange;
       border-radius: 100px;
-      min-height: 0px;
+      min-width: 5px;
+      min-height: 5px;
       padding: 0;
-      margin-top: 13px;
-      margin-bottom: 13px;
+      /*margin-top: 13px;
+      margin-bottom: 13px;*/
       font-size: 0px;
     }
 
@@ -210,8 +243,7 @@
     #workspaces button.active {
       background-color: red;
       border-radius: 100px;
-      min-height: 0px;
-      min-width: 50px;
+      min-width: 10px;
     }
 
     #workspaces button.focused {
@@ -243,16 +275,18 @@
     }
 
     #pulseaudio, #wireplumber {
-		  padding-left: 15px;
       /*background-color: #f1c40f;
       color: #000000;*/
+      /*font-size: 20px;*/
+		  padding-left: 15px;
 			color: white;
-      font-size: 13px;
+      min-width: 24px;
     }
 
 		#network {
 			padding-left: 15px;
-      font-size: 13px;
+      font-size: 20px;
+      min-width: 24px;
 		}
 
     #pulseaudio.muted, #wireplumber.muted {
@@ -261,13 +295,14 @@
     }
 
 		#tray {
-		  padding-left: 12px;
-			/*padding-right: 8px;*/
+		  padding-left: 4px;
+      /*font-size: 8px;
+			padding-right: 8px;*/
 		}
 
 		#custom-bluetooth {
 		  padding-left: 15px;
-      font-size: 13px;
+      font-size: 18px;
 		}
 
     #taskbar {
