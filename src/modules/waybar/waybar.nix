@@ -117,13 +117,6 @@ in
         #     "(.*) - fish" = "> [$1]";
         # };
     	};
-      "wlr/taskbar" = {
-        #"icon-theme" = "Numix-Circle";
-        "icon-size" = 12;
-        "on-click" = "activate";
-        "on-click-right" = "minimize";
-        #"format" = "{icon}";
-      };
       "pulseaudio" = {
         "format" = "<span size='16pt'>{icon}</span>  <span size='10pt' rise='3pt'>{volume}%</span>";
 				"format-muted" = "󰖁";
@@ -195,6 +188,17 @@ in
       "custom/bluetooth" = {
         "format" = " ";
         "on-click" = "sleep 0.1 && alacritty --class Bluetuith -e bluetuith"; # sleep is currently a workaround
+      };
+      "wlr/taskbar" = {
+        #"icon-theme" = "Numix-Circle";
+        "icon-size" = 14;
+        "on-click" = "activate";
+        # "on-click-right" = "close";
+        "on-click-middle" = "close";
+        #"format" = "{icon}";
+        "ignore-list" = [
+          # "Alacritty"
+        ];
       };
     }
   ];
