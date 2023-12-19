@@ -12,7 +12,15 @@
   nix = {
 		settings = {
       experimental-features = [ "nix-command" "flakes" ];
+      
+      auto-optimise-store = true;
 		};
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 21d";
+    };
   };
 
 	# Before changing the system.stateVersion, read the documentation for this option
