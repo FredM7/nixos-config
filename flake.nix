@@ -46,12 +46,11 @@
 	solaar, 
 	...
   } @ inputs: let
-    #
+	system = "x86_64-linux";
+	pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
 	  fred = nixpkgs.lib.nixosSystem rec {
-		system = "x86_64-linux";
-
 		modules = [
 		  solaar.nixosModules.default
 		  ./src/configuration.nix
@@ -71,5 +70,7 @@
 		];
 	  };
 	};
+	
+	devShells.x86_64-linux.default = (import ./src/shell.nix { inherit pkgs; });
   };
 }

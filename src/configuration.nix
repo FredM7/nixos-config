@@ -332,7 +332,7 @@
     neovim 
     ripgrep # for "telescope" inside neovim
 		#fzf # for telescope in neovim
-    gnome.nautilus # file explorer
+    # gnome.nautilus # file explorer
     cinnamon.nemo # file explorer
 		# krusader
 		# whitesur-icon-theme
@@ -352,16 +352,16 @@
     qpwgraph # graph manager dedicated to pipewire
     pamixer
     wev # wayland event viewer
-		# NODE
-		nodejs
-		# RUST
-		cargo
-		rustc
-		gcc
-		rust-analyzer
-		rustfmt
-		# PYTHON
-		python3
+		# # NODE
+		# nodejs
+		# # RUST
+		# cargo
+		# rustc
+		# gcc
+		# rust-analyzer
+		# rustfmt
+		# # PYTHON
+		# python3
 		#
 		gnumake
 		unzip
