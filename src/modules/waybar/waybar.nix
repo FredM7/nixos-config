@@ -98,17 +98,6 @@ in
         "tooltip" = false;
         "unit" = "GB";
       };
-    	"hyprland/workspaces" = {
-        "format" = "";
-        # "on-click" = "activate";
-        # "all-outputs" = true;
-        # "persistent-workspaces" = {
-        #   "1" = ["DVI-I-1"];
-        #   "2" = ["DVI-I-1"];
-        #   "3" = ["HDMI-A-1"];
-        #   "4" = ["HDMI-A-1"];
-        # };
-    	};
     	"hyprland/window" = {
         "format" = "{}";
         "separate-outputs" = true;
@@ -200,6 +189,19 @@ in
           # "Alacritty"
         ];
       };
+    	"hyprland/workspaces" = {
+        "format" = "";
+        # "on-click" = "activate";
+        # "all-outputs" = true;
+        "persistent-workspaces" = {
+          # "1" = ["DVI-I-1"];
+          # "2" = ["DVI-I-1"];
+          # "3" = ["HDMI-A-1"];
+          # "4" = ["HDMI-A-1"];
+          "DVI-I-1" = [ 1 2 3 ];
+          "HDMI-A-1" = [ 4 5 6 ];
+        };
+    	};
     }
   ];
 

@@ -65,10 +65,12 @@
 				"$mod, M, fullscreen, 1"
         "$mod, B, bringactivetotop," # only works on floating windows
         "$mod, P, exit" # exits compositor
-        "$mod, 1, movetoworkspace, 1"
-        "$mod, 2, movetoworkspace, 2"
-        "$mod, 3, movetoworkspace, 3"
-        "$mod, 4, movetoworkspace, 4"
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
+        "$mod SHIFT, 6, movetoworkspace, 6"
       ];
 
       # Executes also while button is held down.
@@ -91,8 +93,10 @@
       workspace = [
         "1, monitor:DVI-I-1, persistent:true, default:true"
         "2, monitor:DVI-I-1, persistent:true"
-        "3, monitor:HDMI-A-1, persistent:true, default:true"
-        "4, monitor:HDMI-A-1, persistent:true"
+        "3, monitor:DVI-I-1, persistent:true"
+        "4, monitor:HDMI-A-1, persistent:true, default:true"
+        "5, monitor:HDMI-A-1, persistent:true"
+        "6, monitor:HDMI-A-1, persistent:true"
       ];
 
       windowrulev2 = [
@@ -115,16 +119,17 @@
         "monitor DVI-I-1, class:(code-url-handler)"
         "workspace 2, class:(code-url-handler)"
         ### Workspace 3
-        "monitor HDMI-A-1, class:(vivaldi)"
-        "workspace 3, class:(vivaldi)"
         ### Workspace 4
+        "monitor HDMI-A-1, class:(vivaldi)"
+        "workspace 4, class:(vivaldi)"
+        ### Workspace 5
 		    "float,class:(.piper-wrapped)"
         "monitor HDMI-A-1, class:(.piper-wrapped)"
-        "workspace 4, class:(.piper-wrapped)"
+        "workspace 5, class:(.piper-wrapped)"
         #
 		    "float,class:(solaar)"
         "monitor HDMI-A-1, class:(solaar)"
-        "workspace 4, class:(solaar)"
+        "workspace 5, class:(solaar)"
 	    ];
 
       # wsbind = [
