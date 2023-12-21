@@ -19,11 +19,11 @@
       ];
 
       decoration = {
-        rounding = 4;
+        rounding = 8;
         #inactive_opacity = 0.8;
         drop_shadow = true;
-        dim_inactive = true;
-        dim_strength = 0.2;
+        # dim_inactive = true;
+        # dim_strength = 0.2;
       };
 
       general = {
@@ -65,6 +65,10 @@
 				"$mod, M, fullscreen, 1"
         "$mod, B, bringactivetotop," # only works on floating windows
         "$mod, P, exit" # exits compositor
+        "$mod, 1, movetoworkspace, 1"
+        "$mod, 2, movetoworkspace, 2"
+        "$mod, 3, movetoworkspace, 3"
+        "$mod, 4, movetoworkspace, 4"
       ];
 
       # Executes also while button is held down.
@@ -84,6 +88,13 @@
         "$mod, mouse:273, resizewindow"
       ];
 
+      workspace = [
+        "1, monitor:DVI-I-1, persistent:true, default:true"
+        "2, monitor:DVI-I-1, persistent:true"
+        "3, monitor:HDMI-A-1, persistent:true, default:true"
+        "4, monitor:HDMI-A-1, persistent:true"
+      ];
+
       windowrulev2 = [
 		    "float,class:(Bluetuith)"
         "float,size 627 287,class:(org.speedcrunch.)"
@@ -100,12 +111,12 @@
         "monitor DVI-I-1, class:(VirtualBox)"
         "workspace 1, class:(VirtualBox)"
         ### Workspace 2
-        "monitor HDMI-A-1, class:(vivaldi)"
-        "workspace 2, class:(vivaldi)"
-        ### Workspace 3
         "float,class:(code-url-handler)"
         "monitor DVI-I-1, class:(code-url-handler)"
-        "workspace 3, class:(code-url-handler)"
+        "workspace 2, class:(code-url-handler)"
+        ### Workspace 3
+        "monitor HDMI-A-1, class:(vivaldi)"
+        "workspace 3, class:(vivaldi)"
         ### Workspace 4
 		    "float,class:(.piper-wrapped)"
         "monitor HDMI-A-1, class:(.piper-wrapped)"

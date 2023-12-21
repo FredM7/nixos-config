@@ -333,6 +333,7 @@
     ripgrep # for "telescope" inside neovim
 		#fzf # for telescope in neovim
     gnome.nautilus # file explorer
+    cinnamon.nemo # file explorer
 		# krusader
 		# whitesur-icon-theme
 		# libsForQt5.dolphin

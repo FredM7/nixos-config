@@ -1,5 +1,6 @@
 { pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, inputs, ... }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
+	# otis = pkgs.callPackage ./derivations/otis.nix {};
 	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops = pkgs.callPackage ./derivations/logiops.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
@@ -45,6 +46,7 @@
 
 	imports = [
 	  	# ./modules/xdg-desktop-portal-hyprland.nix
+		./modules/dunst.nix
 		./modules/codium.nix
 		# ./modules/obsidian.nix
 	  	./modules/nvim.nix
@@ -80,7 +82,7 @@
 		discord
 		webcord
 		spotify
-		dunst #mako
+		# dunst #mako
 		grim # screenshot
 		slurp # screenshot area selection
 		swappy # screenshot editor
