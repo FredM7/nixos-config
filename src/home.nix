@@ -1,6 +1,6 @@
 { pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, inputs, ... }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
-	# otis = pkgs.callPackage ./derivations/otis.nix {};
+	otis = pkgs.callPackage ./derivations/otis.nix {};
 	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops = pkgs.callPackage ./derivations/logiops.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
@@ -19,8 +19,8 @@
 		};
 
 		theme = {
-			name = "WhiteSur-gtk-theme";
-			package = pkgs.whitesur-gtk-theme;
+			name = "otis";
+			package = otis;
 		};
 
 		iconTheme = {
