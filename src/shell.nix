@@ -6,7 +6,6 @@ pkgs.mkShell {
 		# RUST
 		cargo
 		rustc
-		gcc
 		rust-analyzer
 		rustfmt
 		# PYTHON

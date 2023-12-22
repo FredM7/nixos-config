@@ -71,6 +71,6 @@
 	  };
 	};
 	
-	devShells.x86_64-linux.default = (import ./src/shell.nix { inherit pkgs; });
+	# devShells.x86_64-linux.default = (import ./src/shell.nix { inherit pkgs; });
   };
 }
