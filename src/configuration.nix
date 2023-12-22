@@ -353,16 +353,16 @@
     pamixer
     wev # wayland event viewer
 		# # NODE
-		# nodejs
-		# # RUST
-		# cargo
-		# rustc
-		# gcc
-		# rust-analyzer
-		# rustfmt
-		# # PYTHON
-		# python3
+		nodejs
+		# RUST
+		cargo
+		rustc
+		rust-analyzer
+		rustfmt
+		# PYTHON
+		python3
 		#
+	  gcc
 		gnumake
 		unzip
 		xdg-utils
