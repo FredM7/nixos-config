@@ -24,8 +24,10 @@
 		};
 
 		iconTheme = {
-			name = "WhiteSur-icon-theme";
-			package = pkgs.whitesur-icon-theme;
+			# name = "WhiteSur-icon-theme";
+			name = "Tela-pink-dark";
+			# package = pkgs.whitesur-icon-theme;
+			package = pkgs.tela-icon-theme;
 		};
 	};
 
