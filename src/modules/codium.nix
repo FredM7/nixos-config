@@ -5,11 +5,32 @@
 		# Look in config configuration.nix, environment.sessionVariables.
 		# There, we define something special, RUST_SRC_PATH.
     enable = true;
-		# package = inputs.nixpkgs-vscodium.legacyPackages.${pkgs.system}.vscodium;
-    # package = (import nixpkgs-obsidian {
-		# 	system = pkgs.system;
-		# 	config.allowUnfree = true;
-		# }).obsidian;
+
+    enableUpdateCheck = false; # Stop bothering me about updates.
+    
+    userSettings = {
+      "window.titleBarStyle" = "custom";
+      "editor.inlineSuggest.enabled" = true;
+      "vsicons.dontShowNewVersionMessage" = true;
+      "workbench.iconTheme" = "vscode-icons";
+      "git.confirmSync" = false;
+      "git.autofetch" = true;
+      "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace, 'EnvyCodeR Nerd Font'";
+    };
+    
+    # userTasks = [
+    #   {
+    #     label = "Setup Nix Dev Environment";
+    #     type = "shell";
+    #     command = "cd ~/Documents/nixos-config && nix-shell --command fish";
+    #     # args = [ "build" ];
+    #     problemMatcher = [];
+    #     runOptions = {
+    #       runOn = "folderOpen";
+    #     };
+    #   }
+    # ];
+
 		extensions = with pkgs.vscode-extensions; [
       # If the extensions is not taking effect, try to
       # remove ~/.vscode/extensions/extensions.json, or even 
