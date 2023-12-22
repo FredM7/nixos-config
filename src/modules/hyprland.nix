@@ -101,6 +101,7 @@
 
       windowrulev2 = [
 		    "float,class:(Bluetuith)"
+		    "float,class:(nemo)"
         "float,size 627 287,class:(org.speedcrunch.)"
         ### Workspace 1
         "float,class:(discord)"
