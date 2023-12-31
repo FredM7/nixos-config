@@ -100,35 +100,36 @@
       ];
 
       windowrulev2 = [
-		    "float,class:(Bluetuith)"
-		    "float,class:(nemo)"
+        # By default, lets float all windows.
+        "float, class:(.*)"
+        # Set some floating window sizes
         "float,size 627 287,class:(org.speedcrunch.)"
         ### Workspace 1
-        "float,class:(discord)"
         "monitor DVI-I-1, class:(discord)"
         "workspace 1, class:(discord)"
         #
-		    "float,class:(pavucontrol)"
         "monitor DVI-I-1, class:(pavucontrol)"
         "workspace 1, class:(pavucontrol)"
         #
-        "float,class:(VirtualBox)"
         "monitor DVI-I-1, class:(VirtualBox)"
         "workspace 1, class:(VirtualBox)"
         ### Workspace 2
-        "float,class:(code-url-handler)"
+		    "tile, class:(code-url-handler)"
         "monitor DVI-I-1, class:(code-url-handler)"
         "workspace 2, class:(code-url-handler)"
         ### Workspace 3
+        "tile, class:(steam)"
+        "float, title:(Friends List)"
+        "monitor DVI-I-1, class:(steam)"
+        "workspace 3, class:(steam)"
         ### Workspace 4
+		    "tile, class:(vivaldi)"
         "monitor HDMI-A-1, class:(vivaldi)"
         "workspace 4, class:(vivaldi)"
         ### Workspace 5
-		    "float,class:(.piper-wrapped)"
         "monitor HDMI-A-1, class:(.piper-wrapped)"
         "workspace 5, class:(.piper-wrapped)"
         #
-		    "float,class:(solaar)"
         "monitor HDMI-A-1, class:(solaar)"
         "workspace 5, class:(solaar)"
 	    ];
