@@ -260,6 +260,12 @@
         logitech-udev-rules
       ];
 
+      # This was added for my KeyChron K2 Pro keyboard in order to use https://usevia.app. 
+      # Get the idVendor and idProduct from lsusb. eg: "Bus 003 Device 004: ID 3434:0220 Keychron Keychron K2 Pro".
+      extraRules = ''
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0220", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+      '';
+
       # extraRules = ''
       #   # Allows non-root users to have raw access to Logitech devices.
       #   # Allowing users to write to the device is potentially dangerous
@@ -327,17 +333,12 @@
     git
 		bluetuith # Terminal based bluetooth manager
     btop
-    lm_sensors 
-    # conky
+    lm_sensors
     neovim 
     ripgrep # for "telescope" inside neovim
-		#fzf # for telescope in neovim
-    # gnome.nautilus # file explorer
     cinnamon.nemo # file explorer
-		# krusader
-		# whitesur-icon-theme
-		# libsForQt5.dolphin
-		#libsForQt5.qt5ct
+    cinnamon.nemo-fileroller # file archiver
+    # xplorer # file explorer
 		ranger
     alacritty # terminal
     screenfetch
@@ -366,9 +367,7 @@
 		gnumake
 		unzip
 		xdg-utils
-		# keychain
-		# gnome.gnome-keyring
-		libsecret
+		libsecret #
     #
     usbutils
   ];
