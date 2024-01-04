@@ -79,6 +79,7 @@
 	home.packages = with pkgs; [
 		vivaldi
 		vivaldi-ffmpeg-codecs
+		# floorp
 		thunderbird
 		steam
 		discord
