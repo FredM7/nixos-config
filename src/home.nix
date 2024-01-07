@@ -79,7 +79,7 @@
 	home.packages = with pkgs; [
 		vivaldi
 		vivaldi-ffmpeg-codecs
-		# floorp
+		floorp
 		thunderbird
 		steam
 		discord
@@ -121,6 +121,7 @@
 		heroic
 		gogdl
 		# logiops
+		ledger-live-desktop
 	];
 
 	home.stateVersion = "23.11";
