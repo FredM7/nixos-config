@@ -52,12 +52,30 @@
 			NIXOS_OZONE_WL = "1";
 			# This is for VSCode/Codium rust-analyzer to work.
 			RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+      # LocalSend Download directory
+      XDG_DOWNLOAD_DIR = "~/Downloads";
     };
   };
 
   networking = {
     networkmanager.enable = true; # Enable networking
     hostName = "nixos"; # Define your hostname.
+
+    firewall = {
+      enable = true;
+      
+      allowedTCPPorts = [ 
+        80
+        443
+        53317 # for LocalSend
+      ];
+
+      allowedUDPPortRanges = [
+        { from = 4000; to = 4007; }
+        { from = 53315; to = 53318; }
+        { from = 8000; to = 8010; }
+      ];
+    };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -115,13 +133,14 @@
   users = {
 	  groups = {
       games = { };
+      plugdev = { }; # added for Ledger Live
 		};
 	  users = {
       fred = {
         isNormalUser = true;
         description = "Fred";
 			  shell = pkgs.fish;
-        extraGroups = [ "networkmanager" "wheel" "games" "libvirtd" "docker" "audio" "disk" ];
+        extraGroups = [ "networkmanager" "wheel" "games" "plugdev" "libvirtd" "docker" "audio" "disk" ];
       };
 		};
 
@@ -260,10 +279,13 @@
         logitech-udev-rules
       ];
 
-      # This was added for my KeyChron K2 Pro keyboard in order to use https://usevia.app. 
       # Get the idVendor and idProduct from lsusb. eg: "Bus 003 Device 004: ID 3434:0220 Keychron Keychron K2 Pro".
       extraRules = ''
+        # Required for my KeyChron K2 Pro keyboard in order to use https://usevia.app. 
         KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0220", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+
+        # Required for Ledger Live to detect Ledger Nano X via USB
+        SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="4011", MODE="0660", GROUP="plugdev"
       '';
 
       # extraRules = ''
