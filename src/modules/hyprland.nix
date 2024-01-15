@@ -4,10 +4,10 @@
   #   hyprland.homeManagerModules.default
   # ];
 
-  # programs.hyprland = {
+  #programs.hyprland = {
     enable = true;
 
-    enableNvidiaPatches = true;
+    #enableNvidiaPatches = true;
     xwayland.enable = true;
 
     settings = {
@@ -118,8 +118,9 @@
         "monitor DVI-I-1, class:(code-url-handler)"
         "workspace 2, class:(code-url-handler)"
         ### Workspace 3
-        "tile, class:(steam)"
-        "float, title:(Friends List)"
+        "float, class:(steam)"
+        # "tile, class:(steam)"
+        # "float, title:(Friends List)"
         "monitor DVI-I-1, class:(steam)"
         "workspace 3, class:(steam)"
         ### Workspace 4

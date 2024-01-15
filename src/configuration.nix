@@ -34,7 +34,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/sdb";
+        device = "/dev/sda";
         useOSProber = true;
       };
     };
@@ -342,6 +342,13 @@
 
 	xdg.portal = {
     enable = true;
+    config = {
+      # xdg-desktop-portal 1.17 reworked how portal implementations are loaded, you
+      # should either set `xdg.portal.config` or `xdg.portal.configPackages`
+      # to specify which portal backend to use for the requested interface.
+      # If you simply want to keep the behaviour in < 1.17, you can set this to "*".
+      common.default = "*";
+    };
     extraPortals = with pkgs; [
 			xdg-desktop-portal-hyprland # For screensharing
       xdg-desktop-portal-gtk # For File Chooser

@@ -15,7 +15,6 @@ in
       "layer" = "top";
       "position" = "top";
       "modules-left" = [
-				"custom/wlogout"
         "custom/launcher"
 	      "custom/hyprpicker"
         "hyprland/window"
@@ -35,6 +34,7 @@ in
         # "wireplumber"
         "network"
 				#"custom/pipewire"
+				"custom/wlogout"
       ];
       # "group/datetimeworkspaces" = {
       #   "orientation" = "vertical";
@@ -150,7 +150,7 @@ in
         # "on-click-right" = "hyprpicker -a -f rgb";
       };
       "custom/wlogout" = {
-        "format" = "⏻";
+        "format" = "󰐦";
         "on-click" = "sleep 0.1 && wlogout"; # sleep is currently a workaround
       };
     }

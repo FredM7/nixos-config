@@ -27,7 +27,6 @@ window#waybar {
     padding-right: 8px;
 }
 
-#custom-wlogout,
 #custom-launcher,
 #custom-hyprpicker {
     color: white;
@@ -131,6 +130,12 @@ window#waybar {
 #wireplumber.muted {
     /*background-color: #90b1b1;
     color: #2a5c45;*/
+}
+
+#custom-wlogout {
+    padding-left: 15px;
+    font-size: 18px;
+    min-width: 24px;
 }
 
 #tray {
