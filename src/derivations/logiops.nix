@@ -9,8 +9,9 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner  = "PixlOne";
     repo   = "logiops";
-    rev    = "v0.3.3";
-    sha256 = "sha256-tKVRPT96VYLLuGEv4cgHE37SsgCF/bahWXKjuwczZm8="; # pkgs.lib.fakeSha256;
+    rev    = "v${version}";
+    sha256 = "sha256-9nFTud5szQN8jpG0e/Bkp+I9ELldfo66SdfVCUTuekg="; # pkgs.lib.fakeSha256;
+    fetchSubmodules = true;
   };
 
   PKG_CONFIG_SYSTEMD_SYSTEMDSYSTEMUNITDIR = "${placeholder "out"}/lib/systemd/system";
