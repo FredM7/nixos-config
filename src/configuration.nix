@@ -320,6 +320,11 @@
 		gnome = {
 			gnome-keyring.enable = true;
 		};
+
+    # Added this so that i can see the Devices in Nemo.
+    gvfs = {
+      enable = true;
+    };
   };
 
   programs = {
