@@ -404,6 +404,8 @@
 		libsecret #
     #
     usbutils
+    #
+    dig
   ];
   
   # Open ports in the firewall.
