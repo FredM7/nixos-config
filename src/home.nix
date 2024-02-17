@@ -98,6 +98,9 @@
 		}).obsidian
 		qemu # virtualization
 		virt-manager # virtualization
+		quickemu
+		quickgui
+		# distrobox
 		# virtualbox
 		github-desktop
 		gimp
@@ -117,7 +120,6 @@
 		mediawriter # for flashing SD cards
 		rpi-imager # for flashing PI Images
 		# docker-desktop
-		distrobox
 		# heroic-unwrapped
 		heroic
 		gogdl
