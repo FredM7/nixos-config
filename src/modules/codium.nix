@@ -45,6 +45,7 @@
       dart-code.dart-code
       dart-code.flutter
       bradlc.vscode-tailwindcss
+      esbenp.prettier-vscode
 		];
   };
 
