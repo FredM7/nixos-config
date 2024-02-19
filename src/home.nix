@@ -31,6 +31,13 @@
 		};
 	};
 
+	xdg = {
+		desktopEntries.github-desktop = {
+			name = "GitHub Desktop";
+			exec = "github-desktop --disable-gpu %U";
+		};
+	};
+
 	# qt = {
 	# 	enable = true;
 	# };
