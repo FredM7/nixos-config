@@ -125,6 +125,17 @@
             # "-Dtests=false"
           ];
         });
+        github-desktop = prev.github-desktop.overrideAttrs (o: rec {
+          pname = "github-desktop";
+          version = "3.3.8";
+          rcversion = "2";
+          arch = "amd64";
+
+          src = prev.fetchurl {
+            url = "https://github.com/shiftkey/desktop/releases/download/release-${version}-linux${rcversion}/GitHubDesktop-linux-${arch}-${version}-linux${rcversion}.deb";
+            hash = "sha256-MXtEIVEsd5GAPGuxMHcFLJ/M009lPRnX6h+kj5UlSG8=";
+          };
+        });
       })
     ];
   };
