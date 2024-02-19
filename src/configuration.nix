@@ -112,6 +112,7 @@
               sha256 = "sha256-y7QOyfTzMNCz4Lv2YW5OR7teoNW1lSXJ1ixVZk8yMDg=";
           };
         });
+        
         piper = prev.piper.overrideAttrs (o: {
           src = prev.fetchFromGitHub {
               owner = "libratbag";
@@ -125,6 +126,7 @@
             # "-Dtests=false"
           ];
         });
+
         github-desktop = prev.github-desktop.overrideAttrs (o: rec {
           pname = "github-desktop";
           version = "3.3.8";
@@ -356,20 +358,22 @@
 		#virt-manager.enable = true;
 	};
 
-	xdg.portal = {
-    enable = true;
-    config = {
-      # xdg-desktop-portal 1.17 reworked how portal implementations are loaded, you
-      # should either set `xdg.portal.config` or `xdg.portal.configPackages`
-      # to specify which portal backend to use for the requested interface.
-      # If you simply want to keep the behaviour in < 1.17, you can set this to "*".
-      common.default = "*";
+	xdg = {
+    portal = {
+      enable = true;
+      config = {
+        # xdg-desktop-portal 1.17 reworked how portal implementations are loaded, you
+        # should either set `xdg.portal.config` or `xdg.portal.configPackages`
+        # to specify which portal backend to use for the requested interface.
+        # If you simply want to keep the behaviour in < 1.17, you can set this to "*".
+        common.default = "*";
+      };
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland # For screensharing
+        xdg-desktop-portal-gtk # For File Chooser
+      ];
     };
-    extraPortals = with pkgs; [
-			xdg-desktop-portal-hyprland # For screensharing
-      xdg-desktop-portal-gtk # For File Chooser
-    ];
-	};
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
