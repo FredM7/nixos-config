@@ -10,14 +10,16 @@
     
     userSettings = {
       "window.titleBarStyle" = "custom";
-      "editor.inlineSuggest.enabled" = true;
       "vsicons.dontShowNewVersionMessage" = true;
       "workbench.iconTheme" = "vscode-icons";
       "git.confirmSync" = false;
       "git.autofetch" = true;
+      "editor.inlineSuggest.enabled" = true;
       "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace, 'EnvyCodeR Nerd Font'";
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.formatOnSave" = true;
+      "explorer.confirmDragAndDrop" = false;
+      "update.mode" = "none";
     };
     
     # userTasks = [
