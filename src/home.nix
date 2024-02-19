@@ -34,6 +34,11 @@
 	xdg = {
 		desktopEntries.github-desktop = {
 			name = "GitHub Desktop";
+			genericName = "GitHub Desktop";
+			comment = "Simple collabortion from your desktop";
+			icon = "github-desktop";
+			type = "Application";
+			startupNotify = true;
 			exec = "github-desktop --disable-gpu %U";
 		};
 	};
