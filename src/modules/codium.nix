@@ -39,6 +39,7 @@
       # If the extensions is not taking effect, try to
       # remove ~/.vscode/extensions/extensions.json, or even 
       # the whole directory ~/.vscode/extensions.
+      mikestead.dotenv
       vscode-icons-team.vscode-icons
       eamodio.gitlens
       bbenoist.nix
