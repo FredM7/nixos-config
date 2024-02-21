@@ -137,6 +137,7 @@
 		gogdl
 		# logiops
 		ledger-live-desktop
+		android-studio
 	];
 
 	home.stateVersion = "23.11";
