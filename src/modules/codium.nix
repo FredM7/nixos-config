@@ -51,6 +51,8 @@
       dart-code.flutter
       bradlc.vscode-tailwindcss
       esbenp.prettier-vscode
+      tamasfe.even-better-toml
+      formulahendry.auto-rename-tag
 		];
   };
 
