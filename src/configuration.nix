@@ -54,6 +54,7 @@
 			RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       # LocalSend Download directory
       XDG_DOWNLOAD_DIR = "~/Downloads";
+      XCURSOR_SIZE = "28";
     };
   };
 

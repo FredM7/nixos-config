@@ -52,8 +52,9 @@
 		# /etc/profiles/per-user/<your_username>/share/icons
 		name = "oreo_spark_lime_cursors";
 		package = oreo-cursor;
-		size = 10;
+		size = 28;
 		# gtk.enable = true;
+      	# x11.enable = true;
 		# qt.enable = true;
 		# x11.enable = true;
 	};
@@ -96,6 +97,7 @@
 		steam
 		discord
 		webcord
+		# teams
 		spotify
 		# dunst #mako
 		grim # screenshot
@@ -138,6 +140,7 @@
 		# logiops
 		ledger-live-desktop
 		android-studio
+		# postman
 	];
 
 	home.stateVersion = "23.11";
