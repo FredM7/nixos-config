@@ -53,6 +53,8 @@
       esbenp.prettier-vscode
       tamasfe.even-better-toml
       formulahendry.auto-rename-tag
+      # Postman.postman-for-vscode
+      
 		];
   };
 
