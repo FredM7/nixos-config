@@ -65,6 +65,8 @@
 				"$mod, M, fullscreen, 1"
         "$mod, B, bringactivetotop," # only works on floating windows
         "$mod, P, exit" # exits compositor
+        "SHIFT, Print, exec, kooha"
+        ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
         "$mod SHIFT, 1, movetoworkspace, 1"
         "$mod SHIFT, 2, movetoworkspace, 2"
         "$mod SHIFT, 3, movetoworkspace, 3"
@@ -81,7 +83,6 @@
         ", XF86AudioRaiseVolume, exec, pamixer -i 5"
         # ", XF86AudioLowerVolume, exec, amixer sset 'Master' 5%-"
         ", XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -5%"
-        ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
       ];
 
       bindm = [

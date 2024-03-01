@@ -103,6 +103,7 @@
 		grim # screenshot
 		slurp # screenshot area selection
 		swappy # screenshot editor
+		kooha # screen recorder
 		blender
 		freecad
 		prusa-slicer

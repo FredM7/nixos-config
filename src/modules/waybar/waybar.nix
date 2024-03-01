@@ -17,6 +17,7 @@ in
       "modules-left" = [
         "custom/launcher"
 	      "custom/hyprpicker"
+        "custom/screenrecorder"
         "hyprland/window"
       ];
       "modules-center" = [
@@ -148,6 +149,10 @@ in
         "format" = "󰈋";
         "on-click" = "sleep 0.1 && hyprpicker -a -f hex"; # sleep is currently a workaround
         # "on-click-right" = "hyprpicker -a -f rgb";
+      };
+      "custom/screenrecorder" = {
+        "format" = "󰕧";
+        "on-click" = "sleep 0.1 && kooha"; # sleep is currently a workaround
       };
       "custom/wlogout" = {
         "format" = "󰐦";
