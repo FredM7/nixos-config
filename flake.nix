@@ -54,12 +54,14 @@
 	system = "x86_64-linux";
 	# USER
 	username = "fred";
+	hostname = "nixos";
   in {
     nixosConfigurations = {
 	  ${username} = nixpkgs.lib.nixosSystem {
 		specialArgs = {
 		  inherit username;
 		  inherit system;
+		  inherit hostname;
 		};
 
 		modules = [

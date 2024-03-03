@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, hostname ... }:
 {
   imports = [ 
 	  # Include the results of the hardware scan.
@@ -60,7 +60,7 @@
 
   networking = {
     networkmanager.enable = true; # Enable networking
-    hostName = "nixos"; # Define your hostname.
+    hostName = hostname; # Define your hostname.
 
     firewall = {
       enable = true;
