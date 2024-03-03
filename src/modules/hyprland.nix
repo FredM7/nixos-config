@@ -65,7 +65,7 @@
 				"$mod, M, fullscreen, 1"
         "$mod, B, bringactivetotop," # only works on floating windows
         "$mod, P, exit" # exits compositor
-        "SHIFT, Print, exec, kooha"
+        "SHIFT, Print, exec, kooha" # starts screen recorder
         ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
         "$mod SHIFT, 1, movetoworkspace, 1"
         "$mod SHIFT, 2, movetoworkspace, 2"
