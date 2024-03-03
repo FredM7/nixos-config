@@ -1,12 +1,14 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, inputs, ... }: let
+{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
+	inputs, username, ...
+}: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	otis = pkgs.callPackage ./derivations/otis.nix {};
 	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops-pkg = pkgs.callPackage ./derivations/logiops.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
-	home.username = "fred";
-	home.homeDirectory = "/home/fred";
+	home.username = username;
+	home.homeDirectory = "/home/${username}";
 
 	programs.home-manager.enable = true;
 

@@ -2,11 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, user, ... }:
+{ config, pkgs, username, ... }:
 {
   imports = [ 
 	  # Include the results of the hardware scan.
-    ../hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   nix = {
@@ -150,16 +150,27 @@
       plugdev = { }; # added for Ledger Live
 		};
 	  users = {
-      fred = {
+      ${username} = {
+			  shell = pkgs.fish;
+
         isNormalUser = true;
         description = "Fred";
-			  shell = pkgs.fish;
-        extraGroups = [ "networkmanager" "wheel" "games" "plugdev" "libvirtd" "docker" "audio" "disk" ];
+
+        extraGroups = [ 
+          "networkmanager"
+          "wheel"
+          "games"
+          "plugdev"
+          "libvirtd"
+          "docker"
+          "audio"
+          "disk"
+        ];
       };
 		};
 
     extraGroups = {
-      vboxusers.members = [ "fred" ];
+      vboxusers.members = [ username ];
     };
   };
 
@@ -323,8 +334,7 @@
 
 			displayManager.autoLogin = {
         enable = true;
-				# inherit "fred";
-				user = "fred";
+				user = username;
 			};
 
 			# Enable touchpad support (enabled default in most desktopManager).
@@ -347,7 +357,7 @@
       enable = true;
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-      polkitPolicyOwners = [ "fred" ];
+      polkitPolicyOwners = [ username ];
     };
 
     dconf.enable = true; # At the time, this was for Blueman & virt-manager

@@ -1,5 +1,6 @@
 {
   pkgs,
+  username,
   ...
 }:
 {
@@ -19,7 +20,7 @@
       
       initial_session = {
         command = "Hyprland";
-	      user = "fred";
+	      user = username;
       };
     };
   };

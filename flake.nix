@@ -1,17 +1,22 @@
 {
-  description = "Fred's Flakes";
+  description = "Fred's NixOS Configuration";
 
   inputs = rec {
-	nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+	nixpkgs = {
+	  url = "github:NixOS/nixpkgs/nixos-unstable";
+	};
 	home-manager = {
 	  url = "github:nix-community/home-manager";
 	  inputs.nixpkgs.follows = "nixpkgs";
 	};
 
-	hyprland.url = "github:hyprwm/Hyprland";
+	hyprland = {
+	  url = "github:hyprwm/Hyprland";
+	};
 
-	waybar.url = "github:Alexays/Waybar";
+	waybar = {
+	  url = "github:Alexays/Waybar";
+	};
 
 	hyprpaper = {
 	  url = "github:hyprwm/hyprpaper";
@@ -47,30 +52,39 @@
 	...
   } @ inputs: let
 	system = "x86_64-linux";
-	pkgs = nixpkgs.legacyPackages.${system};
+	# USER
+	username = "fred";
   in {
     nixosConfigurations = {
-	  fred = nixpkgs.lib.nixosSystem rec {
+	  ${username} = nixpkgs.lib.nixosSystem {
+		specialArgs = {
+		  inherit username;
+		  inherit system;
+		};
+
 		modules = [
-		  solaar.nixosModules.default
 		  ./src/configuration.nix
 		  ./src/modules/greetd.nix
 		  ./src/modules/logid.nix
+		  solaar.nixosModules.default
 		  # hyprland.homeManagerModules.default
 		  home-manager.nixosModules.home-manager {
+			home-manager.extraSpecialArgs = {
+			  inherit username;
+			  
+			  inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium;
+			};
+
 			home-manager.useGlobalPkgs = true;
 			home-manager.useUserPackages = true;
 
-			home-manager.users.fred = import ./src/home.nix;
+			home-manager.users.${username} = import ./src/home.nix;
 
-			home-manager.extraSpecialArgs = {
-			  inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium; # xdg-desktop-portal-hyprland; # hyprland;
-			};
 		  }
 		];
 	  };
 	};
 	
-	# devShells.x86_64-linux.default = (import ./src/shell.nix { inherit pkgs; });
+	# devShells.${system}.default = (import ./src/shell.nix { inherit pkgs; });
   };
 }
