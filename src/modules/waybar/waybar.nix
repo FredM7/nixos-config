@@ -141,7 +141,7 @@ in
 			  "max-length" = 50;
 			};
       "custom/launcher" = {
-        "format" = "󰈸";
+        "format" = "";
         "on-click" = "sleep 0.1 && rofi -show drun"; # sleep is currently a workaround
         # "max-length" = "2";
       };

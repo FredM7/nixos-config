@@ -28,17 +28,47 @@ window#waybar {
   padding-right: 8px;
 }
 
-#custom-launcher,
-#custom-hyprpicker,
-#custom-screenrecorder {
+#custom-launcher {
+  color: orange;
+  background-color: #303030;
+  border-radius: 100px 0px 0px 100px;
+  min-width: 31px;
+  font-size: 22px;
+  padding: 0;
+  padding-right: 4px;
+  margin: 0;
+  min-height: 0px;
+}
+
+#custom-hyprpicker {
   color: white;
-  border: 1px solid white;
-  border-radius: 100px;
-  min-width: 32px;
+  background-color: #303030;
+  min-width: 31px;
   font-size: 18px;
   padding: 0;
   margin: 0;
   min-height: 0px;
+}
+
+#custom-screenrecorder {
+  color: white;
+  background-color: #303030;
+  border-radius: 0px 100px 100px 0px;
+  min-width: 31px;
+  font-size: 18px;
+  padding: 0;
+  padding-right: 4px;
+  margin: 0;
+  min-height: 0px;
+}
+
+#window {
+  margin-left: 15px;
+  font-size: 13px;
+  background-color: #303030;
+  border-radius: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #workspaces {
@@ -89,6 +119,10 @@ window#waybar {
   /* border: 1px solid white;
     border-radius: 100px; */
   font-size: 13px;
+  background-color: #303030;
+  border-radius: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #custom-temperature-icon {
