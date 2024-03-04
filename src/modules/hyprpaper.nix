@@ -5,6 +5,7 @@
   #   wallpaper = ,~/Pictures/nixos-2.jpg
   # '';
   home.file.".config/hypr/hyprpaper.conf".text = ''
+    splash = false
     preload = ~/Pictures/wallpapers/linux-nixos-operating-system.jpg
     wallpaper = ,~/Pictures/wallpapers/linux-nixos-operating-system.jpg
   '';
