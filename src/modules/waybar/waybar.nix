@@ -16,6 +16,7 @@ in
       "position" = "top";
       "modules-left" = [
         "custom/launcher"
+        "custom/taskmanager"
 	      "custom/hyprpicker"
         "custom/screenrecorder"
         "hyprland/window"
@@ -144,6 +145,10 @@ in
         "format" = "";
         "on-click" = "sleep 0.1 && rofi -show drun"; # sleep is currently a workaround
         # "max-length" = "2";
+      };
+      "custom/taskmanager" = {
+        "format" = "";
+        "on-click" = "sleep 0.1 && alacritty --class Btop -e btop"; # sleep is currently a workaround
       };
       "custom/hyprpicker" = {
         "format" = "󰈋";

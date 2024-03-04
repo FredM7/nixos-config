@@ -40,7 +40,8 @@ window#waybar {
   min-height: 0px;
 }
 
-#custom-hyprpicker {
+#custom-hyprpicker,
+#custom-taskmanager {
   color: white;
   background-color: #303030;
   min-width: 31px;
