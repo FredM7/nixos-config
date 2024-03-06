@@ -95,9 +95,11 @@
         "1, monitor:DVI-I-1, persistent:true, default:true"
         "2, monitor:DVI-I-1, persistent:true"
         "3, monitor:DVI-I-1, persistent:true"
-        "4, monitor:HDMI-A-1, persistent:true, default:true"
-        "5, monitor:HDMI-A-1, persistent:true"
+        "4, monitor:DVI-I-1, persistent:true"
+        "5, monitor:HDMI-A-1, persistent:true, default:true"
         "6, monitor:HDMI-A-1, persistent:true"
+        "7, monitor:HDMI-A-1, persistent:true"
+        "8, monitor:HDMI-A-1, persistent:true"
       ];
 
       windowrulev2 = [
@@ -124,16 +126,16 @@
         # "float, title:(Friends List)"
         "monitor DVI-I-1, class:(steam)"
         "workspace 3, class:(steam)"
-        ### Workspace 4
+        ### Workspace 5
 		    "tile, class:(vivaldi)"
         "monitor HDMI-A-1, class:(vivaldi)"
-        "workspace 4, class:(vivaldi)"
-        ### Workspace 5
+        "workspace 5, class:(vivaldi)"
+        ### Workspace 6
         "monitor HDMI-A-1, class:(.piper-wrapped)"
-        "workspace 5, class:(.piper-wrapped)"
+        "workspace 6, class:(.piper-wrapped)"
         #
         "monitor HDMI-A-1, class:(solaar)"
-        "workspace 5, class:(solaar)"
+        "workspace 6, class:(solaar)"
 	    ];
 
       # wsbind = [
