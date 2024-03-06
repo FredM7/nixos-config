@@ -1,5 +1,5 @@
 { pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
-	inputs, username, ...
+	inputs, username, cursorsize, ...
 }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	otis = pkgs.callPackage ./derivations/otis.nix {};
@@ -18,6 +18,7 @@
 		cursorTheme = {
 			package = oreo-cursor;
 			name = "oreo_spark_lime_cursors";
+			size = cursorsize;
 		};
 
 		theme = {
@@ -54,11 +55,9 @@
 		# /etc/profiles/per-user/<your_username>/share/icons
 		name = "oreo_spark_lime_cursors";
 		package = oreo-cursor;
-		size = 28;
-		# gtk.enable = true;
-      	# x11.enable = true;
-		# qt.enable = true;
-		# x11.enable = true;
+		size = cursorsize;
+		gtk.enable = true;
+      	x11.enable = true;
 	};
 
 	imports = [

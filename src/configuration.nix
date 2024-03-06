@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, hostname, ... }:
+{ config, pkgs, username, hostname, cursorsize, ... }:
 {
   imports = [ 
 	  # Include the results of the hardware scan.
@@ -54,7 +54,7 @@
 			RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       # LocalSend Download directory
       XDG_DOWNLOAD_DIR = "~/Downloads";
-      XCURSOR_SIZE = "28";
+      XCURSOR_SIZE = builtins.toString cursorsize;
     };
   };
 

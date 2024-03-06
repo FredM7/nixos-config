@@ -55,6 +55,8 @@
 	# USER
 	username = "fred";
 	hostname = "nixos";
+	# SYSTEM
+	cursorsize = 24; # 24, 32, 40, 48, 56, 64
   in {
     nixosConfigurations = {
 	  ${username} = nixpkgs.lib.nixosSystem {
@@ -62,6 +64,7 @@
 		  inherit username;
 		  inherit system;
 		  inherit hostname;
+		  inherit cursorsize;
 		};
 
 		modules = [
@@ -72,7 +75,7 @@
 		  # hyprland.homeManagerModules.default
 		  home-manager.nixosModules.home-manager {
 			home-manager.extraSpecialArgs = {
-			  inherit username;
+			  inherit username cursorsize;
 			  
 			  inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium;
 			};
