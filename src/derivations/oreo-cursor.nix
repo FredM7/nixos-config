@@ -2,10 +2,10 @@
 stdenv.mkDerivation {
     name = "oreo-cursor";
     src = fetchFromGitHub {
-        owner = "varlesh";
+        owner = "Souravgoswami";
         repo = "oreo-cursors";
-        rev = "6b6d9410beb7c518486e8f4dfd1cb346c7797106";
-        hash = "sha256-wwtGlyLlC1encO6A/vuVMS0HNSMv1Nsj+LRHZCR3Otc=";
+        rev = "9133204d60ca2c54be0df03b836968a1deac6b20";
+        hash = "sha256-6oTyOQK7mkr+jWYbPNBlJ4BpT815lNJvsJjzdTmj+68=";
     };
     nativeBuildInputs = [ ruby inkscape xorg.xcursorgen ];
     env.HOME = "/build";

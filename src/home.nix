@@ -15,11 +15,11 @@
 	gtk = {
 		enable = true;
 
-		cursorTheme = {
-			package = oreo-cursor;
-			name = "oreo_spark_lime_cursors";
-			size = cursorsize;
-		};
+		# cursorTheme = {
+		# 	package = oreo-cursor;
+		# 	name = "oreo_spark_lime_cursors";
+		# 	size = cursorsize;
+		# };
 
 		theme = {
 			name = "otis";
@@ -53,7 +53,8 @@
 	home.pointerCursor = {
 		# find the name of the cursor theme by looking in:
 		# /etc/profiles/per-user/<your_username>/share/icons
-		name = "oreo_spark_lime_cursors";
+		# name = "oreo_spark_lime_bordered_cursors";
+		name = "oreo_spark_white_bordered_cursors";
 		package = oreo-cursor;
 		size = cursorsize;
 		gtk.enable = true;
