@@ -20,6 +20,7 @@
       "editor.formatOnSave" = true;
       "explorer.confirmDragAndDrop" = false;
       "update.mode" = "none";
+      "terminal.integrated.scrollback" = 10000;
     };
     
     # userTasks = [
