@@ -3,6 +3,7 @@
 }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	otis = pkgs.callPackage ./derivations/otis.nix {};
+	postman-f = pkgs.callPackage ./derivations/postman.nix {};
 	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
 	# logiops-pkg = pkgs.callPackage ./derivations/logiops.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
@@ -144,6 +145,7 @@
 		ledger-live-desktop
 		android-studio
 		# postman
+		postman-f
 	];
 
 	home.stateVersion = "23.11";
