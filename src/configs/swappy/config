@@ -1,7 +1,7 @@
 [Default]
 save_dir=$HOME/Pictures/Swappy
 save_filename_format=swappy-%Y%m%d-%H%M%S.png
-show_panel=false
+show_panel=true
 line_size=2
 text_size=20
 text_font=sans-serif
