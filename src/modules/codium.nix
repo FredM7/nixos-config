@@ -22,6 +22,7 @@
       "update.mode" = "none";
       "terminal.integrated.scrollback" = 10000;
       "typescript.updateImportsOnFileMove.enabled" = "always"; # Don't ask me to update imports if I move files around. Just do it.
+      "security.workspace.trust.untrustedFiles" = "open";
     };
     
     # userTasks = [

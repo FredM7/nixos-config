@@ -64,18 +64,16 @@
 
 	imports = [
 	  	# ./modules/xdg-desktop-portal-hyprland.nix
+	  	./modules/config-loader.nix
 		./modules/dunst.nix
 		./modules/codium.nix
 		# ./modules/obsidian.nix
-	  	./modules/nvim.nix
 		./modules/anyrun.nix
 		./modules/fish.nix
-		./modules/alacritty.nix
 		./modules/waybar/waybar.nix
 		./modules/hyprpaper.nix
 		./modules/hyprland.nix
 		./modules/wlogout.nix
-		./modules/rofi.nix
 		# ./modules/logid.nix
 	];
 
@@ -130,6 +128,7 @@
     	libsForQt5.kdenlive
 		audacity
 		localsend
+		# mongodb
 		mongodb-compass
 		piper
 		vlc
