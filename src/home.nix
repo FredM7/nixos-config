@@ -75,6 +75,7 @@
 		./modules/hyprland.nix
 		./modules/wlogout.nix
 		# ./modules/logid.nix
+		./modules/nemo.nix
 	];
 
 	dconf.settings = {
