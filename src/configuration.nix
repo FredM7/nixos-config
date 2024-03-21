@@ -396,8 +396,8 @@
     lm_sensors
     neovim 
     ripgrep # for "telescope" inside neovim
-    cinnamon.nemo # file explorer
-    cinnamon.nemo-fileroller # file archiver
+    # cinnamon.nemo # file explorer
+    # cinnamon.nemo-fileroller # file archiver
     # xplorer # file explorer
 		ranger
     alacritty # terminal
