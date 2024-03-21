@@ -92,6 +92,7 @@
 	# home.packages = [ piper ];
 	
 	home.packages = with pkgs; [
+    	rofi-wayland # launcher
 		vivaldi
 		vivaldi-ffmpeg-codecs
 		floorp
@@ -146,6 +147,7 @@
 		android-studio
 		# postman
 		postman-f
+		(import ./scripts { inherit pkgs; })
 	];
 
 	home.stateVersion = "23.11";
