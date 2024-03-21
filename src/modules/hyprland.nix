@@ -73,6 +73,8 @@
         "$mod SHIFT, 4, movetoworkspace, 4"
         "$mod SHIFT, 5, movetoworkspace, 5"
         "$mod SHIFT, 6, movetoworkspace, 6"
+        "$mod SHIFT, 7, movetoworkspace, 7"
+        "$mod SHIFT, 8, movetoworkspace, 8"
       ];
 
       # Executes also while button is held down.
@@ -120,22 +122,27 @@
 		    "tile, class:(code-url-handler)"
         "monitor DVI-I-1, class:(code-url-handler)"
         "workspace 2, class:(code-url-handler)"
-        ### Workspace 3
-        "float, class:(steam)"
-        # "tile, class:(steam)"
-        # "float, title:(Friends List)"
-        "monitor DVI-I-1, class:(steam)"
-        "workspace 3, class:(steam)"
+        # ### Workspace 3
+        # "float, class:(steam)"
+        # # "tile, class:(steam)"
+        # # "float, title:(Friends List)"
+        # "monitor DVI-I-1, class:(steam)"
+        # "workspace 3, class:(steam)"
         ### Workspace 5
 		    "tile, class:(vivaldi)"
         "monitor HDMI-A-1, class:(vivaldi)"
         "workspace 5, class:(vivaldi)"
         ### Workspace 6
         "monitor HDMI-A-1, class:(.piper-wrapped)"
-        "workspace 6, class:(.piper-wrapped)"
+        # "workspace 6, class:(.piper-wrapped)"
+        ##
+        "float, class:(steam)"
+        # "tile, class:(steam)"
+        # "float, title:(Friends List)"
+        "monitor HDMI-A-1, class:(steam)"
         #
         "monitor HDMI-A-1, class:(solaar)"
-        "workspace 6, class:(solaar)"
+        "workspace 6, class:(solaar|steam|.piper-wrapped)"
 	    ];
 
       # wsbind = [
