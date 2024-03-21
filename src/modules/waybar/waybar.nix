@@ -143,7 +143,7 @@ in
 			};
       "custom/launcher" = {
         "format" = "";
-        "on-click" = "sleep 0.1 && rofi -show drun"; # sleep is currently a workaround
+        "on-click" = "script-rofi";
         # "max-length" = "2";
       };
       "custom/taskmanager" = {

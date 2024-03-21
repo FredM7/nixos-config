@@ -76,6 +76,8 @@
 		./modules/wlogout.nix
 		# ./modules/logid.nix
 		./modules/nemo.nix
+		# SCRIPTS
+		./scripts/scripts.nix
 	];
 
 	dconf.settings = {
@@ -147,7 +149,6 @@
 		android-studio
 		# postman
 		postman-f
-		(import ./scripts { inherit pkgs; })
 	];
 
 	home.stateVersion = "23.11";

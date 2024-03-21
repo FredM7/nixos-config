@@ -57,7 +57,7 @@
   
       bind = [
         "$mod, Q, exec, alacritty"
-        "$mod, SPACE, exec, rofi -show drun"
+        "$mod, SPACE, exec, script-rofi"
         "$mod, C, killactive,"
         "$mod, T, togglefloating,"
         "$mod, S, swapnext,"
