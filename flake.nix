@@ -72,19 +72,18 @@
 		  ./src/modules/greetd.nix
 		  ./src/modules/logid.nix
 		  solaar.nixosModules.default
-		  # hyprland.homeManagerModules.default
 		  home-manager.nixosModules.home-manager {
-			home-manager.extraSpecialArgs = {
-			  inherit username cursorsize;
-			  
-			  inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium;
+			home-manager = {
+			  extraSpecialArgs = {
+				inherit username cursorsize;
+				inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium;
+			  };
+
+			  useGlobalPkgs = true;
+			  useUserPackages = true;
+
+			  users.${username} = import ./src/home.nix;
 			};
-
-			home-manager.useGlobalPkgs = true;
-			home-manager.useUserPackages = true;
-
-			home-manager.users.${username} = import ./src/home.nix;
-
 		  }
 		];
 	  };
