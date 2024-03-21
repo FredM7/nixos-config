@@ -404,7 +404,6 @@
     screenfetch
     wl-clipboard # clipboard
     waybar # status bar
-    rofi-wayland # launcher
     hyprpicker # color picker tool
     hyprpaper # backgrounds
     wlogout # logout screen
