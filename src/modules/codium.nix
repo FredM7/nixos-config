@@ -23,6 +23,15 @@
       "terminal.integrated.scrollback" = 10000;
       "typescript.updateImportsOnFileMove.enabled" = "always"; # Don't ask me to update imports if I move files around. Just do it.
       "security.workspace.trust.untrustedFiles" = "open";
+      "[dart]" = {
+        "editor.formatOnSave" = true;
+        "editor.formatOnType" = true;
+        "editor.rulers" = [240];
+        "editor.selectionHighlight" = false;
+        "editor.suggestSelection" = "first";
+        "editor.tabCompletion" = "onlySnippets";
+        "editor.wordBasedSuggestions" = "off";
+      };
     };
     
     # userTasks = [
