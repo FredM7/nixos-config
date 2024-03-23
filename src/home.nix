@@ -146,6 +146,7 @@
 		gogdl
 		# logiops
 		ledger-live-desktop
+		flutter
 		android-studio
 		# postman
 		postman-f
