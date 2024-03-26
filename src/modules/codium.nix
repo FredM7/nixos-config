@@ -18,6 +18,9 @@
       "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace, 'EnvyCodeR Nerd Font'";
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.formatOnSave" = true;
+      "editor.tabSize" = 2;
+      "editor.insertSpaces" = true;
+      "editor.detectIndentation" = false;
       "explorer.confirmDragAndDrop" = false;
       "update.mode" = "none";
       "terminal.integrated.scrollback" = 10000;
