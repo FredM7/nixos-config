@@ -381,7 +381,7 @@
       };
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland # For screensharing
-        xdg-desktop-portal-gtk # For File Chooser
+        xdg-desktop-portal-gtk # For File Chooser & for GTK/Gnome applications to correctly apply cursor themeing on Wayland.
       ];
     };
   };

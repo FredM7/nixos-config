@@ -67,6 +67,7 @@
         "$mod, P, exit" # exits compositor
         "SHIFT, Print, exec, kooha" # starts screen recorder
         ", Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
+        # "5, Print, exec, grim -g \"$(sleep 5; slurp)\" - | swappy -f -"
         "$mod SHIFT, 1, movetoworkspace, 1"
         "$mod SHIFT, 2, movetoworkspace, 2"
         "$mod SHIFT, 3, movetoworkspace, 3"

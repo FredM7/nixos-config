@@ -99,6 +99,7 @@
 		vivaldi-ffmpeg-codecs
 		floorp
 		thunderbird
+    bluemail
 		steam
 		discord
 		webcord
