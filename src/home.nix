@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
+{ pkgs, nixpkgs, solaar, system, nixpkgs-obsidian, 
 	inputs, username, cursorsize, ...
 }: let
 	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
@@ -68,7 +68,7 @@
 		./modules/dunst.nix
 		./modules/codium.nix
 		# ./modules/obsidian.nix
-		./modules/anyrun.nix
+		# ./modules/anyrun.nix
 		./modules/fish.nix
 		./modules/waybar/waybar.nix
 		./modules/hyprpaper.nix

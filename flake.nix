@@ -23,11 +23,6 @@
 	  inputs.nixpkgs.follows = "nixpkgs";
 	};
 
-	anyrun = {
-	  url = "github:Kirottu/anyrun";
-	  inputs.nixpkgs.follows = "nixpkgs";
-	};
-
 	nixpkgs-vscodium.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
 
 	nixpkgs-obsidian.url = "github:nixos/nixpkgs/4ab8a3de296914f3b631121e9ce3884f1d34e1e5";
@@ -47,7 +42,6 @@
 	hyprpaper,
 	nixpkgs-vscodium,
 	nixpkgs-obsidian,
-	anyrun, 
 	solaar, 
 	...
   } @ inputs: let
@@ -76,7 +70,7 @@
 			home-manager = {
 			  extraSpecialArgs = {
 				inherit username cursorsize;
-				inherit anyrun inputs nixpkgs-obsidian nixpkgs-vscodium;
+				inherit inputs nixpkgs-obsidian nixpkgs-vscodium;
 			  };
 
 			  useGlobalPkgs = true;
