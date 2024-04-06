@@ -137,6 +137,7 @@
 		mongodb-compass
 		piper
 		vlc
+    openrgb
 		gparted # partition manager
 		partition-manager
 		mediawriter # for flashing SD cards
