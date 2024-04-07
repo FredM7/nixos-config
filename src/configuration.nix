@@ -13,14 +13,14 @@
 		settings = {
       experimental-features = [ "nix-command" "flakes" ];
       
-      auto-optimise-store = true;
+      # auto-optimise-store = true;
 		};
 
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 28d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 28d";
+    # };
   };
 
 	# Before changing the system.stateVersion, read the documentation for this option
@@ -32,13 +32,15 @@
   # Bootloader.
   boot = { 
     loader = {
-      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      # efi.efiSysMountPoint = "/boot";
 
       grub = {
         enable = true;
+        efiSupport = true;
         # device = "/dev/sda";
-        device = "/dev/nvme0n1";
+        # device = "/dev/nvme0n1";
+        device = "nodev";
         useOSProber = true;
       };
     };
@@ -108,29 +110,6 @@
 
     overlays = [
        (final: prev: {
-        libratbag = prev.libratbag.overrideAttrs (o: {
-          src = prev.fetchFromGitHub {
-              owner = "libratbag";
-              repo = "libratbag";
-              rev = "22ddb717aa1095e23f0e5a128b607c9805bc6110";
-              sha256 = "sha256-y7QOyfTzMNCz4Lv2YW5OR7teoNW1lSXJ1ixVZk8yMDg=";
-          };
-        });
-        
-        piper = prev.piper.overrideAttrs (o: {
-          src = prev.fetchFromGitHub {
-              owner = "libratbag";
-              repo = "piper";
-              rev = "c15910bf59d95279469c00c2a84d26dce2bfacbf";
-              sha256 = "sha256-dwwLxoIjyGATvc+26rYwYevm4KJxIcbMdvuBCMGr77Y=";
-          };
-          
-          mesonFlags = [
-            "-Druntime-dependency-checks=false"
-            # "-Dtests=false"
-          ];
-        });
-
         github-desktop = prev.github-desktop.overrideAttrs (o: rec {
           pname = "github-desktop";
           version = "3.3.8";
@@ -270,11 +249,6 @@
       #media-session.enable = true;
     };
 
-		# For Piper to work.
-		ratbagd = {
-      enable = true;
-		};
-
     udev = {
       packages = with pkgs; [
         logitech-udev-rules
@@ -304,9 +278,9 @@
         xterm
 			];
 
-      videoDrivers = [
-        # "nvidia"
-      ];
+      #videoDrivers = [
+      #  "nvidia"
+      #];
 
 			displayManager.autoLogin = {
         enable = true;
