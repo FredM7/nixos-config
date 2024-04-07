@@ -261,6 +261,8 @@
 
         # Required for Ledger Live to detect Ledger Nano X via USB
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="4011", MODE="0660", GROUP="plugdev"
+
+        ${builtins.readFile ./rules/60-openrgb.rules}
       '';
 
       # extraRules = ''
