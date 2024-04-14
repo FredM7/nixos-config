@@ -51,6 +51,15 @@
 	#	gtk.enable = true;
       	#	x11.enable = true;
 	#};
+  home.pointerCursor = {
+		# find the name of the cursor theme by looking in:
+		# /etc/profiles/per-user/<your_username>/share/icons
+		name = "material_light_cursors";
+		package = pkgs.material-cursors;
+		size = cursorsize;
+		gtk.enable = true;
+    x11.enable = true;
+	};
 
 	imports = [
 	  	./modules/config-loader.nix
@@ -76,12 +85,12 @@
 	};
 
 	home.packages = with pkgs; [
-    		rofi-wayland # launcher
+    rofi-wayland # launcher
 		vivaldi
 		vivaldi-ffmpeg-codecs
 		floorp
 		thunderbird
-    		# bluemail
+    # bluemail
 		steam
 		discord
 		webcord
@@ -119,7 +128,6 @@
 		mongodb-compass
 		piper
 		vlc
-    		openrgb
 		gparted # partition manager
 		partition-manager
 		mediawriter # for flashing SD cards
@@ -134,6 +142,9 @@
 		android-studio
 		# postman
 		postman-f
+    # GAMES
+    # inputs.nix-gaming.packages.${pkgs.system}.star-citizen
+    inputs.nix-citizen.packages.${pkgs.system}.star-citizen
 	];
 
 	home.stateVersion = "23.11";

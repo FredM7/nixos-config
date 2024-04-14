@@ -28,9 +28,9 @@ in
       "modules-right" = [
 				"cpu"
 				"memory"
-				# "temperature#cpu"
-				# "custom/gpu"
-        "group/temperatures"
+				"temperature#cpu"
+				"custom/gpu"
+        # "group/temperatures"
         "disk"
 				"pulseaudio"
         # "wireplumber"
@@ -90,7 +90,9 @@ in
     	};
     	"custom/gpu" = {
         "interval" = 1;
-        "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader";
+        # "exec" = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader";
+        # get amd temp
+        "exec" = "sensors | grep 'Tctl' | awk '{print $2}' | cut -c 2-3 | head -n 1";
         "format" = "<span size='10pt' rise='2pt'>G: {}°C</span>";
         "tooltip" = false;
     	};

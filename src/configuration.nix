@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, hostname, cursorsize, ... }:
+{ config, pkgs, username, hostname, cursorsize, inputs, ... }:
 {
   imports = [ 
 	  # Include the results of the hardware scan.
@@ -14,6 +14,9 @@
       experimental-features = [ "nix-command" "flakes" ];
       
       # auto-optimise-store = true;
+
+      substituters = ["https://nix-gaming.cachix.org"];
+      trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
 		};
 
     # gc = {
@@ -42,6 +45,19 @@
         # device = "/dev/nvme0n1";
         device = "nodev";
         useOSProber = true;
+        extraEntries = ''
+          menuentry "Windows 11" {
+            chainloader (hd0,0)+1
+          }
+        '';
+      };
+    };
+
+    kernel = {
+      # NixOS configuration for Star Citizen requirements.
+      sysctl = {
+        "vm.max_map_count" = 16777216;
+        "fs.file-max" = 524288;
       };
     };
 
@@ -120,6 +136,13 @@
             url = "https://github.com/shiftkey/desktop/releases/download/release-${version}-linux${rcversion}/GitHubDesktop-linux-${arch}-${version}-linux${rcversion}.deb";
             hash = "sha256-MXtEIVEsd5GAPGuxMHcFLJ/M009lPRnX6h+kj5UlSG8=";
           };
+        });
+
+        hyprland = prev.hyprland.overrideAttrs (o: {
+          # This is for Star Citizen. It's a hack to get around a bug in the game. (F + Click)
+          patches = (o.patches or [ ]) ++ [
+            /home/fred/Documents/Development/hyprwm/Hyprland/wlr_seat_pointer_send_motion_comment.patch
+          ];
         });
       })
     ];
@@ -249,6 +272,13 @@
       #media-session.enable = true;
     };
 
+    hardware = {
+      openrgb = {
+        # https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/2339
+        enable = true;
+      };
+    };
+
     udev = {
       packages = with pkgs; [
         logitech-udev-rules
@@ -261,8 +291,6 @@
 
         # Required for Ledger Live to detect Ledger Nano X via USB
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="4011", MODE="0660", GROUP="plugdev"
-
-        ${builtins.readFile ./rules/60-openrgb.rules}
       '';
 
       # extraRules = ''
