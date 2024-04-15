@@ -22,8 +22,9 @@
       "editor.tabSize" = 2;
       "editor.insertSpaces" = true;
       "editor.detectIndentation" = false;
-      "explorer.confirmDragAndDrop" = false;
       "editor.stickyScroll.enabled" = false;
+      "editor.linkedEditing" = true;
+      "explorer.confirmDragAndDrop" = false;
       "update.mode" = "none";
       "terminal.integrated.scrollback" = 10000;
       "typescript.updateImportsOnFileMove.enabled" = "always"; # Don't ask me to update imports if I move files around. Just do it.
@@ -69,7 +70,7 @@
       bradlc.vscode-tailwindcss
       esbenp.prettier-vscode
       tamasfe.even-better-toml
-      formulahendry.auto-rename-tag
+      # formulahendry.auto-rename-tag
       # Postman.postman-for-vscode
       
 		];
