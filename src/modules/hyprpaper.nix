@@ -6,7 +6,9 @@
   # '';
   home.file.".config/hypr/hyprpaper.conf".text = ''
     splash = false
-    preload = ~/Pictures/wallpapers/linux-nixos-operating-system.jpg
-    wallpaper = ,~/Pictures/wallpapers/linux-nixos-operating-system.jpg
+    preload = ~/Pictures/Backgrounds/nix-wallpaper-binary-black.png
+    preload = ~/Pictures/Backgrounds/nix-wallpaper-nineish-dark-gray.png
+    preload = ~/Pictures/Backgrounds/nix-wallpaper-stripes-logo.png
+    wallpaper = ,~/Pictures/Backgrounds/nix-wallpaper-binary-black.png
   '';
 }

@@ -37,6 +37,12 @@
 		};
 	};
 
+  # Backgrounds
+  home.file."./Pictures/Backgrounds/" = {
+    source = ./backgrounds;
+    recursive = true;
+  };
+
 	# qt = {
 	# 	enable = true;
 	# };
