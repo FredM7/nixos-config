@@ -30,6 +30,7 @@
         border_size = 1;
         gaps_in = 4;
         gaps_out = 6;
+        # resize_on_border = true; # resizable borders
       };
 
 			
