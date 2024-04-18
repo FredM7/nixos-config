@@ -118,6 +118,9 @@
 		virt-manager # virtualization
 		quickemu
 		quickgui
+    win-virtio
+    # virtio-win
+    # swtpm # for windows virtualization
 		# distrobox
 		# virtualbox
 		github-desktop
@@ -127,7 +130,7 @@
 		# logiops
 		# logiops-pkg
 		# davinci-resolve
-    		libsForQt5.kdenlive
+    libsForQt5.kdenlive
 		audacity
 		localsend
 		# mongodb
