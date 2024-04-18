@@ -61,7 +61,17 @@
       };
     };
 
+    kernelModules = [ 
+      # Added this for OpenRGB's AMD SMBus Access.
+      "i2c-dev" "i2c_piix4"
+    ];
+
     # kernelParams = [ "module_blacklist=i915" ]; # Blacklist integrated GPU
+    kernelParams = [ 
+      # Some Gigabyte/Aorus motherboards have an ACPI conflict with the SMBus controller.
+      # This acpi_enforce_resources parameter is a workaround for that.
+      "acpi_enforce_resources=lax"
+    ];
   };
 
   environment = {
@@ -153,6 +163,7 @@
 	  groups = {
       games = { };
       plugdev = { }; # added for Ledger Live
+      i2c.members = [ username ];
 		};
 	  users = {
       ${username} = {
@@ -192,7 +203,19 @@
   };
 
   virtualisation = {
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = with pkgs; [
+          OVMFFull.fd
+        ];
+      };
+    };
+    
+    spiceUSBRedirection.enable = true;
+
 		docker.enable = true;
 
     virtualbox = {
@@ -251,6 +274,8 @@
       # ];
     };
 
+    spice-vdagentd.enable = true;
+
     pipewire = {
       enable = true;
       
@@ -276,6 +301,8 @@
       openrgb = {
         # https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/2339
         enable = true;
+        motherboard = "amd";
+        package = pkgs.openrgb-with-all-plugins;
       };
     };
 
@@ -411,6 +438,7 @@
     usbutils
     #
     dig
+    i2c-tools # was for openrgb
   ];
   
   # Open ports in the firewall.
