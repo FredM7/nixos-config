@@ -151,6 +151,7 @@
 		android-studio
 		# postman
 		postman-f
+    remmina
     # GAMES
     # inputs.nix-gaming.packages.${pkgs.system}.star-citizen
     inputs.nix-citizen.packages.${pkgs.system}.star-citizen

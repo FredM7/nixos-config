@@ -45,13 +45,15 @@
         # device = "/dev/nvme0n1";
         device = "nodev";
         useOSProber = true;
-        extraEntries = ''
-          menuentry "Windows 11" {
-            chainloader (hd0,0)+1
-          }
-        '';
+        # extraEntries = ''
+        #   menuentry "Windows 11" {
+        #     chainloader (hd0,0)+1
+        #   }
+        # '';
       };
     };
+
+    supportedFilesystems = [ "ntfs"  ];
 
     kernel = {
       # NixOS configuration for Star Citizen requirements.
@@ -71,6 +73,8 @@
       # Some Gigabyte/Aorus motherboards have an ACPI conflict with the SMBus controller.
       # This acpi_enforce_resources parameter is a workaround for that.
       "acpi_enforce_resources=lax"
+      # In order to pass through GPU to VM.
+      "amd_iommu=on"
     ];
   };
 

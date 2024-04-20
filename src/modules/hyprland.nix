@@ -158,8 +158,8 @@
         "waybar"
         "hyprpaper"
         # "logid"
-				#"hyprctl setcursor [THEME] [SIZE]"
         "solaar --window=hide"
+        "openrgb --startminimized"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
     };
