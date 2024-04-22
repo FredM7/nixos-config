@@ -377,6 +377,8 @@
 
     solaar.enable = true;
 
+    nano.enable = false;
+
 		#virt-manager.enable = true;
 	};
 
