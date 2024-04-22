@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  home.file.".config/hypr/" = {
+    # hypridle, hyprpaper, etc
+    source = ./../configs/hypr;
+    recursive = true;
+  };
+
   home.file.".config/alacritty/" = {
     source = ./../configs/alacritty;
     recursive = true;

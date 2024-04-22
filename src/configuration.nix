@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, hostname, cursorsize, ... }:
+{ config, pkgs, username, hostname, cursorsize, inputs, ... }:
 {
   imports = [ 
 	  # Include the results of the hardware scan.
@@ -13,14 +13,17 @@
 		settings = {
       experimental-features = [ "nix-command" "flakes" ];
       
-      auto-optimise-store = true;
+      # auto-optimise-store = true;
+
+      substituters = ["https://nix-gaming.cachix.org"];
+      trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
 		};
 
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 28d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "weekly";
+    #   options = "--delete-older-than 28d";
+    # };
   };
 
 	# Before changing the system.stateVersion, read the documentation for this option
@@ -32,15 +35,47 @@
   # Bootloader.
   boot = { 
     loader = {
+      efi.canTouchEfiVariables = true;
+      # efi.efiSysMountPoint = "/boot";
+
       grub = {
         enable = true;
-        device = "/dev/sda";
+        efiSupport = true;
+        # device = "/dev/sda";
+        # device = "/dev/nvme0n1";
+        device = "nodev";
         useOSProber = true;
+        # extraEntries = ''
+        #   menuentry "Windows 11" {
+        #     chainloader (hd0,0)+1
+        #   }
+        # '';
       };
     };
 
+    supportedFilesystems = [ "ntfs"  ];
+
+    kernel = {
+      # NixOS configuration for Star Citizen requirements.
+      sysctl = {
+        "vm.max_map_count" = 16777216;
+        "fs.file-max" = 524288;
+      };
+    };
+
+    kernelModules = [ 
+      # Added this for OpenRGB's AMD SMBus Access.
+      "i2c-dev" "i2c_piix4"
+    ];
+
     # kernelParams = [ "module_blacklist=i915" ]; # Blacklist integrated GPU
-    kernelParams = [ "nvidia-drm.modeset=1" ];
+    kernelParams = [ 
+      # Some Gigabyte/Aorus motherboards have an ACPI conflict with the SMBus controller.
+      # This acpi_enforce_resources parameter is a workaround for that.
+      "acpi_enforce_resources=lax"
+      # In order to pass through GPU to VM.
+      "amd_iommu=on"
+    ];
   };
 
   environment = {
@@ -105,29 +140,6 @@
 
     overlays = [
        (final: prev: {
-        libratbag = prev.libratbag.overrideAttrs (o: {
-          src = prev.fetchFromGitHub {
-              owner = "libratbag";
-              repo = "libratbag";
-              rev = "22ddb717aa1095e23f0e5a128b607c9805bc6110";
-              sha256 = "sha256-y7QOyfTzMNCz4Lv2YW5OR7teoNW1lSXJ1ixVZk8yMDg=";
-          };
-        });
-        
-        piper = prev.piper.overrideAttrs (o: {
-          src = prev.fetchFromGitHub {
-              owner = "libratbag";
-              repo = "piper";
-              rev = "c15910bf59d95279469c00c2a84d26dce2bfacbf";
-              sha256 = "sha256-dwwLxoIjyGATvc+26rYwYevm4KJxIcbMdvuBCMGr77Y=";
-          };
-          
-          mesonFlags = [
-            "-Druntime-dependency-checks=false"
-            # "-Dtests=false"
-          ];
-        });
-
         github-desktop = prev.github-desktop.overrideAttrs (o: rec {
           pname = "github-desktop";
           version = "3.3.8";
@@ -139,6 +151,13 @@
             hash = "sha256-MXtEIVEsd5GAPGuxMHcFLJ/M009lPRnX6h+kj5UlSG8=";
           };
         });
+
+        hyprland = prev.hyprland.overrideAttrs (o: {
+          # This is for Star Citizen. It's a hack to get around a bug in the game. (F + Click)
+          patches = (o.patches or [ ]) ++ [
+            /home/fred/Documents/Development/hyprwm/Hyprland/wlr_seat_pointer_send_motion_comment.patch
+          ];
+        });
       })
     ];
   };
@@ -148,6 +167,7 @@
 	  groups = {
       games = { };
       plugdev = { }; # added for Ledger Live
+      i2c.members = [ username ];
 		};
 	  users = {
       ${username} = {
@@ -183,11 +203,23 @@
       enable = true;
     };
 
-		pam.services.greetd.enableGnomeKeyring = true;
+		# pam.services.greetd.enableGnomeKeyring = true;
   };
 
   virtualisation = {
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = with pkgs; [
+          OVMFFull.fd
+        ];
+      };
+    };
+    
+    spiceUSBRedirection.enable = true;
+
 		docker.enable = true;
 
     virtualbox = {
@@ -227,35 +259,8 @@
       #  vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       #  vaapiVdpau
       #  libvdpau-va-gl
-        intel-compute-runtime
+      #  intel-compute-runtime
       ];
-    };
-
-    nvidia = {
-      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      # package = config.boot.kernelPackages.nvidiaPackages.stable;
-      package = config.boot.kernelPackages.nvidiaPackages.production;
-
-      # Modesetting is required.
-      modesetting.enable = true;
-
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      powerManagement.enable = false;
-      # Fine-grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-      powerManagement.finegrained = false;
-
-      # Use the NVidia open source kernel module (not to be confused with the
-      # independent third-party "nouveau" open source driver).
-      # Support is limited to the Turing and later architectures. Full list of 
-      # supported GPUs is at: 
-      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-      # Only available from driver 515.43.04+
-      # Do not disable this unless your GPU is unsupported or if you have a good reason to.
-      open = false;
-
-      # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
-      nvidiaSettings = true;
     };
   };
     
@@ -272,6 +277,8 @@
       #   ""
       # ];
     };
+
+    spice-vdagentd.enable = true;
 
     pipewire = {
       enable = true;
@@ -294,10 +301,14 @@
       #media-session.enable = true;
     };
 
-		# For Piper to work.
-		ratbagd = {
-      enable = true;
-		};
+    hardware = {
+      openrgb = {
+        # https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/2339
+        enable = true;
+        motherboard = "amd";
+        package = pkgs.openrgb-with-all-plugins;
+      };
+    };
 
     udev = {
       packages = with pkgs; [
@@ -328,9 +339,9 @@
         xterm
 			];
 
-      videoDrivers = [
-        "nvidia"
-      ];
+      #videoDrivers = [
+      #  "nvidia"
+      #];
 
 			displayManager.autoLogin = {
         enable = true;
@@ -365,6 +376,8 @@
 		fish.enable = true;
 
     solaar.enable = true;
+
+    nano.enable = false;
 
 		#virt-manager.enable = true;
 	};
@@ -406,6 +419,7 @@
     waybar # status bar
     hyprpicker # color picker tool
     hyprpaper # backgrounds
+    hypridle # idle manager
     wlogout # logout screen
     pulseaudio # exposes pactl
 		pavucontrol
@@ -431,6 +445,7 @@
     usbutils
     #
     dig
+    i2c-tools # was for openrgb
   ];
   
   # Open ports in the firewall.

@@ -14,8 +14,8 @@
 		  # https://wiki.hyprland.org/Configuring/Variables/
 
       monitor = [
-        "DVI-I-1,1920x1080@144,0x0,1"
-        "HDMI-A-1,1920x1080@144,1920x0,1"
+        "HDMI-A-1,1920x1080@144,0x0,1"
+        "HDMI-A-2,1920x1080@144,1920x0,1"
       ];
 
       decoration = {
@@ -30,6 +30,7 @@
         border_size = 1;
         gaps_in = 4;
         gaps_out = 6;
+        # resize_on_border = true; # resizable borders
       };
 
 			
@@ -95,14 +96,14 @@
       ];
 
       workspace = [
-        "1, monitor:DVI-I-1, persistent:true, default:true"
-        "2, monitor:DVI-I-1, persistent:true"
-        "3, monitor:DVI-I-1, persistent:true"
-        "4, monitor:DVI-I-1, persistent:true"
-        "5, monitor:HDMI-A-1, persistent:true, default:true"
-        "6, monitor:HDMI-A-1, persistent:true"
-        "7, monitor:HDMI-A-1, persistent:true"
-        "8, monitor:HDMI-A-1, persistent:true"
+        "1, monitor:HDMI-A-1, persistent:true, default:true"
+        "2, monitor:HDMI-A-1, persistent:true"
+        "3, monitor:HDMI-A-1, persistent:true"
+        "4, monitor:HDMI-A-1, persistent:true"
+        "5, monitor:HDMI-A-2, persistent:true, default:true"
+        "6, monitor:HDMI-A-2, persistent:true"
+        "7, monitor:HDMI-A-2, persistent:true"
+        "8, monitor:HDMI-A-2, persistent:true"
       ];
 
       windowrulev2 = [
@@ -111,55 +112,56 @@
         # Set some floating window sizes
         "float,size 627 287,class:(org.speedcrunch.)"
         ### Workspace 1
-        "monitor DVI-I-1, class:(discord)"
+        "monitor HDMI-A-1, class:(discord)"
         "workspace 1, class:(discord)"
         #
-        "monitor DVI-I-1, class:(pavucontrol)"
+        "monitor HDMI-A-1, class:(pavucontrol)"
         "workspace 1, class:(pavucontrol)"
         #
-        "monitor DVI-I-1, class:(VirtualBox)"
+        "monitor HDMI-A-1, class:(VirtualBox)"
         "workspace 1, class:(VirtualBox)"
         ### Workspace 2
 		    "tile, class:(code-url-handler)"
-        "monitor DVI-I-1, class:(code-url-handler)"
+        "monitor HDMI-A-1, class:(code-url-handler)"
         "workspace 2, class:(code-url-handler)"
         # ### Workspace 3
         # "float, class:(steam)"
         # # "tile, class:(steam)"
         # # "float, title:(Friends List)"
-        # "monitor DVI-I-1, class:(steam)"
+        # "monitor HDMI-A-1, class:(steam)"
         # "workspace 3, class:(steam)"
         ### Workspace 5
 		    "tile, class:(vivaldi)"
-        "monitor HDMI-A-1, class:(vivaldi)"
+        "monitor HDMI-A-2, class:(vivaldi)"
         "workspace 5, class:(vivaldi)"
         ### Workspace 6
-        "monitor HDMI-A-1, class:(.piper-wrapped)"
+        "monitor HDMI-A-2, class:(.piper-wrapped)"
         # "workspace 6, class:(.piper-wrapped)"
         ##
         "float, class:(steam)"
         # "tile, class:(steam)"
         # "float, title:(Friends List)"
-        "monitor HDMI-A-1, class:(steam)"
+        "monitor HDMI-A-2, class:(steam)"
         #
-        "monitor HDMI-A-1, class:(solaar)"
+        "monitor HDMI-A-2, class:(solaar)"
         "workspace 6, class:(solaar|steam|.piper-wrapped)"
 	    ];
 
       # wsbind = [
-      #   "1, DVI-I-1"
+      #   "1, HDMI-A-1"
       #   "2, HDMI-A-1"
-      #   # "3, DVI-I-1"
+      #   # "3, HDMI-A-1"
       #   # "4, HDMI-A-1"
       # ];
 
       exec-once = [
         "waybar"
+        # "hypridle"
         "hyprpaper"
-        # "logid"
-				#"hyprctl setcursor [THEME] [SIZE]"
         "solaar --window=hide"
+        "openrgb --startminimized"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # "logid"
       ];
     };
   };

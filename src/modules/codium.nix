@@ -12,6 +12,7 @@
       "window.titleBarStyle" = "custom";
       "vsicons.dontShowNewVersionMessage" = true;
       "workbench.iconTheme" = "vscode-icons";
+      "workbench.tree.enableStickyScroll" = false;
       "git.confirmSync" = false;
       "git.autofetch" = true;
       "editor.inlineSuggest.enabled" = true;
@@ -21,6 +22,8 @@
       "editor.tabSize" = 2;
       "editor.insertSpaces" = true;
       "editor.detectIndentation" = false;
+      "editor.stickyScroll.enabled" = false;
+      "editor.linkedEditing" = true;
       "explorer.confirmDragAndDrop" = false;
       "update.mode" = "none";
       "terminal.integrated.scrollback" = 10000;
@@ -67,7 +70,7 @@
       bradlc.vscode-tailwindcss
       esbenp.prettier-vscode
       tamasfe.even-better-toml
-      formulahendry.auto-rename-tag
+      # formulahendry.auto-rename-tag
       # Postman.postman-for-vscode
       
 		];
@@ -81,11 +84,10 @@
         {
           // "disable-hardware-acceleration": true,
           "enable-crash-reporter": true,
-          // Unique id used for correlating crash reports sent from this instance.
-          // Do not edit this value.
-          // "crash-reporter-id": "3e70c403-3a28-45e0-b63c-ea5bb89a2ed6",
+          // Unique id used for correlating crash reports sent from this instance. Do not edit this value.
           "crash-reporter-id": "90fd0e0b-eb72-494d-8572-48fb4c4b3965",
-          "password-store": "gnome"
+          "password-store": "gnome-libsecret"
+          // "password-store": "gnome-keyring"
         }
       '';
     };

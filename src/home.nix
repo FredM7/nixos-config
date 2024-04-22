@@ -1,11 +1,9 @@
-{ pkgs, nixpkgs, anyrun, solaar, system, nixpkgs-obsidian, 
+{ pkgs, nixpkgs, solaar, system, nixpkgs-obsidian, 
 	inputs, username, cursorsize, ...
 }: let
-	oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
+	# oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	otis = pkgs.callPackage ./derivations/otis.nix {};
 	postman-f = pkgs.callPackage ./derivations/postman.nix {};
-	# my-piper = pkgs.callPackage ./derivations/piper.nix {};
-	# logiops-pkg = pkgs.callPackage ./derivations/logiops.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
 	home.username = username;
@@ -16,21 +14,13 @@
 	gtk = {
 		enable = true;
 
-		# cursorTheme = {
-		# 	package = oreo-cursor;
-		# 	name = "oreo_spark_lime_cursors";
-		# 	size = cursorsize;
-		# };
-
 		theme = {
 			name = "otis";
 			package = otis;
 		};
 
 		iconTheme = {
-			# name = "WhiteSur-icon-theme";
 			name = "Tela-pink-dark";
-			# package = pkgs.whitesur-icon-theme;
 			package = pkgs.tela-icon-theme;
 		};
 	};
@@ -47,31 +37,43 @@
 		};
 	};
 
+  # Backgrounds
+  home.file."./Pictures/Backgrounds/" = {
+    source = ./backgrounds;
+    recursive = true;
+  };
+
 	# qt = {
 	# 	enable = true;
 	# };
 
-	home.pointerCursor = {
+	#home.pointerCursor = {
+	#	# find the name of the cursor theme by looking in:
+	#	# /etc/profiles/per-user/<your_username>/share/icons
+	#	# name = "oreo_spark_lime_bordered_cursors";
+	#	name = "oreo_spark_white_bordered_cursors";
+	#	package = oreo-cursor;
+	#	size = cursorsize;
+	#	gtk.enable = true;
+      	#	x11.enable = true;
+	#};
+  home.pointerCursor = {
 		# find the name of the cursor theme by looking in:
 		# /etc/profiles/per-user/<your_username>/share/icons
-		# name = "oreo_spark_lime_bordered_cursors";
-		name = "oreo_spark_white_bordered_cursors";
-		package = oreo-cursor;
+		name = "material_light_cursors";
+		package = pkgs.material-cursors;
 		size = cursorsize;
 		gtk.enable = true;
-      	x11.enable = true;
+    x11.enable = true;
 	};
 
 	imports = [
-	  	# ./modules/xdg-desktop-portal-hyprland.nix
 	  	./modules/config-loader.nix
 		./modules/dunst.nix
 		./modules/codium.nix
-		# ./modules/obsidian.nix
-		./modules/anyrun.nix
+		# ./modules/anyrun.nix
 		./modules/fish.nix
 		./modules/waybar/waybar.nix
-		./modules/hyprpaper.nix
 		./modules/hyprland.nix
 		./modules/wlogout.nix
 		# ./modules/logid.nix
@@ -87,19 +89,13 @@
 		};
 	};
 
-	# services.gnome-keyring = {
- #    enable = true;
-	# };
-
-	# home.packages = [ piper ];
-	
 	home.packages = with pkgs; [
-    	rofi-wayland # launcher
+    rofi-wayland # launcher
 		vivaldi
 		vivaldi-ffmpeg-codecs
 		floorp
 		thunderbird
-    bluemail
+    # bluemail
 		steam
 		discord
 		webcord
@@ -121,6 +117,9 @@
 		virt-manager # virtualization
 		quickemu
 		quickgui
+    win-virtio
+    # virtio-win
+    # swtpm # for windows virtualization
 		# distrobox
 		# virtualbox
 		github-desktop
@@ -130,7 +129,7 @@
 		# logiops
 		# logiops-pkg
 		# davinci-resolve
-    	libsForQt5.kdenlive
+    libsForQt5.kdenlive
 		audacity
 		localsend
 		# mongodb
@@ -151,6 +150,10 @@
 		android-studio
 		# postman
 		postman-f
+    remmina
+    # GAMES
+    # inputs.nix-gaming.packages.${pkgs.system}.star-citizen
+    inputs.nix-citizen.packages.${pkgs.system}.star-citizen
 	];
 
 	home.stateVersion = "23.11";
