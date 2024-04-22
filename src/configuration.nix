@@ -419,6 +419,7 @@
     waybar # status bar
     hyprpicker # color picker tool
     hyprpaper # backgrounds
+    hypridle # idle manager
     wlogout # logout screen
     pulseaudio # exposes pactl
 		pavucontrol

@@ -155,8 +155,9 @@
       # ];
 
       exec-once = [
-        "waybar"
+        "hypridle"
         "hyprpaper"
+        "waybar"
         # "logid"
         "solaar --window=hide"
         "openrgb --startminimized"
