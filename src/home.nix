@@ -74,7 +74,6 @@
 		# ./modules/anyrun.nix
 		./modules/fish.nix
 		./modules/waybar/waybar.nix
-		./modules/hyprpaper.nix
 		./modules/hyprland.nix
 		./modules/wlogout.nix
 		# ./modules/logid.nix
