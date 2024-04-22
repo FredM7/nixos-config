@@ -70,7 +70,7 @@
         modules = [
           ./src/configuration.nix
           ./src/modules/greetd.nix
-          ./src/modules/logid.nix
+          # ./src/modules/logid.nix
           solaar.nixosModules.default
           home-manager.nixosModules.home-manager {
             home-manager = {
