@@ -25,11 +25,6 @@
       url = "github:Alexays/Waybar";
     };
 
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs-vscodium.url = "github:nixos/nixpkgs/976fa3369d722e76f37c77493d99829540d43845";
 
     nixpkgs-obsidian.url = "github:nixos/nixpkgs/4ab8a3de296914f3b631121e9ce3884f1d34e1e5";
@@ -50,7 +45,6 @@
     # hyprland,
     nixpkgs-hyprland,
     waybar,
-    hyprpaper,
     nixpkgs-vscodium,
     nixpkgs-obsidian,
     solaar, 
