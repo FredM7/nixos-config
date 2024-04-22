@@ -87,6 +87,7 @@
           // Unique id used for correlating crash reports sent from this instance. Do not edit this value.
           "crash-reporter-id": "90fd0e0b-eb72-494d-8572-48fb4c4b3965",
           "password-store": "gnome-libsecret"
+          // "password-store": "gnome-keyring"
         }
       '';
     };
