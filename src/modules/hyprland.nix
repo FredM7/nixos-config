@@ -155,13 +155,13 @@
       # ];
 
       exec-once = [
-        "hypridle"
-        "hyprpaper"
         "waybar"
-        # "logid"
+        # "hypridle"
+        "hyprpaper"
         "solaar --window=hide"
         "openrgb --startminimized"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # "logid"
       ];
     };
   };
