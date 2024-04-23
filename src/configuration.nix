@@ -4,7 +4,7 @@
 
 { config, pkgs, username, hostname, cursorsize, inputs, ... }:
 {
-  imports = [ 
+  imports = [
 	  # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -12,7 +12,7 @@
   nix = {
 		settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      
+
       # auto-optimise-store = true;
 
       substituters = ["https://nix-gaming.cachix.org"];
@@ -33,7 +33,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest; #_4_19; # _latest;
 
   # Bootloader.
-  boot = { 
+  boot = {
     loader = {
       efi.canTouchEfiVariables = true;
       # efi.efiSysMountPoint = "/boot";
@@ -63,13 +63,13 @@
       };
     };
 
-    kernelModules = [ 
+    kernelModules = [
       # Added this for OpenRGB's AMD SMBus Access.
       "i2c-dev" "i2c_piix4"
     ];
 
     # kernelParams = [ "module_blacklist=i915" ]; # Blacklist integrated GPU
-    kernelParams = [ 
+    kernelParams = [
       # Some Gigabyte/Aorus motherboards have an ACPI conflict with the SMBus controller.
       # This acpi_enforce_resources parameter is a workaround for that.
       "acpi_enforce_resources=lax"
@@ -80,7 +80,7 @@
 
   environment = {
     sessionVariables = rec {
-      # Should fix cursor disappearing sometimes?? For some reason the moment I 
+      # Should fix cursor disappearing sometimes?? For some reason the moment I
 			# added this, my system stopped crashing (at time of writing).
       WLR_NO_HARDWARE_CURSORS = "1";
       # Force wayland on electron apps.
@@ -99,8 +99,8 @@
 
     firewall = {
       enable = true;
-      
-      allowedTCPPorts = [ 
+
+      allowedTCPPorts = [
         80
         443
         53317 # for LocalSend
@@ -128,7 +128,7 @@
   fonts.packages = with pkgs; [
     # font-awesome # it broke my fonts!!?
     (nerdfonts.override {
-      fonts = [ 
+      fonts = [
 			  "EnvyCodeR"
       ];
     })
@@ -176,7 +176,7 @@
         isNormalUser = true;
         description = "Fred";
 
-        extraGroups = [ 
+        extraGroups = [
           "networkmanager"
           "wheel"
           "games"
@@ -217,7 +217,7 @@
         ];
       };
     };
-    
+
     spiceUSBRedirection.enable = true;
 
 		docker.enable = true;
@@ -239,7 +239,7 @@
     enable = true;
     mediaKeys.enable = true;
   };
-  
+
   hardware = {
     pulseaudio.enable = false;
     pulseaudio.support32Bit= true;
@@ -263,13 +263,13 @@
       ];
     };
   };
-    
+
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
 		# Enable blueman which provides blueman-applet and blueman-manager.
     # blueman.enable = true;
-    
+
 		openssh = {
       enable = true;
 
@@ -282,7 +282,7 @@
 
     pipewire = {
       enable = true;
-      
+
       alsa = {
         enable = true;
         support32Bit = true;
@@ -290,7 +290,7 @@
       pulse.enable = true;
       # If you want to use JACK applications, uncomment this
       # jack.enable = true;
-      
+
 			# For screen sharing?
 			wireplumber = {
         enable = true;
@@ -317,7 +317,7 @@
 
       # Get the idVendor and idProduct from lsusb. eg: "Bus 003 Device 004: ID 3434:0220 Keychron Keychron K2 Pro".
       extraRules = ''
-        # Required for my KeyChron K2 Pro keyboard in order to use https://usevia.app. 
+        # Required for my KeyChron K2 Pro keyboard in order to use https://usevia.app.
         KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0220", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
 
         # Required for Ledger Live to detect Ledger Nano X via USB
@@ -360,6 +360,17 @@
     gvfs = {
       enable = true;
     };
+
+    # Activate the usbmuxd service to support iOS devices.
+    usbmuxd = {
+      enable = true;
+      package = pkgs.usbmuxd2;
+    };
+
+    # Added for usbmuxd2.
+    avahi = {
+      enable = true;
+    };
   };
 
   programs = {
@@ -372,7 +383,7 @@
     };
 
     dconf.enable = true; # At the time, this was for Blueman & virt-manager
-    
+
 		fish.enable = true;
 
     solaar.enable = true;
@@ -407,7 +418,7 @@
 		bluetuith # Terminal based bluetooth manager
     btop
     lm_sensors
-    neovim 
+    neovim
     ripgrep # for "telescope" inside neovim
     # cinnamon.nemo # file explorer
     # cinnamon.nemo-fileroller # file archiver
@@ -446,13 +457,14 @@
     #
     dig
     i2c-tools # was for openrgb
+    libimobiledevice # for iOS devices, optionally use ifuse to mount.
   ];
-  
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  
+
 }
