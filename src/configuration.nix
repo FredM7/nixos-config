@@ -374,6 +374,10 @@
   };
 
   programs = {
+    # command-not-found.enable = false;
+    # nix-index.enableFishIntegration = true;
+    # nix-index.enable = true;
+
     _1password.enable = true;
     _1password-gui = {
       enable = true;

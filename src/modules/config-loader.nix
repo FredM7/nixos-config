@@ -25,5 +25,10 @@
       source = ./../configs/swappy;
       recursive = true;
     };
+
+    ".config/ngrok/" = {
+      source = ./../configs/ngrok;
+      recursive = true;
+    };
   };
 }

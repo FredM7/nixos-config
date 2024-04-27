@@ -68,7 +68,8 @@
 	};
 
 	imports = [
-	  	./modules/config-loader.nix
+    inputs.ngrok.homeManagerModules.ngrok
+	  ./modules/config-loader.nix
 		./modules/dunst.nix
 		./modules/codium.nix
 		# ./modules/anyrun.nix
@@ -81,6 +82,13 @@
 		# SCRIPTS
 		./scripts/scripts.nix
 	];
+
+  programs.ngrok = { 
+    enable = true;
+    extraConfig = {
+      authtoken = "2JwsinJik2L5rCo0NLOZisSqzgc_3sA72S1ag7hsCV2SUxbA6";
+    };
+  };
 
 	dconf.settings = {
 		"org/virt-manager/virt-manager/connections" = {
@@ -113,6 +121,10 @@
 			system = pkgs.system;
 			config.allowUnfree = true;
 		}).obsidian
+    # (import inputs.ngrok.nixosModules.ngrok {
+    #   pkgs = pkgs;
+    # }).ngrok
+    
 		qemu # virtualization
 		virt-manager # virtualization
 		quickemu
@@ -154,6 +166,25 @@
     # GAMES
     # inputs.nix-gaming.packages.${pkgs.system}.star-citizen
     inputs.nix-citizen.packages.${pkgs.system}.star-citizen
+    # inputs.ngrok.nixosModules.ngrok
+    #       ({ pkgs, ... }: {
+    #         nixpkgs.config.allowUnfree = true;
+    #         services.ngrok = {
+    #           enable = true;
+    #           extraConfig = { 
+    #             authtoken = "2JwsinJik2L5rCo0NLOZisSqzgc_3sA72S1ag7hsCV2SUxbA6";
+
+    #           };
+    #           extraConfigFiles = [
+    #             # reference to files containing `authtoken` and `api_key` secrets
+    #             # ngrok will merge these, together with `extraConfig`
+    #           ];
+    #           tunnels = {
+    #             # ...
+    #           };
+    #         };
+    #       })
+    # sqlite
 	];
 
 	home.stateVersion = "23.11";

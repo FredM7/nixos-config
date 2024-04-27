@@ -36,6 +36,15 @@
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    # nix-index-database = {
+    #   url = "github:nix-community/nix-index-database";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    ngrok.url = "github:ngrok/ngrok-nix";
+
+    # ngrok-hm.url = "github:ngrok/ngrok-nix/home-manager.nix";
   };
 
   outputs = { 
@@ -44,6 +53,7 @@
     home-manager,
     # hyprland,
     nixpkgs-hyprland,
+    # nix-index-database,
     waybar,
     nixpkgs-vscodium,
     nixpkgs-obsidian,
@@ -69,6 +79,7 @@
 
         modules = [
           ./src/configuration.nix
+          # nix-index-database.nixosModules.nix-index
           ./src/modules/greetd.nix
           # ./src/modules/logid.nix
           solaar.nixosModules.default
