@@ -11,6 +11,11 @@
       recursive = true;
     };
 
+    ".config/fastfetch/" = {
+      source = ./../configs/fastfetch;
+      recursive = true;
+    };
+
     "./.config/nvim/" = {
       source = ./../configs/nvim;
       recursive = true;
