@@ -429,7 +429,7 @@
     # xplorer # file explorer
 		ranger
     alacritty # terminal
-    screenfetch
+    fastfetch
     wl-clipboard # clipboard
     waybar # status bar
     hyprpicker # color picker tool
@@ -456,6 +456,7 @@
 		unzip
 		xdg-utils
 		libsecret #
+    
     #
     usbutils
     #
