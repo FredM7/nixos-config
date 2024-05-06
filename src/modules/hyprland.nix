@@ -35,7 +35,7 @@
 
 			
 			input = {
-        follow_mouse = 2;
+        follow_mouse = 1;
 			};
 
 			misc = {
@@ -61,6 +61,7 @@
         "$mod, SPACE, exec, script-rofi"
         "$mod, C, killactive,"
         "$mod, T, togglefloating,"
+        # "$mod SHIFT, S, swapwithmaster,"
         "$mod, S, swapnext,"
 				"$mod, F, fullscreen, 0"
 				"$mod, M, fullscreen, 1"
