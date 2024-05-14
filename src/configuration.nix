@@ -152,12 +152,12 @@
           };
         });
 
-        hyprland = prev.hyprland.overrideAttrs (o: {
-          # This is for Star Citizen. It's a hack to get around a bug in the game. (F + Click)
-          patches = (o.patches or [ ]) ++ [
-            /home/fred/Documents/Development/hyprwm/Hyprland/wlr_seat_pointer_send_motion_comment.patch
-          ];
-        });
+        # hyprland = prev.hyprland.overrideAttrs (o: {
+        #   # This is for Star Citizen. It's a hack to get around a bug in the game. (F + Click)
+        #   patches = (o.patches or [ ]) ++ [
+        #     /home/fred/Documents/Development/hyprwm/Hyprland/wlr_seat_pointer_send_motion_comment.patch
+        #   ];
+        # });
       })
     ];
   };
@@ -345,13 +345,13 @@
       #  "nvidia"
       #];
 
-			displayManager.autoLogin = {
-        enable = true;
-				user = username;
-			};
-
 			# Enable touchpad support (enabled default in most desktopManager).
       # libinput.enable = true;
+    };
+
+    displayManager.autoLogin = {
+      enable = true;
+      user = username;
     };
 
 		gnome = {

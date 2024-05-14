@@ -4,6 +4,7 @@
 	# oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	otis = pkgs.callPackage ./derivations/otis.nix {};
 	postman-f = pkgs.callPackage ./derivations/postman.nix {};
+	vivaldi-f = pkgs.callPackage ./derivations/vivaldi.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
 	home.username = username;
@@ -99,8 +100,10 @@
 
 	home.packages = with pkgs; [
     rofi-wayland # launcher
-		vivaldi
-		vivaldi-ffmpeg-codecs
+		# vivaldi
+		# vivaldi-ffmpeg-codecs
+    vivaldi-f
+    google-chrome
 		floorp
 		thunderbird
     # bluemail
