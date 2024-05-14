@@ -24,6 +24,7 @@
       "editor.detectIndentation" = false;
       "editor.stickyScroll.enabled" = false;
       "editor.linkedEditing" = true;
+      "editor.cursorBlinking" = "expand";
       "explorer.confirmDragAndDrop" = false;
       "update.mode" = "none";
       "terminal.integrated.scrollback" = 10000;
@@ -57,6 +58,7 @@
       # If the extensions is not taking effect, try to
       # remove ~/.vscode/extensions/extensions.json, or even 
       # the whole directory ~/.vscode/extensions.
+      ms-python.python
       mikestead.dotenv
       vscode-icons-team.vscode-icons
       eamodio.gitlens

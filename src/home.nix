@@ -4,6 +4,7 @@
 	# oreo-cursor = pkgs.callPackage ./derivations/oreo-cursor.nix {};
 	otis = pkgs.callPackage ./derivations/otis.nix {};
 	postman-f = pkgs.callPackage ./derivations/postman.nix {};
+	vivaldi-f = pkgs.callPackage ./derivations/vivaldi.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
 	home.username = username;
@@ -68,7 +69,8 @@
 	};
 
 	imports = [
-	  	./modules/config-loader.nix
+    inputs.ngrok.homeManagerModules.ngrok
+	  ./modules/config-loader.nix
 		./modules/dunst.nix
 		./modules/codium.nix
 		# ./modules/anyrun.nix
@@ -82,6 +84,13 @@
 		./scripts/scripts.nix
 	];
 
+  programs.ngrok = { 
+    enable = true;
+    extraConfig = {
+      authtoken = "2JwsinJik2L5rCo0NLOZisSqzgc_3sA72S1ag7hsCV2SUxbA6";
+    };
+  };
+
 	dconf.settings = {
 		"org/virt-manager/virt-manager/connections" = {
 			autoconnect = ["qemu:///system"];
@@ -91,8 +100,10 @@
 
 	home.packages = with pkgs; [
     rofi-wayland # launcher
-		vivaldi
-		vivaldi-ffmpeg-codecs
+		# vivaldi
+		# vivaldi-ffmpeg-codecs
+    vivaldi-f
+    google-chrome
 		floorp
 		thunderbird
     # bluemail
@@ -113,6 +124,10 @@
 			system = pkgs.system;
 			config.allowUnfree = true;
 		}).obsidian
+    # (import inputs.ngrok.nixosModules.ngrok {
+    #   pkgs = pkgs;
+    # }).ngrok
+    liquidctl # for some of my iCUE RGB devices. some uses openrgb
 		qemu # virtualization
 		virt-manager # virtualization
 		quickemu
@@ -154,6 +169,7 @@
     # GAMES
     # inputs.nix-gaming.packages.${pkgs.system}.star-citizen
     inputs.nix-citizen.packages.${pkgs.system}.star-citizen
+    gpt4all
 	];
 
 	home.stateVersion = "23.11";

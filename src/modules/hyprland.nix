@@ -35,7 +35,7 @@
 
 			
 			input = {
-        follow_mouse = 2;
+        follow_mouse = 1;
 			};
 
 			misc = {
@@ -61,6 +61,7 @@
         "$mod, SPACE, exec, script-rofi"
         "$mod, C, killactive,"
         "$mod, T, togglefloating,"
+        # "$mod SHIFT, S, swapwithmaster,"
         "$mod, S, swapnext,"
 				"$mod, F, fullscreen, 0"
 				"$mod, M, fullscreen, 1"
@@ -106,6 +107,13 @@
         "8, monitor:HDMI-A-2, persistent:true"
       ];
 
+      # Some fields are not supported by V2 yet.
+      # So we use the old version for now.
+      windowrule = [
+        # This is to prevent Steam notifications from focusing.
+        "nofocus, title:(notificationtoasts_.*_desktop)"
+      ];
+
       windowrulev2 = [
         # By default, lets float all windows.
         "float, class:(.*)"
@@ -139,6 +147,7 @@
         # "workspace 6, class:(.piper-wrapped)"
         ##
         "float, class:(steam)"
+        # "nofocus, class:(steam), title:(notificationtoasts_.*_desktop)"
         # "tile, class:(steam)"
         # "float, title:(Friends List)"
         "monitor HDMI-A-2, class:(steam)"
@@ -159,7 +168,7 @@
         # "hypridle"
         "hyprpaper"
         "solaar --window=hide"
-        "openrgb --startminimized"
+        "openrgb --startminimized --profile Fred"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "logid"
       ];
