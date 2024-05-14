@@ -422,7 +422,8 @@
     wget
     git
 		bluetuith # Terminal based bluetooth manager
-    btop
+    btop # system monitor
+    mission-center # system monitor
     lm_sensors
     neovim
     ripgrep # for "telescope" inside neovim

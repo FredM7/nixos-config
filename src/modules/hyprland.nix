@@ -168,7 +168,7 @@
         # "hypridle"
         "hyprpaper"
         "solaar --window=hide"
-        "openrgb --startminimized"
+        "openrgb --startminimized --profile Fred"
 				"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "logid"
       ];
