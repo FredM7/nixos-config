@@ -110,6 +110,7 @@
 		steam
 		discord
 		webcord
+    telegram-desktop
 		# teams
 		spotify
 		# dunst #mako
@@ -166,6 +167,7 @@
 		# postman
 		postman-f
     remmina
+    libreoffice-fresh
     # GAMES
     # inputs.nix-gaming.packages.${pkgs.system}.star-citizen
     inputs.nix-citizen.packages.${pkgs.system}.star-citizen

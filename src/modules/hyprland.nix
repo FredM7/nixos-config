@@ -126,8 +126,8 @@
         "monitor HDMI-A-1, class:(pavucontrol)"
         "workspace 1, class:(pavucontrol)"
         #
-        "monitor HDMI-A-1, class:(VirtualBox)"
-        "workspace 1, class:(VirtualBox)"
+        # "monitor HDMI-A-1, class:(VirtualBox)"
+        # "workspace 1, class:(VirtualBox)"
         ### Workspace 2
 		    "tile, class:(code-url-handler)"
         "monitor HDMI-A-1, class:(code-url-handler)"
