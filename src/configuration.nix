@@ -270,6 +270,11 @@
 		# Enable blueman which provides blueman-applet and blueman-manager.
     # blueman.enable = true;
 
+    # allows applications to query and manipulate storage devices
+    udisks2 = {
+      enable = true;
+    };
+
 		openssh = {
       enable = true;
 
