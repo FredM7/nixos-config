@@ -155,6 +155,8 @@
 		gparted # partition manager
 		partition-manager
 		mediawriter # for flashing SD cards
+    gnome.gnome-disk-utility
+    ventoy-full
 		rpi-imager # for flashing PI Images
 		# docker-desktop
 		# heroic-unwrapped
