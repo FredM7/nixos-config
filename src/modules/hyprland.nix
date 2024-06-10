@@ -111,7 +111,7 @@
       # So we use the old version for now.
       windowrule = [
         # This is to prevent Steam notifications from focusing.
-        "nofocus, title:(notificationtoasts_.*_desktop)"
+        # "nofocus, title:(notificationtoasts_.*_desktop)"
       ];
 
       windowrulev2 = [
@@ -147,7 +147,7 @@
         # "workspace 6, class:(.piper-wrapped)"
         ##
         "float, class:(steam)"
-        # "nofocus, class:(steam), title:(notificationtoasts_.*_desktop)"
+        "noinitialfocus, title:(notificationtoasts_.*_desktop)"
         # "tile, class:(steam)"
         # "float, title:(Friends List)"
         "monitor HDMI-A-2, class:(steam)"
