@@ -8,7 +8,7 @@ stdenv.mkDerivation {
 
     dontUnpack = true;
 
-    isntallPhase = ''
+    installPhase = ''
         mkdir -p $out/bin
         cp docker/* $out/bin
         chmod +x $out/bin/docker
