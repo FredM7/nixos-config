@@ -5,6 +5,9 @@
 	otis = pkgs.callPackage ./derivations/otis.nix {};
 	postman-f = pkgs.callPackage ./derivations/postman.nix {};
 	vivaldi-f = pkgs.callPackage ./derivations/vivaldi.nix {};
+	kooha-f = pkgs.callPackage ./derivations/kooha.nix {};
+	# emby-theatre = pkgs.callPackage ./derivations/emby.nix {};
+	tasmotizer = pkgs.callPackage ./derivations/tasmotizer.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
 	home.username = username;
@@ -106,8 +109,8 @@
     google-chrome
 		floorp
 		thunderbird
-    # bluemail
-		steam
+    bluemail
+		# steam
 		discord
 		webcord
     telegram-desktop
@@ -117,7 +120,10 @@
 		grim # screenshot
 		slurp # screenshot area selection
 		swappy # screenshot editor
-		kooha # screen recorder
+		# kooha # screen recorder
+    kooha-f
+    # emby-theatre
+    tasmotizer
 		blender
 		freecad
 		prusa-slicer
@@ -140,6 +146,10 @@
 		# virtualbox
 		github-desktop
 		gimp
+    darktable # for gimp to load raw files
+    feh # a lightweight image viewer
+    nomacs # another image viewer
+    geeqie # another image viewer
 		speedcrunch
 		obs-studio
 		# logiops
@@ -166,6 +176,7 @@
 		ledger-live-desktop
 		flutter
 		android-studio
+    godot_4
 		# postman
 		postman-f
     remmina
