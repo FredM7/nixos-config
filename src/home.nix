@@ -7,7 +7,7 @@
 	vivaldi-f = pkgs.callPackage ./derivations/vivaldi.nix {};
 	kooha-f = pkgs.callPackage ./derivations/kooha.nix {};
 	# emby-theatre = pkgs.callPackage ./derivations/emby.nix {};
-	tasmotizer = pkgs.callPackage ./derivations/tasmotizer.nix {};
+	# tasmotizer = pkgs.callPackage ./derivations/tasmotizer.nix {};
 	# docker-desktop = pkgs.callPackage ./derivations/docker-desktop.nix {};
   in {
 	home.username = username;
@@ -123,9 +123,9 @@
 		# kooha # screen recorder
     kooha-f
     # emby-theatre
-    tasmotizer
+    # tasmotizer
 		blender
-		freecad
+		# freecad
 		prusa-slicer
 		(import nixpkgs-obsidian {
 			system = pkgs.system;
@@ -160,20 +160,22 @@
 		localsend
 		# mongodb
 		mongodb-compass
-		piper
+		# piper
 		vlc
 		gparted # partition manager
 		partition-manager
 		mediawriter # for flashing SD cards
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     ventoy-full
 		rpi-imager # for flashing PI Images
 		# docker-desktop
 		# heroic-unwrapped
 		heroic
 		gogdl
+    d2
 		# logiops
 		ledger-live-desktop
+    filezilla
 		flutter
 		android-studio
     godot_4

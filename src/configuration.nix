@@ -135,8 +135,12 @@
   ];
 
   nixpkgs = {
-    # Allow unfree packages
-    config.allowUnfree = true;
+
+    config = {
+      # Allow unfree packages
+      allowUnfree = true;
+      # allowBroken = true;
+    };
 
     overlays = [
        (final: prev: {
@@ -235,10 +239,10 @@
   };
 
   # Enable sound with pipewire.
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-  };
+  # sound = {
+  #   enable = true;
+  #   mediaKeys.enable = true;
+  # };
 
   hardware = {
     pulseaudio.enable = false;
@@ -249,11 +253,9 @@
 			powerOnBoot = true; # powers up default bluetooth controller on boot
 		};
 
-    # Enable OpenGL
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         # intel-media-driver # LIBVA_DRIVER_NAME=iHD
         # vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)

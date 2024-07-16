@@ -56,7 +56,8 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url = "https://dl.pstmn.io/download/latest/linux_64";
     name = "${postman}-${version}.tar.gz";
-    hash = "sha256-VAPsypjy6huUCzToAPEaspP1kbErCQl1smx0qvGJsFc=";
+    # hash = "sha256-VAPsypjy6huUCzToAPEaspP1kbErCQl1smx0qvGJsFc=";
+    hash = "sha256-lQF5JYkRAo2zlNLxWnEX8Gf75vT5/6R4GtoMt4iE3NM=";
   };
 
   dontConfigure = true;

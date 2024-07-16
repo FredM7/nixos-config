@@ -72,6 +72,9 @@
       bradlc.vscode-tailwindcss
       esbenp.prettier-vscode
       tamasfe.even-better-toml
+
+      # terrastruct.d2
+
       # formulahendry.auto-rename-tag
       # Postman.postman-for-vscode
       
